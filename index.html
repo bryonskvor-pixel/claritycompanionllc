@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clarity Companion LLC — AI-Powered Guidance Platforms</title>
+  <meta name="description" content="Clarity Companion LLC builds AI-powered guidance platforms that connect consumers with clarity before consequential decisions. Home of Photi and Remodelry." />
+  <meta property="og:title" content="Clarity Companion LLC" />
+  <meta property="og:description" content="AI-powered guidance platforms connecting consumers with clarity before consequential decisions." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1B2A38;
+      --navy-mid:  #243040;
+      --navy-light:#2E3E50;
+      --sw:        #ECE7E0;
+      --pt:        #C4B9AE;
+      --pt-dim:    #8A8078;
+      --amber:     #D4A96A;
+
+      --green:     #1E4D35;
+      --green-mid: #265C40;
+      --green-light:#2E6E4C;
+      --brass:     #B5904A;
+      --brass-light:#D4AF72;
+      --cream:     #F5F1EB;
+
+      --brown:     #2C2420;
+      --brown-mid: #3A2E29;
+      --brown-light:#4A3C35;
+      --brass-r:   #B5904A;
+      --warm-white:#FDFAF6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--navy);
+      color: var(--sw);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px 60px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Subtle star field */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 15% 20%, rgba(196,185,174,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 72% 12%, rgba(196,185,174,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 88% 35%, rgba(212,169,106,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 75%, rgba(196,185,174,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 88%, rgba(196,185,174,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 8% 60%, rgba(196,185,174,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 70%, rgba(196,185,174,0.25) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 48% 5%, rgba(212,169,106,0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Radial glow behind logo */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212,169,106,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    /* LOGO MARK */
+    .logo-mark {
+      display: inline-block;
+      margin-bottom: 32px;
+      animation: fadeDown 0.9s ease both;
+    }
+
+    /* WORDMARK */
+    .wordmark {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 12px;
+      animation: fadeDown 0.9s ease 0.1s both;
+    }
+
+    .w-clarity {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 15px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--pt);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .w-rule {
+      width: 160px;
+      height: 0.5px;
+      background: var(--pt);
+      opacity: 0.3;
+      margin-bottom: 7px;
+    }
+
+    .w-companion {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 500;
+      font-size: 38px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sw);
+      line-height: 1;
+    }
+
+    .w-llc {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 300;
+      font-size: 8px;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      color: var(--pt);
+      opacity: 0.32;
+      margin-top: 6px;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--pt);
+      max-width: 520px;
+      margin: 28px auto 0;
+      animation: fadeUp 0.9s ease 0.3s both;
+    }
+
+    .hero-scroll {
+      margin-top: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeUp 0.9s ease 0.5s both;
+    }
+
+    .hero-scroll span {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--pt-dim);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--pt-dim), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ── MISSION ── */
+    .mission {
+      padding: 100px 40px;
+      text-align: center;
+      background: var(--navy-mid);
+      position: relative;
+    }
+
+    .mission::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,185,174,0.15), transparent);
+    }
+
+    .mission-inner { max-width: 680px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .mission-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.3;
+      color: var(--sw);
+      margin-bottom: 28px;
+    }
+
+    .mission-headline em {
+      font-style: italic;
+      color: var(--amber);
+    }
+
+    .mission-body {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--pt);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── PLATFORMS ── */
+    .platforms {
+      padding: 80px 40px 120px;
+      background: var(--navy);
+    }
+
+    .platforms-label {
+      text-align: center;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--pt-dim);
+      margin-bottom: 56px;
+    }
+
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* BASE CARD */
+    .platform-card {
+      display: flex;
+      flex-direction: column;
+      padding: 56px 44px 48px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .platform-card:hover { transform: translateY(-4px); }
+
+    .platform-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .platform-card:hover::before { transform: scaleX(1); }
+
+    /* PHOTI CARD */
+    .card-photi {
+      background: var(--green);
+    }
+
+    .card-photi::before { background: var(--brass); }
+
+    .card-photi::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(181,144,74,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* REMODELRY CARD */
+    .card-remodelry {
+      background: var(--brown);
+    }
+
+    .card-remodelry::before { background: var(--brass-r); }
+
+    .card-remodelry::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(181,144,74,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* REMODEL.GUIDE CARD */
+    .card-guide {
+      background: var(--brown-mid);
+    }
+
+    .card-guide::before { background: var(--brass-light); }
+
+    .card-guide::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,114,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* CARD INNER ELEMENTS */
+    .card-platform-tag {
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-photi     .card-platform-tag { color: var(--brass); }
+    .card-remodelry .card-platform-tag { color: var(--brass-r); }
+    .card-guide     .card-platform-tag { color: var(--brass-light); }
+
+    .card-mark {
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 34px;
+      line-height: 1;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-photi     .card-name { color: #ECE7E0; }
+    .card-remodelry .card-name { color: #F5F1EB; }
+    .card-guide     .card-name { color: #EDE0C4; }
+
+    .card-domain {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-photi     .card-domain { color: rgba(181,144,74,0.7); }
+    .card-remodelry .card-domain { color: rgba(181,144,74,0.6); }
+    .card-guide     .card-domain { color: rgba(212,175,114,0.6); }
+
+    .card-rule {
+      height: 0.5px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-photi     .card-rule { background: rgba(181,144,74,0.25); }
+    .card-remodelry .card-rule { background: rgba(181,144,74,0.2); }
+    .card-guide     .card-rule { background: rgba(212,175,114,0.18); }
+
+    .card-description {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.7;
+      flex-grow: 1;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-photi     .card-description { color: rgba(245,241,235,0.7); }
+    .card-remodelry .card-description { color: rgba(245,241,235,0.65); }
+    .card-guide     .card-description { color: rgba(237,224,196,0.65); }
+
+    .card-companion {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-photi     .card-companion { color: rgba(181,144,74,0.8); }
+    .card-remodelry .card-companion { color: rgba(181,144,74,0.75); }
+    .card-guide     .card-companion { color: rgba(212,175,114,0.7); }
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+      transition: gap 0.2s ease;
+    }
+
+    .platform-card:hover .card-cta { gap: 12px; }
+
+    .card-photi     .card-cta { color: var(--brass); }
+    .card-remodelry .card-cta { color: var(--brass-r); }
+    .card-guide     .card-cta { color: var(--brass-light); }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      padding: 80px 40px;
+      background: var(--navy-mid);
+      text-align: center;
+      position: relative;
+    }
+
+    .about-strip::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,185,174,0.12), transparent);
+    }
+
+    .about-inner { max-width: 600px; margin: 0 auto; }
+
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(20px, 3vw, 30px);
+      line-height: 1.55;
+      color: var(--sw);
+      margin-bottom: 24px;
+    }
+
+    .about-quote em { color: var(--amber); font-style: normal; }
+
+    .about-attr {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--pt-dim);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 40px 40px;
+      background: var(--navy);
+      border-top: 1px solid rgba(196,185,174,0.08);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-name {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sw);
+    }
+
+    .footer-sub {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--pt-dim);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--pt-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--amber); }
+
+    .footer-copy {
+      font-size: 10px;
+      font-weight: 300;
+      color: rgba(196,185,174,0.25);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 0.8; transform: scaleY(1.1); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .fade-up-delay-1 { transition-delay: 0.1s; }
+    .fade-up-delay-2 { transition-delay: 0.2s; }
+    .fade-up-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .platforms-grid {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .platform-card { padding: 44px 32px 40px; }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .w-companion { font-size: 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 60px 24px 48px; }
+      .mission, .platforms, .about-strip { padding: 72px 24px; }
+      .platforms { padding-bottom: 80px; }
+      footer { padding: 40px 24px 32px; }
+      .footer-links { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- Logo mark SVG -->
+    <div class="logo-mark">
+      <svg width="80" height="80" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="halo-hero" cx="38%" cy="56%" r="58%">
+            <stop offset="0%"  stop-color="#C4B9AE" stop-opacity="0.32"/>
+            <stop offset="50%" stop-color="#C4B9AE" stop-opacity="0.1"/>
+            <stop offset="100%" stop-color="#C4B9AE" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="27" cy="38" rx="21" ry="20" fill="url(#halo-hero)"/>
+        <line x1="44" y1="17" x2="33" y2="30" stroke="#BEB4AA" stroke-width="0.65" opacity="0.42"/>
+        <polygon points="27,22 30.2,32.2 41,32.2 32.5,38.4 35.6,48.6 27,42.4 18.4,48.6 21.5,38.4 13,32.2 23.8,32.2"
+          fill="#ECE7E0" opacity="0.97"/>
+        <polygon points="46,9 47.4,13.8 52.4,13.8 48.4,16.7 49.8,21.5 46,18.6 42.2,21.5 43.6,16.7 39.6,13.8 44.6,13.8"
+          fill="#BEB4AA" opacity="0.94"/>
+        <line x1="46" y1="9"  x2="46" y2="3"   stroke="#BEB4AA" stroke-width="0.6"  opacity="0.42"/>
+        <line x1="52" y1="11" x2="57.5" y2="6.5" stroke="#BEB4AA" stroke-width="0.55" opacity="0.34"/>
+        <line x1="53" y1="16" x2="60" y2="15"  stroke="#BEB4AA" stroke-width="0.5"  opacity="0.28"/>
+        <line x1="40" y1="9"  x2="34.5" y2="5"  stroke="#BEB4AA" stroke-width="0.5"  opacity="0.25"/>
+        <line x1="44" y1="19" x2="38" y2="26"  stroke="#BEB4AA" stroke-width="0.5"  opacity="0.28" stroke-dasharray="1.5 2"/>
+      </svg>
+    </div>
+
+    <!-- Wordmark -->
+    <div class="wordmark">
+      <div class="w-clarity">Clarity</div>
+      <div class="w-rule"></div>
+      <div class="w-companion">Companion</div>
+      <div class="w-llc">LLC</div>
+    </div>
+
+    <p class="hero-tagline">
+      AI-powered guidance platforms connecting consumers<br>
+      with clarity before consequential decisions.
+    </p>
+
+    <div class="hero-scroll">
+      <span>Our platforms</span>
+      <div class="scroll-line"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MISSION ── -->
+<section class="mission">
+  <div class="mission-inner">
+    <span class="section-eyebrow fade-up">Why We Exist</span>
+    <h2 class="mission-headline fade-up">
+      People deserve to be <em>understood</em><br>
+      before they make a decision.
+    </h2>
+    <p class="mission-body fade-up">
+      Whether you're walking into a dispensary or talking to a contractor,
+      the person across the table has something to sell.
+      Clarity Companion builds the companion that shows up first —
+      with no agenda except yours.
+      We listen. We learn who you are.
+      Then we make sure you get what you actually want.
+    </p>
+  </div>
+</section>
+
+<!-- ── PLATFORMS ── -->
+<section class="platforms">
+  <div class="platforms-label fade-up">Our Platforms</div>
+
+  <div class="platforms-grid">
+
+    <!-- PHOTI -->
+    <a href="https://michigansdailydeals.com" target="_blank" class="platform-card card-photi fade-up">
+      <div class="card-platform-tag">Cannabis Lifestyle · Michigan</div>
+
+      <div class="card-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <!-- Simple sun/star mark in green+brass -->
+          <circle cx="18" cy="18" r="8" fill="rgba(181,144,74,0.15)" stroke="#B5904A" stroke-width="0.75"/>
+          <circle cx="18" cy="18" r="4" fill="#B5904A" opacity="0.9"/>
+          <line x1="18" y1="4"  x2="18" y2="8"  stroke="#B5904A" stroke-width="1" opacity="0.5"/>
+          <line x1="18" y1="28" x2="18" y2="32" stroke="#B5904A" stroke-width="1" opacity="0.5"/>
+          <line x1="4"  y1="18" x2="8"  y2="18" stroke="#B5904A" stroke-width="1" opacity="0.5"/>
+          <line x1="28" y1="18" x2="32" y2="18" stroke="#B5904A" stroke-width="1" opacity="0.5"/>
+          <line x1="8"  y1="8"  x2="11" y2="11" stroke="#B5904A" stroke-width="0.75" opacity="0.35"/>
+          <line x1="25" y1="25" x2="28" y2="28" stroke="#B5904A" stroke-width="0.75" opacity="0.35"/>
+          <line x1="28" y1="8"  x2="25" y2="11" stroke="#B5904A" stroke-width="0.75" opacity="0.35"/>
+          <line x1="11" y1="25" x2="8"  y2="28" stroke="#B5904A" stroke-width="0.75" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <div class="card-name">Michigan's Daily Deals</div>
+      <div class="card-domain">michigansdailydeals.com</div>
+      <div class="card-rule"></div>
+      <p class="card-description">
+        Michigan's cannabis companion. Photi learns who you are — your experience, your intentions, your moment — and connects you with the dispensary, deal, and product that actually fits.
+      </p>
+      <div class="card-companion">Companion: Photi</div>
+      <div class="card-cta">
+        Visit platform
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- REMODELRY -->
+    <a href="https://remodelry.guide" target="_blank" class="platform-card card-remodelry fade-up fade-up-delay-1">
+      <div class="card-platform-tag">Home Renovation · Concierge</div>
+
+      <div class="card-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M18 4L3 15V33H13V23H23V33H33V15L18 4Z" fill="none" stroke="#B5904A" stroke-width="1.2" stroke-linejoin="round"/>
+          <path d="M13 33V27C13 24.8 15.2 23 18 23C20.8 23 23 24.8 23 27V33" fill="none" stroke="rgba(181,144,74,0.5)" stroke-width="1" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="card-name">Remodelry</div>
+      <div class="card-domain">remodelry.guide</div>
+      <div class="card-rule"></div>
+      <p class="card-description">
+        Your remodel, guided. Remi listens before anyone shows up — no bid coming, no crew to keep busy, no agenda except yours. Clarity before the first contractor walks through the door.
+      </p>
+      <div class="card-companion">Companion: Remi</div>
+      <div class="card-cta">
+        Visit platform
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- REMODEL.GUIDE -->
+    <a href="https://remodel.guide" target="_blank" class="platform-card card-guide fade-up fade-up-delay-2">
+      <div class="card-platform-tag">Free Resource Library</div>
+
+      <div class="card-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect x="6" y="4" width="20" height="26" rx="2" fill="none" stroke="#D4AF72" stroke-width="1.2"/>
+          <rect x="10" y="4" width="20" height="26" rx="2" fill="none" stroke="rgba(212,175,114,0.45)" stroke-width="1"/>
+          <line x1="11" y1="12" x2="21" y2="12" stroke="#D4AF72" stroke-width="0.9" opacity="0.7"/>
+          <line x1="11" y1="17" x2="21" y2="17" stroke="#D4AF72" stroke-width="0.9" opacity="0.5"/>
+          <line x1="11" y1="22" x2="17" y2="22" stroke="#D4AF72" stroke-width="0.9" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <div class="card-name">remodel.guide</div>
+      <div class="card-domain">remodel.guide</div>
+      <div class="card-rule"></div>
+      <p class="card-description">
+        Free, honest guides for every major home project. Written by someone who has spent 20 years inside the remodeling industry. No affiliate links. No referrals. Just clarity before anyone shows up.
+      </p>
+      <div class="card-companion">10 Guides · All Free</div>
+      <div class="card-cta">
+        Browse guides
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── ABOUT STRIP ── -->
+<section class="about-strip">
+  <div class="about-inner">
+    <p class="about-quote fade-up">
+      "The companion shows up first.<br>
+      With no agenda except <em>yours.</em>"
+    </p>
+    <div class="about-attr fade-up">Clarity Companion LLC · Founded by Bryon Skvor</div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-name">Clarity Companion LLC</div>
+      <div class="footer-sub">AI-powered guidance platforms · claritycompanionllc.com</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://michigansdailydeals.com" target="_blank">Michigan's Daily Deals</a>
+      <a href="https://remodelry.guide" target="_blank">Remodelry</a>
+      <a href="https://remodel.guide" target="_blank">remodel.guide</a>
+    </div>
+    <div class="footer-copy">© 2026 Clarity Companion LLC. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+</script>
+
+</body>
+</html>
