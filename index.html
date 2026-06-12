@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clarity Companion LLC — AI-Powered Guidance Platforms</title>
-  <meta name="description" content="Clarity Companion LLC builds AI-powered guidance platforms that connect consumers with clarity before consequential decisions. Home of Photi and Remodelry." />
+  <meta name="description" content="Clarity Companion LLC builds AI-powered guidance platforms that connect consumers with clarity before consequential decisions. Home of Photi, Remodelry, Farley, Cannagraphy, and more." />
   <meta property="og:title" content="Clarity Companion LLC" />
   <meta property="og:description" content="AI-powered guidance platforms connecting consumers with clarity before consequential decisions." />
   <meta property="og:type" content="website" />
@@ -36,6 +36,21 @@
       --brown-light:#4A3C35;
       --brass-r:   #B5904A;
       --warm-white:#FDFAF6;
+
+      --slate:     #1E2D42;
+      --slate-mid: #263548;
+      --russet:    #8B3A2A;
+      --russet-light:#B5523C;
+
+      --plum:      #221830;
+      --plum-mid:  #2C2040;
+      --amethyst:  #9B7EC8;
+      --amethyst-light:#C4A8E8;
+
+      --storm:     #141E2C;
+      --storm-mid: #1C2A3C;
+      --steel:     #6A8FAF;
+      --steel-light:#9ABCDC;
     }
 
     html { scroll-behavior: smooth; }
@@ -129,7 +144,6 @@
       text-align: center;
     }
 
-    /* Subtle star field */
     .hero::before {
       content: '';
       position: absolute;
@@ -146,7 +160,6 @@
       pointer-events: none;
     }
 
-    /* Radial glow behind logo */
     .hero::after {
       content: '';
       position: absolute;
@@ -165,14 +178,12 @@
       max-width: 720px;
     }
 
-    /* LOGO MARK */
     .logo-mark {
       display: inline-block;
       margin-bottom: 32px;
       animation: fadeDown 0.9s ease both;
     }
 
-    /* WORDMARK */
     .wordmark {
       display: flex;
       flex-direction: column;
@@ -373,12 +384,8 @@
     .platform-card:hover::before { transform: scaleX(1); }
 
     /* PHOTI CARD */
-    .card-photi {
-      background: var(--green);
-    }
-
+    .card-photi { background: var(--green); }
     .card-photi::before { background: var(--brass); }
-
     .card-photi::after {
       content: '';
       position: absolute;
@@ -390,12 +397,8 @@
     }
 
     /* REMODELRY CARD */
-    .card-remodelry {
-      background: var(--brown);
-    }
-
+    .card-remodelry { background: var(--brown); }
     .card-remodelry::before { background: var(--brass-r); }
-
     .card-remodelry::after {
       content: '';
       position: absolute;
@@ -407,12 +410,8 @@
     }
 
     /* REMODEL.GUIDE CARD */
-    .card-guide {
-      background: var(--brown-mid);
-    }
-
+    .card-guide { background: var(--brown-mid); }
     .card-guide::before { background: var(--brass-light); }
-
     .card-guide::after {
       content: '';
       position: absolute;
@@ -420,6 +419,45 @@
       width: 220px; height: 220px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(212,175,114,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* FARLEY CARD */
+    .card-farley { background: var(--slate); }
+    .card-farley::before { background: var(--russet-light); }
+    .card-farley::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,58,42,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* CANNAGRAPHY CARD */
+    .card-cannagraphy { background: var(--plum); }
+    .card-cannagraphy::before { background: var(--amethyst); }
+    .card-cannagraphy::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(155,126,200,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* OBERLIN WEATHER CARD */
+    .card-oberlin { background: var(--storm); }
+    .card-oberlin::before { background: var(--steel); }
+    .card-oberlin::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(106,143,175,0.14) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -434,9 +472,12 @@
       z-index: 1;
     }
 
-    .card-photi     .card-platform-tag { color: var(--brass); }
-    .card-remodelry .card-platform-tag { color: var(--brass-r); }
-    .card-guide     .card-platform-tag { color: var(--brass-light); }
+    .card-photi       .card-platform-tag { color: var(--brass); }
+    .card-remodelry   .card-platform-tag { color: var(--brass-r); }
+    .card-guide       .card-platform-tag { color: var(--brass-light); }
+    .card-farley      .card-platform-tag { color: var(--russet-light); }
+    .card-cannagraphy .card-platform-tag { color: var(--amethyst); }
+    .card-oberlin     .card-platform-tag { color: var(--steel); }
 
     .card-mark {
       margin-bottom: 28px;
@@ -454,9 +495,12 @@
       z-index: 1;
     }
 
-    .card-photi     .card-name { color: #ECE7E0; }
-    .card-remodelry .card-name { color: #F5F1EB; }
-    .card-guide     .card-name { color: #EDE0C4; }
+    .card-photi       .card-name { color: #ECE7E0; }
+    .card-remodelry   .card-name { color: #F5F1EB; }
+    .card-guide       .card-name { color: #EDE0C4; }
+    .card-farley      .card-name { color: #F5F0E8; }
+    .card-cannagraphy .card-name { color: #EDE8F5; }
+    .card-oberlin     .card-name { color: #E8EEF5; }
 
     .card-domain {
       font-size: 10px;
@@ -467,9 +511,12 @@
       z-index: 1;
     }
 
-    .card-photi     .card-domain { color: rgba(181,144,74,0.7); }
-    .card-remodelry .card-domain { color: rgba(181,144,74,0.6); }
-    .card-guide     .card-domain { color: rgba(212,175,114,0.6); }
+    .card-photi       .card-domain { color: rgba(181,144,74,0.7); }
+    .card-remodelry   .card-domain { color: rgba(181,144,74,0.6); }
+    .card-guide       .card-domain { color: rgba(212,175,114,0.6); }
+    .card-farley      .card-domain { color: rgba(181,82,60,0.75); }
+    .card-cannagraphy .card-domain { color: rgba(155,126,200,0.65); }
+    .card-oberlin     .card-domain { color: rgba(106,143,175,0.65); }
 
     .card-rule {
       height: 0.5px;
@@ -478,9 +525,12 @@
       z-index: 1;
     }
 
-    .card-photi     .card-rule { background: rgba(181,144,74,0.25); }
-    .card-remodelry .card-rule { background: rgba(181,144,74,0.2); }
-    .card-guide     .card-rule { background: rgba(212,175,114,0.18); }
+    .card-photi       .card-rule { background: rgba(181,144,74,0.25); }
+    .card-remodelry   .card-rule { background: rgba(181,144,74,0.2); }
+    .card-guide       .card-rule { background: rgba(212,175,114,0.18); }
+    .card-farley      .card-rule { background: rgba(181,82,60,0.25); }
+    .card-cannagraphy .card-rule { background: rgba(155,126,200,0.2); }
+    .card-oberlin     .card-rule { background: rgba(106,143,175,0.2); }
 
     .card-description {
       font-family: 'Cormorant Garamond', serif;
@@ -494,9 +544,12 @@
       z-index: 1;
     }
 
-    .card-photi     .card-description { color: rgba(245,241,235,0.7); }
-    .card-remodelry .card-description { color: rgba(245,241,235,0.65); }
-    .card-guide     .card-description { color: rgba(237,224,196,0.65); }
+    .card-photi       .card-description { color: rgba(245,241,235,0.7); }
+    .card-remodelry   .card-description { color: rgba(245,241,235,0.65); }
+    .card-guide       .card-description { color: rgba(237,224,196,0.65); }
+    .card-farley      .card-description { color: rgba(245,240,232,0.7); }
+    .card-cannagraphy .card-description { color: rgba(237,232,245,0.65); }
+    .card-oberlin     .card-description { color: rgba(232,238,245,0.65); }
 
     .card-companion {
       font-size: 11px;
@@ -507,9 +560,12 @@
       z-index: 1;
     }
 
-    .card-photi     .card-companion { color: rgba(181,144,74,0.8); }
-    .card-remodelry .card-companion { color: rgba(181,144,74,0.75); }
-    .card-guide     .card-companion { color: rgba(212,175,114,0.7); }
+    .card-photi       .card-companion { color: rgba(181,144,74,0.8); }
+    .card-remodelry   .card-companion { color: rgba(181,144,74,0.75); }
+    .card-guide       .card-companion { color: rgba(212,175,114,0.7); }
+    .card-farley      .card-companion { color: rgba(181,82,60,0.8); }
+    .card-cannagraphy .card-companion { color: rgba(155,126,200,0.75); }
+    .card-oberlin     .card-companion { color: rgba(106,143,175,0.75); }
 
     .card-cta {
       display: inline-flex;
@@ -526,9 +582,12 @@
 
     .platform-card:hover .card-cta { gap: 12px; }
 
-    .card-photi     .card-cta { color: var(--brass); }
-    .card-remodelry .card-cta { color: var(--brass-r); }
-    .card-guide     .card-cta { color: var(--brass-light); }
+    .card-photi       .card-cta { color: var(--brass); }
+    .card-remodelry   .card-cta { color: var(--brass-r); }
+    .card-guide       .card-cta { color: var(--brass-light); }
+    .card-farley      .card-cta { color: var(--russet-light); }
+    .card-cannagraphy .card-cta { color: var(--amethyst); }
+    .card-oberlin     .card-cta { color: var(--steel); }
 
     /* ── ABOUT STRIP ── */
     .about-strip {
@@ -610,7 +669,7 @@
     .footer-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 24px;
       flex-wrap: wrap;
     }
 
@@ -661,20 +720,18 @@
     .fade-up-delay-3 { transition-delay: 0.3s; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .platforms-grid {
-        grid-template-columns: 1fr;
-        gap: 2px;
-      }
+    @media (max-width: 1100px) {
+      .platforms-grid { grid-template-columns: repeat(2, 1fr); }
+    }
 
+    @media (max-width: 700px) {
+      .platforms-grid { grid-template-columns: 1fr; }
       .platform-card { padding: 44px 32px 40px; }
-
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
       }
-
       .w-companion { font-size: 28px; }
     }
 
@@ -683,7 +740,7 @@
       .mission, .platforms, .about-strip { padding: 72px 24px; }
       .platforms { padding-bottom: 80px; }
       footer { padding: 40px 24px 32px; }
-      .footer-links { gap: 20px; }
+      .footer-links { gap: 16px; }
     }
   </style>
 </head>
@@ -721,7 +778,6 @@
 <section class="hero">
   <div class="hero-inner">
 
-    <!-- Logo mark SVG -->
     <div class="logo-mark">
       <svg width="80" height="80" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -745,7 +801,6 @@
       </svg>
     </div>
 
-    <!-- Wordmark -->
     <div class="wordmark">
       <div class="w-clarity">Clarity</div>
       <div class="w-rule"></div>
@@ -798,7 +853,6 @@
 
       <div class="card-mark">
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-          <!-- Simple sun/star mark in green+brass -->
           <circle cx="18" cy="18" r="8" fill="rgba(181,144,74,0.15)" stroke="#B5904A" stroke-width="0.75"/>
           <circle cx="18" cy="18" r="4" fill="#B5904A" opacity="0.9"/>
           <line x1="18" y1="4"  x2="18" y2="8"  stroke="#B5904A" stroke-width="1" opacity="0.5"/>
@@ -812,8 +866,8 @@
         </svg>
       </div>
 
-      <div class="card-name">Michigan's Daily Deals</div>
-      <div class="card-domain">michigansdailydeals.com</div>
+      <div class="card-name">Photi</div>
+      <div class="card-domain">michigancannabis.guide</div>
       <div class="card-rule"></div>
       <p class="card-description">
         Michigan's cannabis companion. Photi learns who you are — your experience, your intentions, your moment — and connects you with the dispensary, deal, and product that actually fits.
@@ -882,6 +936,91 @@
       </div>
     </a>
 
+    <!-- FARLEY -->
+    <a href="https://talktofarley.online" target="_blank" class="platform-card card-farley fade-up">
+      <div class="card-platform-tag">Insurance Guidance · Ohio</div>
+
+      <div class="card-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="13" fill="none" stroke="#B5523C" stroke-width="1.2" opacity="0.6"/>
+          <text x="18" y="24" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="600" fill="#B5523C" opacity="0.9">F</text>
+        </svg>
+      </div>
+
+      <div class="card-name">Farley</div>
+      <div class="card-domain">talktofarley.online</div>
+      <div class="card-rule"></div>
+      <p class="card-description">
+        Your coverage companion. Farley helps you understand exactly where you stand before anyone tries to sell you something. No policies to pitch. No commission in the room. Just clarity before the first call.
+      </p>
+      <div class="card-companion">Companion: Farley</div>
+      <div class="card-cta">
+        Visit platform
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- CANNAGRAPHY -->
+    <a href="https://mycannagraphy.site" target="_blank" class="platform-card card-cannagraphy fade-up fade-up-delay-1">
+      <div class="card-platform-tag">Personal Cannabis Profiling</div>
+
+      <div class="card-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="12" r="6" fill="none" stroke="#9B7EC8" stroke-width="1.1" opacity="0.7"/>
+          <line x1="18" y1="18" x2="18" y2="30" stroke="#9B7EC8" stroke-width="1.1" opacity="0.5"/>
+          <line x1="12" y1="22" x2="18" y2="26" stroke="#9B7EC8" stroke-width="1" opacity="0.4"/>
+          <line x1="24" y1="22" x2="18" y2="26" stroke="#9B7EC8" stroke-width="1" opacity="0.4"/>
+          <circle cx="18" cy="12" r="2.5" fill="#9B7EC8" opacity="0.85"/>
+        </svg>
+      </div>
+
+      <div class="card-name">Cannagraphy</div>
+      <div class="card-domain">mycannagraphy.site</div>
+      <div class="card-rule"></div>
+      <p class="card-description">
+        Cannabis is not one-size-fits-all. Cannagraphy maps how it interacts with your specific biology, history, and personality — building a living profile that learns what works for you and why.
+      </p>
+      <div class="card-companion">Personal AI · Precision Cannabis</div>
+      <div class="card-cta">
+        Visit platform
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- OBERLIN WEATHER -->
+    <a href="https://oberlinweather.site" target="_blank" class="platform-card card-oberlin fade-up fade-up-delay-2">
+      <div class="card-platform-tag">Atmospheric Science · Oberlin, Ohio</div>
+
+      <div class="card-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M8 22 Q10 14 18 14 Q24 14 26 20" fill="none" stroke="#6A8FAF" stroke-width="1.2" opacity="0.7"/>
+          <circle cx="26" cy="22" r="5" fill="none" stroke="#6A8FAF" stroke-width="1.1" opacity="0.6"/>
+          <path d="M4 22 Q6 24 10 22 Q14 20 18 22 Q22 24 26 22" fill="none" stroke="#9ABCDC" stroke-width="0.8" opacity="0.45"/>
+          <line x1="18" y1="4"  x2="18" y2="8"  stroke="#6A8FAF" stroke-width="0.9" opacity="0.4"/>
+          <line x1="10" y1="7"  x2="12" y2="10" stroke="#6A8FAF" stroke-width="0.8" opacity="0.32"/>
+          <line x1="26" y1="7"  x2="24" y2="10" stroke="#6A8FAF" stroke-width="0.8" opacity="0.32"/>
+        </svg>
+      </div>
+
+      <div class="card-name">Oberlin Weather</div>
+      <div class="card-domain">oberlinweather.site</div>
+      <div class="card-rule"></div>
+      <p class="card-description">
+        A personal atmospheric science instrument built to investigate Oberlin's microclimate — landfill methane effects, Canadian wildfire smoke transport, and sub-radar convective events. Seven APIs including NASA FIRMS and NOAA HMS.
+      </p>
+      <div class="card-companion">7 APIs · Personal Instrument</div>
+      <div class="card-cta">
+        View instrument
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+
   </div>
 </section>
 
@@ -904,9 +1043,12 @@
       <div class="footer-sub">AI-powered guidance platforms · claritycompanionllc.com</div>
     </div>
     <div class="footer-links">
-      <a href="https://michigancannabis.guide" target="_blank">Michigan's Daily Deals</a>
+      <a href="https://michigancannabis.guide" target="_blank">Photi</a>
       <a href="https://remodelry.guide" target="_blank">Remodelry</a>
       <a href="https://remodel.guide" target="_blank">remodel.guide</a>
+      <a href="https://talktofarley.online" target="_blank">Farley</a>
+      <a href="https://mycannagraphy.site" target="_blank">Cannagraphy</a>
+      <a href="https://oberlinweather.site" target="_blank">Oberlin Weather</a>
       <a href="/about">Our Story</a>
     </div>
     <div class="footer-copy">© 2026 Clarity Companion LLC. All rights reserved.</div>
