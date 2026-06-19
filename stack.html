@@ -40,6 +40,8 @@
 
       --storm:     #141E2C;
       --steel:     #6A8FAF;
+      --mauve:     #221520;
+      --rose:      #C4708A;
     }
 
     html { scroll-behavior: smooth; }
@@ -276,6 +278,7 @@
     .section-farley::before      { background: var(--russet-light); }
     .section-cannagraphy::before { background: var(--amethyst); }
     .section-oberlin::before     { background: var(--steel); }
+    .section-nails::before       { background: var(--rose); }
 
     .platform-inner {
       max-width: 960px;
@@ -303,6 +306,7 @@
     .section-farley      .platform-tag { color: var(--russet-light); }
     .section-cannagraphy .platform-tag { color: var(--amethyst); }
     .section-oberlin     .platform-tag { color: var(--steel); }
+    .section-nails       .platform-tag { color: var(--rose); }
 
     .platform-name {
       font-family: 'Cormorant Garamond', serif;
@@ -317,6 +321,7 @@
     .section-farley      .platform-name { color: #F5F0E8; }
     .section-cannagraphy .platform-name { color: #EDE8F5; }
     .section-oberlin     .platform-name { color: #E8EEF5; }
+    .section-nails       .platform-name { color: #F5EEF2; }
 
     .platform-domain {
       font-size: 10px;
@@ -330,6 +335,7 @@
     .section-farley      .platform-domain { color: rgba(181,82,60,0.65); }
     .section-cannagraphy .platform-domain { color: rgba(155,126,200,0.6); }
     .section-oberlin     .platform-domain { color: rgba(106,143,175,0.6); }
+    .section-nails       .platform-domain { color: rgba(196,112,138,0.6); }
 
     .platform-what {
       font-family: 'Cormorant Garamond', serif;
@@ -415,6 +421,7 @@
     .section-farley      .arch-note-title { color: var(--russet-light); }
     .section-cannagraphy .arch-note-title { color: var(--amethyst); }
     .section-oberlin     .arch-note-title { color: var(--steel); }
+    .section-nails       .arch-note-title { color: var(--rose); }
 
     .arch-note-text {
       font-family: 'Cormorant Garamond', serif;
@@ -454,6 +461,7 @@
     .section-farley      .platform-link { color: var(--russet-light); }
     .section-cannagraphy .platform-link { color: var(--amethyst); }
     .section-oberlin     .platform-link { color: var(--steel); }
+    .section-nails       .platform-link { color: var(--rose); }
 
     .status-badge {
       display: inline-block;
@@ -735,14 +743,14 @@
   <section class="platform-section section-guide">
     <div class="platform-inner">
       <div class="platform-header">
-        <span class="platform-tag">Free Resource Library</span>
+        <span class="platform-tag">Guides · Visualizer · City Pages</span>
       </div>
       <div class="platform-header">
         <span class="platform-name">remodel.guide</span>
         <span class="platform-domain">remodel.guide</span>
       </div>
       <p class="platform-what">
-        Ten long-form project guides and a "From the Field" blog — written by someone with 20 years inside the remodeling industry. No affiliate links. No sponsored content. No referrals. The content moat for the Remodelry platform.
+        Free project guides, an AI kitchen design visualizer, and 120 city-specific landing pages across kitchen and flooring categories — all built without affiliate links, referral fees, or sponsored content. The content and conversion moat for the Remodelry platform.
       </p>
 
       <div class="platform-body fade-up">
@@ -750,8 +758,21 @@
           <div class="col-label">Stack</div>
           <div class="chips">
             <span class="chip">Static HTML</span>
+            <span class="chip">Vanilla JS</span>
             <span class="chip">Vercel</span>
             <span class="chip">GitHub (public repo)</span>
+            <span class="chip chip-api">Flux Kontext Pro (BFL)</span>
+            <span class="chip chip-api">Cal.com</span>
+          </div>
+          <div style="margin-top: 16px;">
+            <div class="col-label">Product Catalog</div>
+            <div class="chips" style="margin-top: 10px;">
+              <span class="chip chip-api">Kitchen Tune-Up</span>
+              <span class="chip chip-api">Granex Quartz</span>
+              <span class="chip chip-api">Mohawk Flooring</span>
+              <span class="chip chip-api">Sherwin-Williams</span>
+              <span class="chip chip-api">MSI Surfaces</span>
+            </div>
           </div>
         </div>
 
@@ -759,12 +780,16 @@
           <div class="col-label">Notable Architecture</div>
           <div class="arch-notes">
             <div class="arch-note">
-              <div class="arch-note-title">Editorial integrity as a moat</div>
-              <div class="arch-note-text">The blog names competitors, prints real prices, and calls out high-pressure sales tactics explicitly — by brand. This is defensible precisely because no affiliate links exist. Large incumbents cannot replicate it without abandoning their revenue model. The editorial stance is the competitive advantage.</div>
+              <div class="arch-note-title">AI kitchen visualizer</div>
+              <div class="arch-note-text">Users upload a photo of their kitchen, select from a curated catalog of cabinet styles, finishes, countertops, flooring, backsplash, and paint — then Flux Kontext Pro renders a photorealistic result in real time. Gated regeneration: 3 free designs, then lead capture unlocks more. Cal.com handles consultation booking inline.</div>
             </div>
             <div class="arch-note">
-              <div class="arch-note-title">Dual-domain SEO strategy</div>
-              <div class="arch-note-text">remodel.guide is the open content moat — public GitHub repo, crawlable freely, optimized for high-intent queries. remodelry.guide is the conversion engine — private repo protecting SoulMap IP, every page funneling to the Remi intake. Two domains, two distinct funnel roles.</div>
+              <div class="arch-note-title">120 city landing pages</div>
+              <div class="arch-note-text">Seven Ohio cities × kitchen and flooring categories × project subtypes (cabinet refacing, countertop replacement, LVP, hardwood, etc.) = 120 SEO-targeted pages. Each has Schema.org LocalBusiness structured data, hand-tuned metadata, and a two-step lead capture form with SMS opt-in.</div>
+            </div>
+            <div class="arch-note">
+              <div class="arch-note-title">Editorial integrity as a moat</div>
+              <div class="arch-note-text">The guides and blog name competitors by brand, print real prices, and call out high-pressure sales tactics explicitly. Defensible because no affiliate revenue exists. Large incumbents cannot replicate it without abandoning their revenue model.</div>
             </div>
           </div>
         </div>
@@ -925,6 +950,65 @@
       </div>
 
       <a href="https://oberlinweather.site" target="_blank" class="platform-link fade-up">View instrument →</a>
+      <span class="status-badge status-production">Production</span>
+    </div>
+  </section>
+
+  <!-- ── NAILS BY MARISSA ── -->
+  <section class="platform-section section-nails">
+    <div class="platform-inner">
+      <div class="platform-header">
+        <span class="platform-tag">AI Design Studio · Beauty</span>
+      </div>
+      <div class="platform-header">
+        <span class="platform-name">Nails by Marissa</span>
+        <span class="platform-domain">nailsbymarissa.site</span>
+      </div>
+      <p class="platform-what">
+        An AI nail design generator that renders photorealistic designs on a real hand — matched to the client's skin tone, age group, and nail shape. Claude engineers the prompt; Flux Kontext Pro generates the image. The client sees their design on a hand that looks like theirs before they ever book.
+      </p>
+
+      <div class="platform-body fade-up">
+        <div class="stack-col">
+          <div class="col-label">Stack</div>
+          <div class="chips">
+            <span class="chip">Next.js 14</span>
+            <span class="chip">React</span>
+            <span class="chip">Anthropic Claude</span>
+            <span class="chip">Airtable</span>
+            <span class="chip">Vercel</span>
+            <span class="chip chip-api">Flux Kontext Pro (BFL)</span>
+          </div>
+          <div style="margin-top: 16px;">
+            <div class="col-label">Reference Library</div>
+            <div class="chips" style="margin-top: 10px;">
+              <span class="chip chip-api">14 hand photos</span>
+              <span class="chip chip-api">Fair · Medium · Deep skin tones</span>
+              <span class="chip chip-api">Adult · Teen · Tween</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch-col">
+          <div class="col-label">Notable Architecture</div>
+          <div class="arch-notes">
+            <div class="arch-note">
+              <div class="arch-note-title">Claude as prompt engineer</div>
+              <div class="arch-note-text">The user describes a design in plain language. Claude translates it into a precise image generation prompt — enforcing that all five nails are fully painted, preserving the hand's natural skin tone and lighting, specifying nail shape and salon photography standards. The model does the translation so the user doesn't have to speak image-gen syntax.</div>
+            </div>
+            <div class="arch-note">
+              <div class="arch-note-title">Context-aware generation</div>
+              <div class="arch-note-text">Flux Kontext Pro (Black Forest Labs) is chosen specifically for its ability to apply transformations to a reference image while preserving everything else — the hand shape, skin tone, lighting, and background stay intact. Only the nails change. Age-aware prompt variants handle tween (very short, age-appropriate) and teen (short-medium, trendy) separately from adult.</div>
+            </div>
+            <div class="arch-note">
+              <div class="arch-note-title">Airtable for design themes</div>
+              <div class="arch-note-text">Pre-built design themes — seasonal collections, trending styles, occasion-specific looks — are managed in Airtable and surfaced via <code>/api/themes</code>. Updating the design library requires no code deployment. Session-based credit tracking gates generation after the free tier.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://nailsbymarissa.site" target="_blank" class="platform-link fade-up">Visit platform →</a>
       <span class="status-badge status-production">Production</span>
     </div>
   </section>

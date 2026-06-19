@@ -51,6 +51,11 @@
       --storm-mid: #1C2A3C;
       --steel:     #6A8FAF;
       --steel-light:#9ABCDC;
+
+      --mauve:     #221520;
+      --mauve-mid: #2E1E2A;
+      --rose:      #C4708A;
+      --rose-light:#E4A0B8;
     }
 
     html { scroll-behavior: smooth; }
@@ -448,6 +453,19 @@
       pointer-events: none;
     }
 
+    /* NAILS CARD */
+    .card-nails { background: var(--mauve); }
+    .card-nails::before { background: var(--rose); }
+    .card-nails::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,112,138,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
     /* OBERLIN WEATHER CARD */
     .card-oberlin { background: var(--storm); }
     .card-oberlin::before { background: var(--steel); }
@@ -478,6 +496,7 @@
     .card-farley      .card-platform-tag { color: var(--russet-light); }
     .card-cannagraphy .card-platform-tag { color: var(--amethyst); }
     .card-oberlin     .card-platform-tag { color: var(--steel); }
+    .card-nails       .card-platform-tag { color: var(--rose); }
 
     .card-mark {
       margin-bottom: 28px;
@@ -501,6 +520,7 @@
     .card-farley      .card-name { color: #F5F0E8; }
     .card-cannagraphy .card-name { color: #EDE8F5; }
     .card-oberlin     .card-name { color: #E8EEF5; }
+    .card-nails       .card-name { color: #F5EEF2; }
 
     .card-domain {
       font-size: 10px;
@@ -517,6 +537,7 @@
     .card-farley      .card-domain { color: rgba(181,82,60,0.75); }
     .card-cannagraphy .card-domain { color: rgba(155,126,200,0.65); }
     .card-oberlin     .card-domain { color: rgba(106,143,175,0.65); }
+    .card-nails       .card-domain { color: rgba(196,112,138,0.65); }
 
     .card-rule {
       height: 0.5px;
@@ -531,6 +552,7 @@
     .card-farley      .card-rule { background: rgba(181,82,60,0.25); }
     .card-cannagraphy .card-rule { background: rgba(155,126,200,0.2); }
     .card-oberlin     .card-rule { background: rgba(106,143,175,0.2); }
+    .card-nails       .card-rule { background: rgba(196,112,138,0.2); }
 
     .card-description {
       font-family: 'Cormorant Garamond', serif;
@@ -550,6 +572,7 @@
     .card-farley      .card-description { color: rgba(245,240,232,0.7); }
     .card-cannagraphy .card-description { color: rgba(237,232,245,0.65); }
     .card-oberlin     .card-description { color: rgba(232,238,245,0.65); }
+    .card-nails       .card-description { color: rgba(245,238,242,0.65); }
 
     .card-companion {
       font-size: 11px;
@@ -566,6 +589,7 @@
     .card-farley      .card-companion { color: rgba(181,82,60,0.8); }
     .card-cannagraphy .card-companion { color: rgba(155,126,200,0.75); }
     .card-oberlin     .card-companion { color: rgba(106,143,175,0.75); }
+    .card-nails       .card-companion { color: rgba(196,112,138,0.75); }
 
     .card-cta {
       display: inline-flex;
@@ -588,6 +612,7 @@
     .card-farley      .card-cta { color: var(--russet-light); }
     .card-cannagraphy .card-cta { color: var(--amethyst); }
     .card-oberlin     .card-cta { color: var(--steel); }
+    .card-nails       .card-cta { color: var(--rose); }
 
     /* ── ABOUT STRIP ── */
     .about-strip {
@@ -926,9 +951,9 @@
       <div class="card-domain">remodel.guide</div>
       <div class="card-rule"></div>
       <p class="card-description">
-        Free, honest guides for every major home project. Written by someone who has spent 20 years inside the remodeling industry. No affiliate links. No referrals. Just clarity before anyone shows up.
+        Free guides, an AI kitchen visualizer, and 120 city-specific landing pages across kitchen and flooring — all built without affiliate links, referral fees, or sponsored content. The editorial stance is the competitive advantage.
       </p>
-      <div class="card-companion">10 Guides · All Free</div>
+      <div class="card-companion">Guides · Visualizer · City Pages</div>
       <div class="card-cta">
         Browse guides
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -1022,6 +1047,36 @@
       </div>
     </a>
 
+    <!-- NAILS BY MARISSA -->
+    <a href="https://nailsbymarissa.site" target="_blank" class="platform-card card-nails fade-up">
+      <div class="card-platform-tag">AI Design Studio · Beauty</div>
+
+      <div class="card-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <ellipse cx="18" cy="22" rx="7" ry="10" fill="none" stroke="#C4708A" stroke-width="1.1" opacity="0.7"/>
+          <ellipse cx="18" cy="22" rx="4" ry="6" fill="rgba(196,112,138,0.2)" stroke="#C4708A" stroke-width="0.8" opacity="0.6"/>
+          <line x1="18" y1="12" x2="18" y2="7" stroke="#C4708A" stroke-width="1.1" opacity="0.5"/>
+          <circle cx="18" cy="6" r="1.5" fill="#C4708A" opacity="0.7"/>
+          <line x1="10" y1="15" x2="7"  y2="12" stroke="#C4708A" stroke-width="0.8" opacity="0.35"/>
+          <line x1="26" y1="15" x2="29" y2="12" stroke="#C4708A" stroke-width="0.8" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <div class="card-name">Nails by Marissa</div>
+      <div class="card-domain">nailsbymarissa.site</div>
+      <div class="card-rule"></div>
+      <p class="card-description">
+        An AI nail design generator that renders photorealistic designs on your actual hand — matched to your skin tone, nail shape, and age group. Describe what you want. See it on you before you book.
+      </p>
+      <div class="card-companion">AI Design · 14 Hand References</div>
+      <div class="card-cta">
+        Visit platform
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+
   </div>
 </section>
 
@@ -1050,6 +1105,7 @@
       <a href="https://talktofarley.online" target="_blank">Farley</a>
       <a href="https://mycannagraphy.site" target="_blank">Cannagraphy</a>
       <a href="https://oberlinweather.site" target="_blank">Oberlin Weather</a>
+      <a href="https://nailsbymarissa.site" target="_blank">Nails by Marissa</a>
       <a href="/stack">Stack</a>
       <a href="/about">Our Story</a>
     </div>
