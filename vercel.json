@@ -2,6 +2,7 @@
   "rewrites": [
     { "source": "/about", "destination": "/about.html" },
     { "source": "/stack", "destination": "/stack.html" },
-    { "source": "/prompts", "destination": "/prompts.html" }
+    { "source": "/prompts", "destination": "/prompts.html" },
+    { "source": "/prompts/what-im-carrying", "destination": "/prompts/what-im-carrying.html" }
   ]
 }
