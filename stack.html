@@ -97,20 +97,30 @@
       line-height: 1;
     }
 
-    .nav-back {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
       font-size: 11px;
       font-weight: 300;
       letter-spacing: 0.15em;
+      text-transform: uppercase;
       color: var(--pt-dim);
       text-decoration: none;
       transition: color 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    .nav-back:hover { color: var(--amber); }
-    .nav-back::before { content: '←'; }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-links .active { color: var(--pt); }
+
+    @media (max-width: 600px) {
+      nav { padding: 14px 24px; }
+      .nav-links { gap: 16px; }
+    }
 
     /* ── HERO ── */
     .hero {
@@ -580,7 +590,12 @@
       <span class="nav-wordmark-companion">Companion</span>
     </div>
   </a>
-  <a href="/" class="nav-back">Home</a>
+  <ul class="nav-links">
+    <li><a href="/#platforms">Platforms</a></li>
+    <li><a href="/stack" class="active">Stack</a></li>
+    <li><a href="/prompts">Prompts</a></li>
+    <li><a href="/about">Our Story</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
