@@ -131,9 +131,63 @@
     .nav-links a:hover { color: var(--amber); }
     .nav-links .nav-about { color: var(--pt); }
 
-    @media (max-width: 600px) {
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--pt);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 57px; left: 0; right: 0;
+      background: rgba(27,42,56,0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(196,185,174,0.08);
+      z-index: 99;
+      flex-direction: column;
+      padding: 8px 0 16px;
+    }
+
+    .nav-mobile-menu.open { display: flex; }
+
+    .nav-mobile-menu a {
+      padding: 16px 28px;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pt-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+      border-bottom: 1px solid rgba(196,185,174,0.05);
+    }
+
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--amber); }
+    .nav-mobile-menu .nav-about { color: var(--pt); }
+
+    @media (max-width: 680px) {
       nav { padding: 14px 24px; }
-      .nav-links { gap: 16px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
     }
 
     /* ── HERO ── */
@@ -799,7 +853,17 @@
     <li><a href="/prompts">Prompts</a></li>
     <li><a href="/about" class="nav-about">Our Story</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#platforms" onclick="closeMobileMenu()">Platforms</a>
+  <a href="/stack">Stack</a>
+  <a href="/prompts">Prompts</a>
+  <a href="/about" class="nav-about">Our Story</a>
+</div>
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -1115,6 +1179,17 @@
 </footer>
 
 <script>
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) entry.target.classList.add('visible');
