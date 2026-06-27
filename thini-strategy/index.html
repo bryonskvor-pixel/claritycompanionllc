@@ -3,218 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thi Ni Thai — A Path to Recognition</title>
+<title>ThìNì Thai — A Path to Recognition</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --aubergine: #2D1B3D;
-  --aubergine-deep: #1A0F24;
-  --aubergine-mid: #3D2455;
-  --gold: #C9A84C;
-  --gold-light: #E8C97A;
-  --gold-muted: #8A6E30;
-  --magenta: #C0396B;
-  --teal: #3A9B8E;
-  --teal-light: #5BBFB0;
+  --aubergine: #2D1B3D; --aubergine-deep: #1A0F24; --aubergine-mid: #3D2455;
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-muted: #8A6E30;
+  --magenta: #C0396B; --magenta-light: #E05585;
+  --teal: #3A9B8E; --teal-light: #5BBFB0;
   --cream: #F9F3E8;
-  --text-on-dark: #F5EDD8;
-  --text-muted: #B8A89C;
+  --text-on-dark: #F5EDD8; --text-muted: #B8A89C; --text-dim: #7A6A60;
+  --urgent: #E8704A;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--aubergine-deep); color: var(--text-on-dark); line-height: 1.7; }
 
+/* URGENT BANNER */
+.urgent-banner {
+  background: linear-gradient(90deg, rgba(232,112,74,0.15) 0%, rgba(201,168,76,0.1) 100%);
+  border-bottom: 1px solid rgba(232,112,74,0.35);
+  padding: 0.85rem 2rem; text-align: center;
+}
+.urgent-banner p { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: var(--urgent); }
+.urgent-banner strong { color: var(--gold-light); }
+
 /* HERO */
 .hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 5rem 2rem;
-  background: linear-gradient(180deg, #080410 0%, #1A0F24 40%, #2D1B3D 100%);
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 5rem 2rem; position: relative;
+  background: linear-gradient(180deg, #080410 0%, #1A0F24 45%, #2D1B3D 100%);
   border-bottom: 2px solid var(--gold);
-  position: relative;
 }
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 65%);
-  pointer-events: none;
-}
-.hero-opening {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.4rem, 3.5vw, 2.1rem);
-  font-style: italic; color: var(--text-on-dark);
-  max-width: 560px; line-height: 1.5; margin-bottom: 3rem;
-}
-.hero-opening em { color: var(--gold-light); font-style: italic; }
-.hero-rule { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 2.5rem; }
-.hero-name {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3.5rem, 9vw, 7rem);
-  font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 0.4rem;
-  letter-spacing: -0.02em;
-}
-.hero-place {
-  font-size: 1rem; font-weight: 400; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--text-muted); margin-bottom: 3rem;
-}
-.hero-stats {
-  display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;
-}
-.stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold-light); display: block; line-height: 1; }
-.stat-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
-.hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn-primary {
-  display: inline-block; padding: 0.85rem 2rem;
-  background: var(--gold); color: #1A0F24; font-size: 12px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
-  border-radius: 3px; transition: background 0.2s;
-}
-.btn-primary:hover { background: var(--gold-light); }
-.btn-secondary {
-  display: inline-block; padding: 0.85rem 2rem;
-  border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light);
-  font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; text-decoration: none; border-radius: 3px;
-  transition: border-color 0.2s, color 0.2s;
-}
-.btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+.hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 65%); pointer-events:none; }
+.hero-opening { font-family:'Playfair Display',serif; font-size:clamp(1.4rem,3.5vw,2.1rem); font-style:italic; color:var(--text-on-dark); max-width:560px; line-height:1.5; margin-bottom:3rem; }
+.hero-opening em { color:var(--gold-light); font-style:italic; }
+.hero-rule { width:60px; height:1px; background:var(--gold); margin:0 auto 2.5rem; }
+.hero-name { font-family:'Playfair Display',serif; font-size:clamp(3.5rem,9vw,7rem); font-weight:700; color:var(--gold-light); line-height:1; margin-bottom:0.4rem; letter-spacing:-0.02em; }
+.hero-place { font-size:.9rem; font-weight:400; letter-spacing:.2em; text-transform:uppercase; color:var(--text-muted); margin-bottom:3rem; }
+.hero-stats { display:flex; gap:2.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:3rem; }
+.stat-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; color:var(--gold-light); display:block; line-height:1; }
+.stat-label { font-size:10px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--text-muted); }
+.hero-cta { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.btn-gold { display:inline-block; padding:.85rem 2rem; background:var(--gold); color:#1A0F24; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; border-radius:3px; transition:background .2s; }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { display:inline-block; padding:.85rem 2rem; border:1px solid rgba(201,168,76,.4); color:var(--gold-light); font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; border-radius:3px; transition:border-color .2s; }
+.btn-ghost:hover { border-color:var(--gold); }
 
 /* NAV */
-.nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(26,15,36,0.97); backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(201,168,76,0.2);
-  padding: 0 1.5rem; display: flex; align-items: center; justify-content: center;
-  flex-wrap: nowrap; overflow-x: auto; gap: 0;
-}
-.nav a {
-  display: inline-block; padding: 1rem 1rem; font-size: 10px; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);
-  text-decoration: none; white-space: nowrap;
-  border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
-}
-.nav a:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+.nav { position:sticky; top:0; z-index:100; background:rgba(26,15,36,.97); backdrop-filter:blur(8px); border-bottom:1px solid rgba(201,168,76,.2); padding:0 1.5rem; display:flex; align-items:center; justify-content:center; overflow-x:auto; gap:0; }
+.nav a { display:inline-block; padding:.9rem 1rem; font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); text-decoration:none; white-space:nowrap; border-bottom:2px solid transparent; transition:color .2s,border-color .2s; }
+.nav a:hover { color:var(--gold-light); border-bottom-color:var(--gold); }
 
 /* SECTIONS */
-section { padding: 5rem 2rem; max-width: 860px; margin: 0 auto; }
-.section-num { font-size: 10px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.5rem; }
-.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: var(--text-on-dark); line-height: 1.2; margin-bottom: 0.75rem; }
-.section-rule { width: 44px; height: 2px; background: var(--gold); margin-bottom: 2rem; }
-.body { font-size: 1.05rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.85; margin-bottom: 1.2rem; }
-.body strong { color: var(--gold-light); font-weight: 500; }
-
-/* STORY BLOCK */
-.story-block {
-  border-left: 3px solid var(--gold);
-  padding: 1.75rem 2rem; margin: 2.5rem 0;
-  background: rgba(201,168,76,0.05);
-}
-.story-block p { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--text-on-dark); line-height: 1.7; }
-
-/* AON QUOTE */
-.aon-quote { text-align: center; padding: 4rem 2rem; margin: 2rem 0; border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); }
-.aon-quote blockquote { font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 2.8vw, 1.65rem); font-style: italic; color: var(--gold-light); line-height: 1.55; max-width: 680px; margin: 0 auto 1.5rem; }
-.aon-attribution { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+section { padding:5rem 2rem; max-width:880px; margin:0 auto; }
+.section-num { font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:.5rem; }
+.section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.5rem); font-weight:700; color:var(--text-on-dark); line-height:1.2; margin-bottom:.75rem; }
+.section-rule { width:44px; height:2px; background:var(--gold); margin-bottom:2rem; }
+.body { font-size:1.05rem; font-weight:300; color:var(--text-on-dark); line-height:1.85; margin-bottom:1.2rem; }
+.body strong { color:var(--gold-light); font-weight:500; }
+.body em { font-style:italic; }
 
 /* INTERSTITIAL */
-.interstitial { background: var(--aubergine-mid); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 5rem 2rem; }
-.interstitial-inner { max-width: 860px; margin: 0 auto; }
+.interstitial { background:var(--aubergine-mid); border-top:1px solid rgba(201,168,76,.15); border-bottom:1px solid rgba(201,168,76,.15); padding:5rem 2rem; }
+.interstitial-inner { max-width:880px; margin:0 auto; }
+
+/* STORY BLOCK */
+.story-block { border-left:3px solid var(--gold); padding:1.75rem 2rem; margin:2.5rem 0; background:rgba(201,168,76,.05); }
+.story-block p { font-family:'Playfair Display',serif; font-size:1.2rem; font-style:italic; color:var(--text-on-dark); line-height:1.7; }
+
+/* AON QUOTE */
+.aon-quote { text-align:center; padding:4.5rem 2rem; border-top:1px solid rgba(201,168,76,.15); border-bottom:1px solid rgba(201,168,76,.15); }
+.aon-quote blockquote { font-family:'Playfair Display',serif; font-size:clamp(1.25rem,2.8vw,1.65rem); font-style:italic; color:var(--gold-light); line-height:1.55; max-width:680px; margin:0 auto 1.5rem; }
+.aon-attribution { font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--text-muted); }
 
 /* CALLOUT */
-.callout { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.25); border-radius: 6px; padding: 1.75rem 2rem; margin: 2rem 0; }
-.callout-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; display: block; }
-.callout p { font-size: 0.97rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.75; }
+.callout { background:rgba(201,168,76,.07); border:1px solid rgba(201,168,76,.25); border-radius:6px; padding:1.75rem 2rem; margin:2rem 0; }
+.callout-label { font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:.6rem; display:block; }
+.callout p { font-size:.97rem; font-weight:300; color:var(--text-on-dark); line-height:1.75; }
+
+/* URGENT CALLOUT */
+.callout-urgent { background:rgba(232,112,74,.08); border:1px solid rgba(232,112,74,.3); border-radius:6px; padding:1.75rem 2rem; margin:2rem 0; }
+.callout-urgent .callout-label { color:var(--urgent); }
+.callout-urgent p { font-size:.97rem; font-weight:300; color:var(--text-on-dark); line-height:1.75; }
 
 /* MILESTONE CARDS */
-.milestone { border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 1.75rem; margin-bottom: 1.25rem; background: rgba(255,255,255,0.02); }
-.milestone-time { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
-.milestone-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--text-on-dark); margin-bottom: 1rem; }
-.milestone ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-.milestone ul li { display: flex; gap: 0.75rem; font-size: 0.93rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.6; }
-.milestone ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+.milestone { border:1px solid rgba(201,168,76,.2); border-radius:6px; padding:1.75rem; margin-bottom:1.25rem; background:rgba(255,255,255,.02); }
+.milestone.urgent { border-color:rgba(232,112,74,.35); background:rgba(232,112,74,.04); }
+.milestone-time { font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:.4rem; }
+.milestone.urgent .milestone-time { color:var(--urgent); }
+.milestone-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:var(--text-on-dark); margin-bottom:1rem; }
+.milestone ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+.milestone ul li { display:flex; gap:.75rem; font-size:.93rem; font-weight:300; color:var(--text-on-dark); line-height:1.6; }
+.milestone ul li::before { content:'→'; color:var(--gold); flex-shrink:0; }
+.milestone.urgent ul li::before { color:var(--urgent); }
+
+/* TWO-COL GRID */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem; }
+.card { background:rgba(255,255,255,.03); border:1px solid rgba(201,168,76,.18); border-radius:6px; padding:1.5rem; }
+.card-label { font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; display:block; }
+.card p { font-size:.9rem; font-weight:300; color:var(--text-on-dark); line-height:1.7; }
+
+/* MICHELIN READINESS */
+.readiness-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:1.75rem 0; }
+.readiness-card { border:1px solid rgba(201,168,76,.2); border-radius:6px; padding:1.5rem; }
+.readiness-card.met { background:rgba(58,155,142,.07); border-color:rgba(58,155,142,.3); }
+.readiness-card.build { background:rgba(201,168,76,.05); border-color:rgba(201,168,76,.25); }
+.readiness-status { font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; margin-bottom:.4rem; display:block; }
+.readiness-card.met .readiness-status { color:var(--teal-light); }
+.readiness-card.build .readiness-status { color:var(--gold); }
+.readiness-title { font-weight:600; font-size:.95rem; color:var(--text-on-dark); margin-bottom:.4rem; }
+.readiness-card p { font-size:.85rem; font-weight:300; color:var(--text-muted); line-height:1.6; }
 
 /* CONTACTS */
-.contacts { display: flex; flex-direction: column; gap: 1px; background: rgba(201,168,76,0.12); border-radius: 6px; overflow: hidden; border: 1px solid rgba(201,168,76,0.2); }
-.contact-head { display: grid; grid-template-columns: 2fr 2fr 2fr 1fr; background: var(--aubergine-mid); padding: 0.7rem 1.25rem; gap: 1rem; }
-.contact-head span { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
-.contact-row { display: grid; grid-template-columns: 2fr 2fr 2fr 1fr; background: var(--aubergine-deep); padding: 0.9rem 1.25rem; gap: 1rem; align-items: start; }
-.contact-row:hover { background: rgba(201,168,76,0.04); }
-.c-name { font-weight: 500; font-size: 0.88rem; color: var(--text-on-dark); display: block; }
-.c-outlet { font-size: 0.78rem; color: var(--text-muted); }
-.c-role, .c-info { font-size: 0.85rem; font-weight: 300; color: var(--text-on-dark); }
-.ph { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; display: inline-block; }
-.ph-high { color: var(--gold); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); }
-.ph-med { color: var(--teal-light); background: rgba(58,155,142,0.08); border: 1px solid rgba(58,155,142,0.25); }
+.contacts { display:flex; flex-direction:column; gap:1px; background:rgba(201,168,76,.12); border-radius:6px; overflow:hidden; border:1px solid rgba(201,168,76,.2); }
+.contact-head { display:grid; grid-template-columns:2fr 2fr 2fr 1fr; background:var(--aubergine-mid); padding:.7rem 1.25rem; gap:1rem; }
+.contact-head span { font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); }
+.contact-row { display:grid; grid-template-columns:2fr 2fr 2fr 1fr; background:var(--aubergine-deep); padding:.9rem 1.25rem; gap:1rem; align-items:start; transition:background .15s; }
+.contact-row:hover { background:rgba(201,168,76,.04); }
+.c-name { font-weight:500; font-size:.88rem; color:var(--text-on-dark); display:block; }
+.c-outlet { font-size:.78rem; color:var(--text-muted); }
+.c-role,.c-info { font-size:.85rem; font-weight:300; color:var(--text-on-dark); }
+.ph { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:3px; display:inline-block; }
+.ph-high { color:var(--gold); background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.3); }
+.ph-med { color:var(--teal-light); background:rgba(58,155,142,.08); border:1px solid rgba(58,155,142,.25); }
 
 /* LISTS */
-.item-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin: 1.5rem 0; }
-.item-list li { display: flex; gap: 1rem; font-size: 1rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.6; align-items: flex-start; }
-.item-list li::before { content: '◆'; color: var(--gold); font-size: 0.45rem; flex-shrink: 0; margin-top: 0.55em; }
-.check-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin: 1.5rem 0; }
-.check-list li { display: flex; gap: 0.9rem; font-size: 1rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.6; align-items: flex-start; }
-.chk { width: 20px; height: 20px; border-radius: 50%; background: rgba(91,191,176,0.12); border: 1px solid var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; color: var(--teal-light); margin-top: 0.15em; }
+.item-list { list-style:none; display:flex; flex-direction:column; gap:.8rem; margin:1.5rem 0; }
+.item-list li { display:flex; gap:1rem; font-size:1rem; font-weight:300; color:var(--text-on-dark); line-height:1.6; align-items:flex-start; }
+.item-list li::before { content:'◆'; color:var(--gold); font-size:.45rem; flex-shrink:0; margin-top:.55em; }
+.check-list { list-style:none; display:flex; flex-direction:column; gap:.8rem; margin:1.5rem 0; }
+.check-list li { display:flex; gap:.9rem; font-size:1rem; font-weight:300; color:var(--text-on-dark); line-height:1.6; align-items:flex-start; }
+.chk { width:20px; height:20px; border-radius:50%; background:rgba(91,191,176,.12); border:1px solid var(--teal); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:10px; color:var(--teal-light); margin-top:.15em; }
+.chk-pending { width:20px; height:20px; border-radius:50%; background:rgba(201,168,76,.1); border:1px solid var(--gold-muted); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:10px; color:var(--gold); margin-top:.15em; }
 
 /* SOCIAL */
-.social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-.social-card { border-left: 3px solid var(--magenta); padding-left: 1.25rem; }
-.social-title { font-weight: 600; font-size: 0.95rem; color: var(--text-on-dark); margin-bottom: 0.4rem; }
-.social-desc { font-size: 0.87rem; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
-.platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
-.platform-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.18); border-radius: 6px; padding: 1.25rem; }
-.platform-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; display: block; }
-.platform-card p { font-size: 0.88rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.65; }
-
-/* BEARD */
-.beard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-.beard-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.18); border-radius: 6px; padding: 1.5rem; }
-.beard-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; display: block; }
-.beard-card p { font-size: 0.9rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.7; }
+.social-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem; }
+.social-card { border-left:3px solid var(--magenta); padding-left:1.25rem; }
+.social-title { font-weight:600; font-size:.95rem; color:var(--text-on-dark); margin-bottom:.4rem; }
+.social-desc { font-size:.87rem; font-weight:300; color:var(--text-muted); line-height:1.6; }
 
 /* PRESS LINK BANNER */
-.press-banner {
-  background: linear-gradient(135deg, rgba(192,57,107,0.12) 0%, rgba(201,168,76,0.08) 100%);
-  border: 1px solid rgba(192,57,107,0.3); border-radius: 6px;
-  padding: 2rem 2.5rem; margin: 2rem 0;
-  display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
-}
-.press-banner-text h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--text-on-dark); margin-bottom: 0.3rem; }
-.press-banner-text p { font-size: 0.9rem; font-weight: 300; color: var(--text-muted); }
+.press-banner { background:linear-gradient(135deg,rgba(192,57,107,.12) 0%,rgba(201,168,76,.08) 100%); border:1px solid rgba(192,57,107,.3); border-radius:6px; padding:2rem 2.5rem; margin:2.5rem 0; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+.press-banner h3 { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:var(--text-on-dark); margin-bottom:.3rem; }
+.press-banner p { font-size:.9rem; font-weight:300; color:var(--text-muted); }
 
 /* CLOSING */
-.closing { text-align: center; padding: 6rem 2rem; background: var(--aubergine-deep); border-top: 1px solid rgba(201,168,76,0.15); }
-.closing-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.8vw, 1.75rem); font-style: italic; color: var(--gold-light); max-width: 580px; margin: 0 auto 1.5rem; line-height: 1.5; }
-.closing-sub { font-size: 0.88rem; color: var(--text-muted); }
-.closing-sub a { color: var(--gold); text-decoration: none; }
-.footer { background: #080410; padding: 1.25rem 2rem; text-align: center; border-top: 1px solid rgba(201,168,76,0.12); font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; }
-.footer a { color: var(--gold); text-decoration: none; }
+.closing { text-align:center; padding:6rem 2rem; background:var(--aubergine-deep); border-top:1px solid rgba(201,168,76,.15); }
+.closing-quote { font-family:'Playfair Display',serif; font-size:clamp(1.2rem,2.8vw,1.75rem); font-style:italic; color:var(--gold-light); max-width:580px; margin:0 auto 1.5rem; line-height:1.5; }
+.closing-sub { font-size:.88rem; color:var(--text-muted); margin-bottom:.5rem; }
+.closing-sub a { color:var(--gold); text-decoration:none; }
+.footer { background:#080410; padding:1.25rem 2rem; text-align:center; border-top:1px solid rgba(201,168,76,.12); font-size:11px; color:var(--text-muted); letter-spacing:.04em; }
+.footer a { color:var(--gold); text-decoration:none; }
 
-@media (max-width: 680px) {
-  .contact-head, .contact-row { grid-template-columns: 1fr 1fr; }
-  .c-role, .c-info { display: none; }
-  .beard-grid, .social-grid, .platform-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 1.5rem; }
-  .press-banner { flex-direction: column; }
+@media (max-width:680px) {
+  .contact-head,.contact-row { grid-template-columns:1fr 1fr; }
+  .c-role,.c-info { display:none; }
+  .two-col,.social-grid,.readiness-grid { grid-template-columns:1fr; }
+  .hero-stats { gap:1.5rem; }
+  .press-banner { flex-direction:column; }
 }
 </style>
 </head>
 <body>
 
+<!-- URGENT BANNER -->
+<div class="urgent-banner">
+  <p>The inaugural <strong>Michelin Great Lakes Guide publishes in 2027.</strong> Inspectors are actively surveying the region now. ThìNì Thai is 35 minutes from Cleveland.</p>
+</div>
+
 <!-- HERO -->
 <div class="hero">
-  <p class="hero-opening">
-    He left <em>Chiang Mai</em> to bring Thailand to America.<br>His wife is still there.
-  </p>
+  <p class="hero-opening">He left <em>Chiang Mai</em> to bring Thailand to America.<br>His wife is still there. The world is about to find him.</p>
   <div class="hero-rule"></div>
   <h1 class="hero-name">ThìNì Thai</h1>
   <p class="hero-place">Oberlin, Ohio &nbsp;·&nbsp; 19 S Main Street</p>
   <div class="hero-stats">
     <div><span class="stat-num">4.7★</span><span class="stat-label">290+ Reviews</span></div>
-    <div><span class="stat-num">5+</span><span class="stat-label">Years Here</span></div>
+    <div><span class="stat-num">5+</span><span class="stat-label">Years of Consistency</span></div>
     <div><span class="stat-num">90%</span><span class="stat-label">Ingredients from Thailand</span></div>
-    <div><span class="stat-num">1hr</span><span class="stat-label">Guests Drive</span></div>
+    <div><span class="stat-num">2027</span><span class="stat-label">Michelin Great Lakes Guide</span></div>
   </div>
   <div class="hero-cta">
-    <a href="#roadmap" class="btn-primary">See the strategy</a>
-    <a href="press/index.html" class="btn-secondary">Press page →</a>
+    <a href="#window" class="btn-gold">The 2027 window</a>
+    <a href="press/index.html" class="btn-ghost">Press page →</a>
   </div>
 </div>
 
@@ -222,13 +195,13 @@ section { padding: 5rem 2rem; max-width: 860px; margin: 0 auto; }
 <nav class="nav">
   <a href="#story">The story</a>
   <a href="#food">The food</a>
-  <a href="#why-beard">Why Beard first</a>
+  <a href="#window">2027 window</a>
+  <a href="#michelin-mind">Michelin mindset</a>
+  <a href="#beard">James Beard</a>
   <a href="#roadmap">Roadmap</a>
   <a href="#contacts">Contacts</a>
-  <a href="#press-kit">Press kit</a>
   <a href="#social">Social</a>
-  <a href="#beard">Beard specifics</a>
-  <a href="#michelin">Michelin</a>
+  <a href="#packet">Press packet</a>
 </nav>
 
 <!-- 01 STORY -->
@@ -236,23 +209,23 @@ section { padding: 5rem 2rem; max-width: 860px; margin: 0 auto; }
   <span class="section-num">01</span>
   <h2 class="section-title">The Story That Changes Everything</h2>
   <div class="section-rule"></div>
-  <p class="body">Chef Aon Krittathiranon grew up in Chiang Mai, in the mountainous north of Thailand. He ran a top-rated culinary school there, Red Chili Cooking School, teaching the regional traditions of Northern Thai cuisine to students who came from around the world to learn them.</p>
-  <p class="body">In 2019, Matt and Jason Adelman — the Oberlin brothers behind The Feve — traveled to Chiang Mai. Through a chain of friends and coincidence, they met Aon as a guide. He invited them back to his home and cooked for them. They recognized immediately that what they were tasting was something rare.</p>
+  <p class="body">Chef Aon Krittathiranon grew up in Chiang Mai, in the mountainous north of Thailand. He ran Red Chili Cooking School there, a top-rated culinary school teaching the regional traditions of Northern Thai cuisine to students who came from around the world to learn them.</p>
+  <p class="body">In 2019, Matt and Jason Adelman, the Oberlin brothers behind The Feve, traveled to Chiang Mai. Through a chain of friends and coincidence they met Aon as a guide. He invited them home and cooked for them. They recognized immediately what they were tasting.</p>
   <p class="body">They asked him to move to Oberlin, Ohio to open a restaurant together. He said yes. He gave Red Chili Cooking School to his brother, packed up his life, and moved <strong>12 time zones away from his family</strong> to bring the food of Chiang Mai to a small American college town.</p>
 
   <div class="story-block">
     <p>ThìNì means "is here" in Thai. It is not a restaurant name. It is a declaration. Thailand is here. And yet the person Aon loves most is not.</p>
   </div>
 
-  <p class="body">It is now 2026. ThìNì Thai has survived a pandemic that arrived two months after opening, built a cult following on carryout orders, earned a 4.7-star rating across nearly 300 reviews, and moved into a bold new building on South Main Street painted in deep aubergine and hot pink with gold trim on the roofline. Aon imports 90 percent of his ingredients from Thailand. He brought the charcoal grill. He brought the dinnerware. The mural on the building says, in Thai: <em>"With love from Thailand."</em></p>
-  <p class="body">His wife is still there.</p>
-  <p class="body">A visa situation with no clear resolution has kept them separated for years. He cooks every service, four nights a week, in Oberlin, Ohio, while she waits on the other side of the world.</p>
+  <p class="body">It is now 2026. ThìNì Thai survived a pandemic that arrived two months after opening, built a cult following on carryout orders, earned a 4.7-star rating across nearly 300 reviews, and moved into a bold new building on South Main Street painted in deep aubergine and hot pink with gold trim on the roofline. Aon imports 90 percent of his ingredients from Thailand. He brought the charcoal grill. The dinnerware. The mural on the building says, in Thai: <em>"With love from Thailand."</em></p>
+  <p class="body">His wife is still there. A visa situation with no clear resolution has kept them separated for years. He cooks every service, four nights a week, while she waits on the other side of the world.</p>
+  <p class="body">He said on record: <em>"I work because I love to. That is why I'm happy."</em> That sentence, given what he is carrying, is the most quietly extraordinary thing a chef has ever said.</p>
 </section>
 
 <!-- AON QUOTE -->
 <div class="aon-quote">
   <blockquote>"My dream and passion is always to show my food to the world. I want people to experience Thailand as it is in the food where I am from."</blockquote>
-  <span class="aon-attribution">— Chef Aon Krittathiranon</span>
+  <span class="aon-attribution">— Chef Aon Krittathiranon &nbsp;·&nbsp; ThìNì Thai, Oberlin Ohio</span>
 </div>
 
 <!-- 02 THE FOOD -->
@@ -260,49 +233,156 @@ section { padding: 5rem 2rem; max-width: 860px; margin: 0 auto; }
   <span class="section-num">02</span>
   <h2 class="section-title">The Food</h2>
   <div class="section-rule"></div>
-  <p class="body">This is not a generalized Thai restaurant. ThìNì Thai serves <strong>Northern Thai cuisine</strong> — the food of Chiang Mai, a regional tradition that is almost entirely absent from American dining. The dishes are rooted in the specific herbs, spices, and techniques of the mountainous north: Khao Soi, Gang Hung Ley Moo, Gang Aum Beef, Boat Noodle Soup. The Penang curry. Dishes that exist here because one chef refused to approximate.</p>
-  <p class="body">Aon imports 90 percent of ingredients from Thailand, including the charcoal used for grilling and the restaurant's dinnerware. Curries are made from freshly mortared herbs and spices. The bar uses Thai herb tinctures in handcrafted cocktails. Nothing is Americanized. Nothing is softened.</p>
+  <p class="body">ThìNì Thai does not serve generalized Thai food. Aon cooks <strong>Northern Thai cuisine</strong>, the specific regional traditions of Chiang Mai, dishes that are almost entirely absent from American restaurant culture. Khao Soi, the comfort food of the mountainous north. Gang Hung Ley Moo, slow-stewed pork belly curry with pickled garlic and ginger. Gang Aum Beef fortified with lemongrass, shrimp paste, and Galangal. Curries made from freshly mortared herbs and spices every single day.</p>
+  <p class="body">90 percent of ingredients are imported directly from Thailand, including the charcoal for the grill and the restaurant's own dinnerware. The bar uses Thai herb tinctures. Nothing is Americanized. When Matt Adelman brought Aon to Oberlin they made a pact: <em>"He knew he would not tweak recipes to favor an American palette. He's very proud of the culinary uniqueness that the region he is from possesses. It shines through."</em></p>
 
   <div class="story-block">
     <p>"When you take one bite of Thai food, you get all of the flavors: spicy, sour, sweet, salty. One bite, all the flavor." — Chef Aon</p>
   </div>
 
-  <p class="body">Guests who have traveled extensively in Thailand describe tasting things at ThìNì that they have not found elsewhere in Ohio. The food writer from cleveland.com described it as <em>"geographic dissociation — a travel experience without the travel."</em> Reviewers routinely say it is the best Thai food they have ever had, including in Bangkok.</p>
-  <p class="body">Matt Adelman, who studied at the Cleveland Institute of Art, designed the space as a canvas. Together, he and Aon have built something that does not ask to be compared to other Thai restaurants in Ohio because it is not competing with them.</p>
+  <p class="body">Cleveland.com called it <em>"geographic dissociation — a travel experience without the travel."</em> Guests who have traveled extensively in Thailand describe tasting things at ThìNì that they have not found anywhere else in Ohio. Reviewers call it the best Thai food they have ever had, including in Bangkok.</p>
+  <p class="body">This is not a restaurant that needs to be qualified by its geography. It competes on its own terms.</p>
 </section>
 
-<!-- INTERSTITIAL: WHY BEARD -->
-<div class="interstitial" id="why-beard">
+<!-- 03 THE 2027 WINDOW -->
+<div class="interstitial" id="window">
   <div class="interstitial-inner">
     <span class="section-num">03</span>
-    <h2 class="section-title">Why James Beard Comes Before Michelin</h2>
+    <h2 class="section-title">The 2027 Window</h2>
     <div class="section-rule"></div>
-    <p class="body">Michelin does not currently cover Ohio. Their guide expands based on regional culinary destination worthiness, not individual restaurant quality alone. The path to Michelin runs through national visibility, and national visibility runs through the James Beard Awards.</p>
-    <p class="body">Beard covers the Midwest actively. The <strong>Best Chef: Great Lakes</strong> category exists specifically for restaurants like ThìNì Thai. A Beard semifinalist listing creates:</p>
-    <ul class="check-list">
-      <li><span class="chk">→</span>National visibility with food writers, critics, and award committees</li>
-      <li><span class="chk">→</span>Credibility that makes Michelin take notice when Ohio enters the guide</li>
-      <li><span class="chk">→</span>Peer recognition that drives further nominations and coverage</li>
-      <li><span class="chk">→</span>A documented record of excellence national press can reference</li>
-    </ul>
-    <p class="body" style="margin-top:1.5rem;">With Aon's story now part of the public narrative, the timeline accelerates. This is no longer a restaurant waiting for the right writer to discover it. It is a story waiting to be told by the right writer, on its own terms.</p>
+
+    <div class="callout-urgent">
+      <span class="callout-label">This is not a someday conversation</span>
+      <p>Michelin has confirmed the inaugural Great Lakes Guide publishes in 2027. Inspectors are actively surveying the region right now. ThìNì Thai is 35 minutes from Cleveland. Inspectors visit anonymously, pay their own bill, and return multiple times. One of them may have already sat down at a table in Oberlin.</p>
+    </div>
+
+    <p class="body">This changes the entire architecture of the strategy. The original path was: build press, earn Beard recognition, position for Michelin over several years. That sequencing assumed Michelin was a distant horizon. It is not. The 2027 guide is a fixed deadline, and the inspection window is open right now.</p>
+    <p class="body">The press strategy, the Beard nominations, the social presence, the culinary community relationships — all of it still matters, and matters urgently. But it now serves two masters simultaneously. It is building national visibility while also building the cultural record that makes Michelin's decision to include ThìNì Thai legible to the world when the guide drops.</p>
+    <p class="body">There is a difference between press that earns recognition and press that contextualizes recognition that may already be coming. Both are worth pursuing. Both are worth pursuing now.</p>
+
+    <div class="two-col" style="margin-top:2rem;">
+      <div class="card">
+        <span class="card-label">What the 2027 guide means</span>
+        <p>The Great Lakes region guide will cover Cleveland and surrounding areas. A restaurant 35 minutes from the city, producing nationally significant cuisine, with five years of documented consistency, is exactly what Michelin looks for when expanding to a new market.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">What Beard + Michelin together means</span>
+        <p>A James Beard semifinalist listing in early 2027 landing simultaneously with Michelin Guide publication is not a coincidence to hope for. It is a target to build toward deliberately. That is the moment that puts ThìNì Thai on the national map permanently.</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- 04 ROADMAP -->
-<section id="roadmap">
+<!-- 04 MICHELIN MINDSET -->
+<section id="michelin-mind">
   <span class="section-num">04</span>
+  <h2 class="section-title">The Michelin Mindset</h2>
+  <div class="section-rule"></div>
+  <p class="body">Understanding how Michelin thinks is as important as understanding what they evaluate. The guide is not a popularity contest, a press competition, or a social media award. It is a judgment made by anonymous inspectors who visit multiple times, pay their own way, and measure experience against an absolute standard.</p>
+  <p class="body">The five criteria Michelin inspectors evaluate are fixed and have not changed in over a century. ThìNì Thai's standing against each one matters now, not in 2027.</p>
+
+  <div class="readiness-grid">
+    <div class="readiness-card met">
+      <span class="readiness-status">Already there</span>
+      <div class="readiness-title">Quality of ingredients</div>
+      <p>90% imported directly from Thailand. Freshly mortared herbs and spices daily. Charcoal and dinnerware brought from Chiang Mai. This criterion is met at a level few restaurants anywhere achieve.</p>
+    </div>
+    <div class="readiness-card met">
+      <span class="readiness-status">Already there</span>
+      <div class="readiness-title">Mastery of technique</div>
+      <p>Northern Thai regional traditions executed without compromise. Aon trained, ran his own culinary school, and has been refining these dishes for years. The reviews confirm mastery consistently.</p>
+    </div>
+    <div class="readiness-card met">
+      <span class="readiness-status">Already there</span>
+      <div class="readiness-title">Personality of the chef in the cuisine</div>
+      <p>No restaurant in Ohio has a more distinct culinary identity. Every dish is an expression of one chef's specific origin, philosophy, and sacrifice. Michelin can taste a point of view. This one is unmistakable.</p>
+    </div>
+    <div class="readiness-card met">
+      <span class="readiness-status">Already there</span>
+      <div class="readiness-title">Value for the price</div>
+      <p>Moderate price point for food of this caliber and sourcing. Guests who travel an hour and call it worth every mile are making this case in 290+ reviews without being asked to.</p>
+    </div>
+    <div class="readiness-card met">
+      <span class="readiness-status">Already there</span>
+      <div class="readiness-title">Consistency across visits</div>
+      <p>4.7 stars maintained across nearly 300 reviews over five years including a pandemic. This is the criterion most restaurants fail. ThìNì Thai has documented evidence of passing it at scale.</p>
+    </div>
+    <div class="readiness-card build">
+      <span class="readiness-status">Build and protect</span>
+      <div class="readiness-title">The full dining experience</div>
+      <p>Michelin scores the entire experience, not just the food. Front of house warmth, hospitality consistency, the moment someone walks in to the moment they leave. This needs to match what comes out of the kitchen every single service.</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:2rem;">
+    <span class="callout-label">The most important operational principle</span>
+    <p>Every table between now and the 2027 guide publication should be treated as if a Michelin inspector is sitting at it. Not in a way that changes anything about how Aon cooks, because what he is already doing is the reason this conversation exists. In the sense that the entire experience, front to back, needs to be as deliberate and consistent as the food. Michelin visits multiple times. The first visit might already have happened. The second might be next week.</p>
+  </div>
+
+  <p class="body" style="margin-top:1.75rem;">There is one thing Michelin requires that no restaurant can manufacture: time. Consistency documented over years, not months. ThìNì Thai has five years of it. That is the rarest credential on the list and it already exists.</p>
+</section>
+
+<!-- 05 JAMES BEARD -->
+<div class="interstitial" id="beard">
+  <div class="interstitial-inner">
+    <span class="section-num">05</span>
+    <h2 class="section-title">James Beard: The Parallel Track</h2>
+    <div class="section-rule"></div>
+    <p class="body">The Beard Awards and Michelin are not competing priorities. They are the same priority expressed in two different systems. Both reward the same things: culinary excellence, a distinct point of view, and consistency that holds over time. Pursuing both simultaneously is not overreach. It is the correct strategy.</p>
+    <p class="body">The Beard Awards nomination window opens <strong>September through November 2026</strong>. That is the most important near-term deadline on this calendar. A Beard semifinalist announcement in early 2027 landing in the same season as the Michelin Great Lakes Guide publication is not luck. It is sequencing.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <span class="card-label">Target category</span>
+        <p>Best Chef: Great Lakes. Covers Ohio, Michigan, Indiana, Illinois, Wisconsin, and Minnesota. This is the correct category for Chef Aon Krittathiranon and the right place to build recognition in the nomination record.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">How nominations work</span>
+        <p>Peer-driven. Any food industry professional, writer, or member of the public can nominate at jamesbeard.org. The path to a nomination is about who knows the restaurant exists. Every writer and chef who visits is a potential nominator.</p>
+      </div>
+    </div>
+
+    <ul class="item-list" style="margin-top:1.75rem;">
+      <li>Every food writer who visits and loves the restaurant should be asked to consider nominating — explicitly and personally</li>
+      <li>Build relationships with Cleveland-area chefs who can become advocates within the industry nomination community</li>
+      <li>Earned media creates a paper trail nominators reference when making their case to the committee</li>
+      <li>Beard nominations compound year over year — even a semifinalist listing in year one changes what is possible in year two</li>
+      <li>The Beard nomination window closes before the Michelin guide publishes — the sequence is right if the work starts now</li>
+    </ul>
+
+    <div class="callout">
+      <span class="callout-label">Why Beard and Michelin reinforce each other</span>
+      <p>Michelin inspectors do not use Beard nominations as a signal. They visit based on their own intelligence. But the culinary community relationships, the food writer coverage, and the national press presence that the Beard track builds are exactly the same assets that make a restaurant visible to the people who feed Michelin intelligence. These tracks do not run parallel by coincidence. They share an ecosystem.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 06 ROADMAP -->
+<section id="roadmap">
+  <span class="section-num">06</span>
   <h2 class="section-title">The Roadmap</h2>
   <div class="section-rule"></div>
-  <p class="body" style="margin-bottom:2rem;">Each phase builds the foundation for the next. Because Aon has agreed to tell his story, the national pitches do not require regional clips to validate them. Both tracks run simultaneously.</p>
+  <p class="body" style="margin-bottom:2rem;">Three tracks running simultaneously. Inspector readiness is continuous. Press and Beard run in parallel with urgency. The 2027 window is open now.</p>
 
-  <div class="milestone">
-    <div class="milestone-time">Weeks 1–2</div>
-    <div class="milestone-title">Establish the Local Record</div>
+  <div class="milestone urgent">
+    <div class="milestone-time">Now — Continuous through 2027</div>
+    <div class="milestone-title">Track One: Inspector Readiness</div>
     <ul>
-      <li>Pitch Oberlin News-Tribune — anchor community feature on Aon's story and the new building</li>
-      <li>Pitch Oberlin College Communications — alumni publication, campus media, social channels</li>
+      <li>Treat every service as if a Michelin inspector is at one of the tables. Because one might be.</li>
+      <li>Front of house hospitality must match the standard of what comes out of the kitchen</li>
+      <li>Consistency is the only criterion that takes time to prove. Five years of reviews say it is already there. Protect it.</li>
+      <li>No off nights. No approximations. No service that Aon would not be proud of.</li>
+    </ul>
+  </div>
+
+  <div class="milestone urgent">
+    <div class="milestone-time">Weeks 1–2 — Start immediately</div>
+    <div class="milestone-title">Track Two: Establish the Press Record</div>
+    <ul>
+      <li>Pitch Oberlin News-Tribune for anchor community feature on Aon, the new building, and the 2027 context</li>
+      <li>Pitch Oberlin College Communications for alumni publication, campus media, and institutional social channels</li>
       <li>These create the first documented press record. Every subsequent pitch references them.</li>
+      <li>Simultaneously begin the national pitches — Aon's participation means we do not need to wait for regional clips</li>
     </ul>
   </div>
 
@@ -311,63 +391,62 @@ section { padding: 5rem 2rem; max-width: 860px; margin: 0 auto; }
     <div class="milestone-title">Regional Breakout</div>
     <ul>
       <li>Pitch Cleveland Magazine, Scene Magazine, and Eater Cleveland in parallel</li>
-      <li>Pitch Doug Trattner as an independent writer — he moves faster than publications</li>
-      <li>Attach first local clips as evidence. The story is now documented.</li>
+      <li>Pitch Doug Trattner as an independent writer — he moves faster than publications and his clips carry real weight</li>
+      <li>Every regional pitch now includes the 2027 Michelin context — this turns a dining feature into a news story</li>
     </ul>
   </div>
 
   <div class="milestone">
     <div class="milestone-time">Months 2–3</div>
-    <div class="milestone-title">National Pitches — Both Tracks Simultaneously</div>
+    <div class="milestone-title">National Press — Both Angles Simultaneously</div>
     <ul>
-      <li>Pitch Hanna Raskin at The Food Section — immigrant food, cultural narrative, longform</li>
-      <li>Pitch Priya Krishna at NYT Food — she covers the human cost of immigrant cuisine specifically</li>
-      <li>Pitch Eater National for Best New Restaurants consideration</li>
-      <li>Pitch Bon Appétit and Food & Wine with regional clips attached</li>
+      <li>Pitch Hanna Raskin at The Food Section — immigrant food, cultural narrative, longform depth</li>
+      <li>Pitch Priya Krishna at NYT Food — she covers the human cost of immigrant cuisine specifically. Aon's story is hers to tell.</li>
+      <li>Pitch Eater National for Best New Restaurants and the 2027 Michelin regional angle</li>
+      <li>Pitch Bon Appétit and Food & Wine with regional clips and the Michelin hook</li>
+    </ul>
+  </div>
+
+  <div class="milestone urgent">
+    <div class="milestone-time">September–November 2026</div>
+    <div class="milestone-title">Track Three: James Beard Nomination Window</div>
+    <ul>
+      <li>This window does not move. Nominations open in the fall for the spring 2027 ceremony.</li>
+      <li>Coordinate peer nominations from every writer and chef who has visited by this point</li>
+      <li>Category: Best Chef Great Lakes — have the owner connect personally with regional nominators</li>
+      <li>A Beard semifinalist announcement in early 2027 landing alongside the Michelin guide is the target</li>
     </ul>
   </div>
 
   <div class="milestone">
-    <div class="milestone-time">September–November (Annual)</div>
-    <div class="milestone-title">James Beard Nomination Window</div>
+    <div class="milestone-time">2027</div>
+    <div class="milestone-title">The Convergence</div>
     <ul>
-      <li>Coordinate peer nominations from every writer and chef who has visited</li>
-      <li>Category: Best Chef Great Lakes — Ohio, Michigan, Indiana, Illinois, Wisconsin, Minnesota</li>
-      <li>Have owner connect personally with regional Beard nominators</li>
-      <li>Nominations compound year over year. Start now.</li>
+      <li>Michelin Great Lakes Guide publishes — ThìNì Thai has five years of documented consistency and is ready</li>
+      <li>James Beard semifinalist or finalist announcement — the national press record exists to support it</li>
+      <li>National media presence built through 2026 means the moment lands with context, not silence</li>
+      <li>Whatever recognition arrives in 2027, the restaurant is positioned to receive it on its own terms</li>
     </ul>
   </div>
 
-  <div class="milestone">
-    <div class="milestone-time">Year 2+</div>
-    <div class="milestone-title">Michelin Positioning</div>
-    <ul>
-      <li>National clips + Beard recognition = undeniable destination restaurant status</li>
-      <li>Advocate alongside Cleveland culinary community for Michelin Guide Ohio expansion</li>
-      <li>Inspector-ready consistency every service — already there, keep it there</li>
-    </ul>
-  </div>
-
-  <div class="press-banner" style="margin-top:2.5rem;">
-    <div class="press-banner-text">
+  <div class="press-banner">
+    <div>
       <h3>Press-facing page</h3>
-      <p>A clean, story-forward version of this strategy built specifically for media contacts. No roadmap mechanics, no strategy detail — just the story, Aon's words, and a contact.</p>
+      <p>A clean version built specifically for media contacts. The story, Aon's words, existing press clips, and a direct contact. No strategy mechanics.</p>
     </div>
-    <a href="press/index.html" class="btn-primary">View press page →</a>
+    <a href="press/index.html" class="btn-gold">View press page →</a>
   </div>
 </section>
 
-<!-- 05 CONTACTS -->
+<!-- 07 CONTACTS -->
 <section id="contacts">
-  <span class="section-num">05</span>
+  <span class="section-num">07</span>
   <h2 class="section-title">Press Contacts & Outreach Targets</h2>
   <div class="section-rule"></div>
-  <p class="body" style="margin-bottom:2rem;">Start with HIGH priority. Local coverage creates the paper trail national writers reference. Each clip opens the next door. Because Aon is participating, national pitches go out simultaneously with regional — do not wait.</p>
+  <p class="body" style="margin-bottom:2rem;">Because Aon is participating, national pitches go out alongside regional — do not wait for local clips. Every pitch now includes the 2027 Michelin context. That context turns a restaurant story into a news story.</p>
 
   <div class="contacts">
-    <div class="contact-head">
-      <span>Name / Outlet</span><span>Role</span><span>Contact</span><span>Priority</span>
-    </div>
+    <div class="contact-head"><span>Name / Outlet</span><span>Role</span><span>Contact</span><span>Priority</span></div>
     <div class="contact-row"><div><span class="c-name">Oberlin News-Tribune</span><span class="c-outlet">Local Press</span></div><div class="c-role">Anchor community story</div><div class="c-info">oberlin-news.com</div><div><span class="ph ph-high">High</span></div></div>
     <div class="contact-row"><div><span class="c-name">Oberlin College Comms</span><span class="c-outlet">Oberlin College</span></div><div class="c-role">Alumni + campus media</div><div class="c-info">communications@oberlin.edu</div><div><span class="ph ph-high">High</span></div></div>
     <div class="contact-row"><div><span class="c-name">Cleveland Magazine</span><span class="c-outlet">Regional Dining</span></div><div class="c-role">Food and dining editor</div><div class="c-info">clevelandmagazine.com</div><div><span class="ph ph-high">High</span></div></div>
@@ -376,124 +455,73 @@ section { padding: 5rem 2rem; max-width: 860px; margin: 0 auto; }
     <div class="contact-row"><div><span class="c-name">Doug Trattner</span><span class="c-outlet">Freelance / Cleveland</span></div><div class="c-role">Prolific regional food writer</div><div class="c-info">@dougtrattner</div><div><span class="ph ph-high">High</span></div></div>
     <div class="contact-row"><div><span class="c-name">Hanna Raskin</span><span class="c-outlet">The Food Section</span></div><div class="c-role">Immigrant food / longform</div><div class="c-info">thefoodsection.substack.com</div><div><span class="ph ph-high">High</span></div></div>
     <div class="contact-row"><div><span class="c-name">Priya Krishna</span><span class="c-outlet">NYT Food</span></div><div class="c-role">Immigrant food narratives</div><div class="c-info">@PKingofFood</div><div><span class="ph ph-high">High</span></div></div>
-    <div class="contact-row"><div><span class="c-name">Eater National</span><span class="c-outlet">Eater</span></div><div class="c-role">Best New Restaurants</div><div class="c-info">tips@eater.com</div><div><span class="ph ph-med">Medium</span></div></div>
+    <div class="contact-row"><div><span class="c-name">Eater National</span><span class="c-outlet">Eater</span></div><div class="c-role">Best New Restaurants / Michelin angle</div><div class="c-info">tips@eater.com</div><div><span class="ph ph-med">Medium</span></div></div>
     <div class="contact-row"><div><span class="c-name">Bon Appétit</span><span class="c-outlet">Condé Nast</span></div><div class="c-role">Restaurant features</div><div class="c-info">bonappetit.com/contact</div><div><span class="ph ph-med">Medium</span></div></div>
-    <div class="contact-row"><div><span class="c-name">Food & Wine</span><span class="c-outlet">Food & Wine</span></div><div class="c-role">Restaurant and travel</div><div class="c-info">Pitch via editorial</div><div><span class="ph ph-med">Medium</span></div></div>
+    <div class="contact-row"><div><span class="c-name">Food & Wine</span><span class="c-outlet">Food & Wine</span></div><div class="c-role">Restaurant and travel features</div><div class="c-info">Pitch via editorial</div><div><span class="ph ph-med">Medium</span></div></div>
   </div>
-  <p class="body" style="margin-top:1.25rem; font-size:0.88rem; color:var(--text-muted);">Verify all contact info before outreach. Twitter/X and Instagram DMs work well for freelancers. For publications, find the specific dining editor. Never use a general tips inbox for a first pitch.</p>
+  <p class="body" style="margin-top:1.25rem; font-size:.88rem; color:var(--text-muted);">Initial pitch: no attachments. Two paragraphs, the story, a link to the press page. The press kit goes out when interest is confirmed. Twitter/X and Instagram DMs work well for freelancers. Always find the specific dining editor at publications rather than a general inbox.</p>
 </section>
 
-<!-- 06 PRESS KIT -->
-<section id="press-kit">
-  <span class="section-num">06</span>
-  <h2 class="section-title">The Press Kit</h2>
-  <div class="section-rule"></div>
-  <p class="body">Before outreach begins, the restaurant needs a press kit ready to send on request. The initial pitch email contains no attachments — just the story and a link to the press page. The kit goes out when interest is confirmed.</p>
-  <ul class="item-list">
-    <li>Chef Aon's full biography — Chiang Mai background, Red Chili Cooking School, the move to Oberlin, his sourcing philosophy</li>
-    <li>Matt and Jason Adelman's story — how they met Aon in Thailand and what they built together</li>
-    <li>High-resolution photography — minimum 10 images at 300 DPI: food, kitchen, dining room, Chef Aon, the exterior</li>
-    <li>Menu with descriptions that communicate sourcing and technique behind each dish</li>
-    <li>Key review excerpts and rating summary — 4.7 stars, 290+ reviews, press clips to date</li>
-    <li>A note on Northern Thai cuisine specifically — what distinguishes it from the generalized Thai food most Americans know</li>
-    <li>Reservation and contact information</li>
-  </ul>
-  <div class="callout">
-    <span class="callout-label">Photography is the single most important investment</span>
-    <p>A great photo of Aon in the kitchen — his hands, his wok, his focus — does more work than every word in the kit. Without professional food photography, national publications will not run the story regardless of how compelling the pitch is. A Cleveland-area food photographer typically runs $500–$1,500 for a session. This is the first expenditure to make.</p>
-  </div>
-</section>
-
-<!-- 07 SOCIAL -->
+<!-- 08 SOCIAL -->
 <div class="interstitial" id="social">
   <div class="interstitial-inner">
-    <span class="section-num">07</span>
-    <h2 class="section-title">Social Media: Telling the Story Now</h2>
+    <span class="section-num">08</span>
+    <h2 class="section-title">Social Media: Building the Record Now</h2>
     <div class="section-rule"></div>
-    <p class="body">The press record does not start with a magazine feature. It starts now. Every piece of content that goes up creates a discoverable body of work that food writers find when they research a pitch. With Aon willing to participate, there is real material here.</p>
+    <p class="body">Every piece of content posted creates a discoverable body of work that food writers find when researching a pitch and that builds the cultural record around the restaurant before 2027 arrives. With Aon willing to participate, the raw material is extraordinary.</p>
 
     <div class="social-grid">
       <div class="social-card">
         <div class="social-title">The sourcing trips</div>
-        <div class="social-desc">What Aon brings back from Thailand. Why 90 percent of ingredients come from there. What is impossible to replicate without it. This is the content food editors screenshot.</div>
+        <div class="social-desc">What 90% from Thailand actually looks like. What Aon brings back. What is impossible without the trip. Food editors screenshot this kind of content.</div>
       </div>
       <div class="social-card">
         <div class="social-title">Northern Thai specifically</div>
-        <div class="social-desc">Khao Soi. Gang Hung Ley Moo. The Krathong lantern festival. The Naga guardian. The rooster meaning good luck. This is a cuisine with a story most Americans have never heard.</div>
+        <div class="social-desc">Khao Soi. The Krathong lantern festival. The Naga guardian. The rooster on the building meaning good luck. This is a cuisine with a story most Americans have never heard.</div>
       </div>
       <div class="social-card">
-        <div class="social-title">Aon's voice</div>
-        <div class="social-desc">His quotes from existing interviews are remarkable. "Cooking is how I meditate." "I work because I love to." Short video clips of him talking about a dish would travel far.</div>
+        <div class="social-title">Aon in his own words</div>
+        <div class="social-desc">His existing quotes are remarkable. Short video of him talking about a single dish, in his own voice, from that kitchen, would travel. Authenticity outperforms production on every platform.</div>
       </div>
       <div class="social-card">
         <div class="social-title">The building itself</div>
-        <div class="social-desc">Aubergine, hot pink, gold. The rooster. The Naga. The tuk tuk. The arrow sign reading ThìNì. The exterior alone stops people. Post it. Let it travel.</div>
+        <div class="social-desc">Aubergine, hot pink, gold roofline. The arrow sign reading ThìNì. The tuk tuk. The mural. This exterior stops people on the sidewalk. Post it. Let it find its audience.</div>
       </div>
     </div>
 
-    <div class="platform-grid" style="margin-top:2rem;">
-      <div class="platform-card">
-        <span class="platform-label">Instagram</span>
-        <p>Primary platform. Food photography and Reels of kitchen prep perform exceptionally. The building exterior is already a viral image waiting to happen.</p>
-      </div>
-      <div class="platform-card">
-        <span class="platform-label">TikTok</span>
-        <p>Aon talking about a dish in his own words, in his own way, with that kitchen behind him — this is exactly the content that finds a national audience on TikTok.</p>
-      </div>
+    <div class="two-col" style="margin-top:2rem;">
+      <div class="card"><span class="card-label">Instagram</span><p>Primary platform. Food photography and kitchen Reels perform exceptionally. The building exterior is a viral image waiting to happen. Consistent posting builds the searchable record writers reference.</p></div>
+      <div class="card"><span class="card-label">TikTok</span><p>Aon talking about a dish in his own way, from that kitchen, is exactly the content that finds a national audience here. The 2027 Michelin angle is itself a TikTok story — local restaurant on Michelin's radar.</p></div>
     </div>
   </div>
 </div>
 
-<!-- 08 BEARD SPECIFICS -->
-<section id="beard">
-  <span class="section-num">08</span>
-  <h2 class="section-title">James Beard: The Specifics</h2>
-  <div class="section-rule"></div>
-  <p class="body">The Beard nomination process is peer-driven. The path to a nomination is about who knows the restaurant exists. Every writer, chef, and industry professional who walks through that door is a potential nominator.</p>
-  <div class="beard-grid">
-    <div class="beard-card">
-      <span class="beard-label">Nomination timeline</span>
-      <p>Nominations open each fall, typically September through November, at jamesbeard.org. Anyone can submit. Semifinalists are announced late winter, finalists in spring, winners at the June ceremony.</p>
-    </div>
-    <div class="beard-card">
-      <span class="beard-label">Target category</span>
-      <p>Best Chef: Great Lakes. Covers Ohio, Michigan, Indiana, Illinois, Wisconsin, and Minnesota. This is the correct category for Chef Aon Krittathiranon.</p>
-    </div>
-  </div>
-  <ul class="item-list" style="margin-top:1.75rem;">
-    <li>Every food writer who visits and loves the restaurant is a potential nominator — ask them</li>
-    <li>Build relationships with Cleveland-area chefs who can become advocates within the industry</li>
-    <li>Earned media creates a paper trail nominators reference when making their case to the committee</li>
-    <li>The nomination record compounds. Year three matters more than year one. Start now.</li>
-  </ul>
-</section>
-
-<!-- 09 MICHELIN -->
-<section id="michelin">
+<!-- 09 PRESS PACKET -->
+<section id="packet">
   <span class="section-num">09</span>
-  <h2 class="section-title">What Michelin Actually Looks For</h2>
+  <h2 class="section-title">The Press Packet</h2>
   <div class="section-rule"></div>
-  <p class="body">Michelin inspectors visit anonymously, pay their own bills, and return multiple times before deciding. They evaluate five criteria. ThìNì Thai already meets all of them.</p>
-  <ul class="check-list">
-    <li><span class="chk">✓</span>Quality of ingredients — 90% imported directly from Thailand</li>
-    <li><span class="chk">✓</span>Mastery of technique — Northern Thai regional traditions, freshly mortared daily</li>
-    <li><span class="chk">✓</span>Personality of the chef in the cuisine — Aon's presence is in every plate</li>
-    <li><span class="chk">✓</span>Value for the price — moderate price point, exceptional quality</li>
-    <li><span class="chk">✓</span>Consistency across visits — 4.7 stars across 290+ reviews over years of service</li>
+  <p class="body">The initial pitch is two paragraphs and a link to the press page. No attachments. When an editor responds with interest, the packet goes out. Here is what it contains and why each piece belongs.</p>
+
+  <ul class="item-list">
+    <li><strong>One-page press release</strong> — The 2027 Michelin hook as the lead, not buried. Aon's story woven in as the explanation for why the food is what it is. His quotes from existing interviews, attributed and verifiable. The credential block: 4.7 stars, 290+ reviews, five years, 90% from Thailand, Northern Thai cuisine specifically.</li>
+    <li><strong>Existing press clips</strong> — The Oberlin Review interview (2021) and the Cleveland.com feature (2024) show a documented history, not just a current pitch. These are attached as PDFs or linked.</li>
+    <li><strong>Top photographs</strong> — Best available images of the food, the kitchen, Chef Aon, and the exterior. High-resolution. These determine whether a national publication can run the story. They are the most important element in the packet after the press release itself.</li>
+    <li><strong>Chef Aon's biography</strong> — Chiang Mai, Red Chili Cooking School, the move to Oberlin, the sourcing philosophy, the visa situation if he has agreed to include it. One page maximum.</li>
+    <li><strong>The press page link</strong> — claritycompanionllc.com/thini/press. Gives editors everything they need in one place without cluttering the email.</li>
   </ul>
-  <div class="callout" style="margin-top:2rem;">
-    <span class="callout-label">The one thing that cannot be rushed</span>
-    <p>Ohio is not currently a Michelin market. Getting it there is a regional conversation the entire Cleveland culinary community needs to have together. National media attention for restaurants like ThìNì Thai is the strongest argument for why Ohio deserves a guide. Every piece of press is also a vote for that expansion.</p>
+
+  <div class="callout">
+    <span class="callout-label">The press release lead — draft</span>
+    <p>As Michelin prepares to publish its inaugural Great Lakes Guide in 2027 and inspectors actively survey the Cleveland region, one restaurant 35 minutes from the city has been quietly building toward this moment for five years. ThìNì Thai in Oberlin, Ohio, led by Chef Aon Krittathiranon of Chiang Mai, holds a 4.7-star rating across nearly 300 reviews, imports 90 percent of its ingredients directly from Thailand, and serves Northern Thai cuisine at a level guests describe as the best they have tasted — including in Bangkok.</p>
   </div>
 </section>
 
 <!-- CLOSING -->
 <div class="closing">
-  <p class="closing-quote">"With love from Thailand" — painted on the building where a man cooks his heart out, four nights a week, waiting for the world to catch up.</p>
-  <p class="closing-sub" style="margin-bottom:1rem;">
-    <a href="https://thinithai.com">thinithai.com</a> &nbsp;·&nbsp; 19 S Main St, Oberlin OH &nbsp;·&nbsp; (440) 775-3373
-  </p>
-  <p class="closing-sub"><a href="press/index.html">→ Press page</a></p>
+  <p class="closing-quote">"With love from Thailand" — painted on a building where a man has been cooking his heart out for five years, waiting for the world to arrive. In 2027, it does.</p>
+  <p class="closing-sub"><a href="https://thinithai.com">thinithai.com</a> &nbsp;·&nbsp; 19 S Main St, Oberlin OH &nbsp;·&nbsp; (440) 775-3373</p>
+  <p class="closing-sub" style="margin-top:.75rem;"><a href="press/index.html">→ Press page</a></p>
 </div>
 <div class="footer">
   Strategy prepared by <a href="https://claritycompanionllc.com">Clarity Companion LLC</a> &nbsp;·&nbsp; June 2026 &nbsp;·&nbsp; Confidential
