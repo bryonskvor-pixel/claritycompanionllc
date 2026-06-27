@@ -9,165 +9,149 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --aubergine: #2D1B3D; --aubergine-deep: #1A0F24; --aubergine-mid: #3D2455;
-  --gold: #C9A84C; --gold-light: #E8C97A; --magenta: #C0396B;
+  --gold: #C9A84C; --gold-light: #E8C97A;
+  --magenta: #C0396B; --teal: #3A9B8E; --teal-light: #5BBFB0;
   --text-on-dark: #F5EDD8; --text-muted: #B8A89C;
+  --urgent: #E8704A;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--aubergine-deep); color: var(--text-on-dark); line-height: 1.7; }
 
-/* HERO */
-.hero {
-  min-height: 100vh; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; text-align: center;
-  padding: 5rem 2rem; position: relative;
-  background: linear-gradient(180deg, #080410 0%, #1A0F24 50%, #2D1B3D 100%);
-  border-bottom: 2px solid var(--gold);
-}
-.hero::before {
-  content:''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 25%, rgba(201,168,76,0.08) 0%, transparent 60%);
-  pointer-events: none;
-}
-.press-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--magenta); margin-bottom: 2rem; display: block; border: 1px solid rgba(192,57,107,0.4); padding: 0.4rem 1rem; border-radius: 20px; display: inline-block; }
-.hero-lede { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 400; font-style: italic; color: var(--text-on-dark); max-width: 700px; line-height: 1.45; margin-bottom: 1rem; }
+.urgent-bar { background: linear-gradient(90deg, rgba(232,112,74,.15) 0%, rgba(201,168,76,.1) 100%); border-bottom: 1px solid rgba(232,112,74,.3); padding: .75rem 2rem; text-align: center; }
+.urgent-bar p { font-size: 12px; font-weight: 600; letter-spacing: .05em; color: var(--urgent); }
+.urgent-bar strong { color: var(--gold-light); }
+
+.back { display: inline-flex; align-items: center; gap: .5rem; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; padding: 1.25rem 2rem; transition: color .2s; }
+.back:hover { color: var(--gold); }
+
+.hero { min-height: 95vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5rem 2rem; position: relative; background: linear-gradient(180deg, #080410 0%, #1A0F24 50%, #2D1B3D 100%); border-bottom: 2px solid var(--gold); }
+.hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 50% 25%, rgba(201,168,76,.08) 0%, transparent 60%); pointer-events:none; }
+.press-tag { font-size: 10px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--magenta); margin-bottom: 2rem; border: 1px solid rgba(192,57,107,.4); padding: .4rem 1rem; border-radius: 20px; display: inline-block; }
+.hero-lede { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,3.8vw,2.5rem); font-weight: 400; font-style: italic; color: var(--text-on-dark); max-width: 700px; line-height: 1.45; margin-bottom: 1rem; }
 .hero-lede em { color: var(--gold-light); }
 .hero-rule { width: 60px; height: 1px; background: var(--gold); margin: 2rem auto; }
-.hero-name { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.02em; }
-.hero-place { font-size: 0.9rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3rem; }
+.hero-name { font-family: 'Playfair Display', serif; font-size: clamp(3rem,8vw,5.5rem); font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: .4rem; letter-spacing: -.02em; }
+.hero-place { font-size: .9rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3rem; }
 .hero-stats { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; }
-.stat { text-align: center; }
 .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold-light); display: block; line-height: 1; }
-.stat-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+.stat-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
 
-/* LAYOUT */
 .content { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; }
-.block { margin-bottom: 4rem; }
-.eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.6rem; }
-.block-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; color: var(--text-on-dark); line-height: 1.2; margin-bottom: 0.75rem; }
+.block { margin-bottom: 4.5rem; }
+.eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .6rem; }
+.block-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3.5vw,2.2rem); font-weight: 700; color: var(--text-on-dark); line-height: 1.2; margin-bottom: .75rem; }
 .rule { width: 44px; height: 2px; background: var(--gold); margin-bottom: 1.75rem; }
 .body { font-size: 1.05rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.85; margin-bottom: 1.2rem; }
 .body strong { color: var(--gold-light); font-weight: 500; }
 .body em { font-style: italic; }
 
-/* PULL QUOTE */
-.pull { border-left: 3px solid var(--gold); padding: 1.5rem 2rem; margin: 2.5rem 0; background: rgba(201,168,76,0.05); }
+.pull { border-left: 3px solid var(--gold); padding: 1.5rem 2rem; margin: 2.5rem 0; background: rgba(201,168,76,.05); }
 .pull p { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--text-on-dark); line-height: 1.7; }
 
-/* AON QUOTE — BIG */
-.aon-moment { text-align: center; padding: 5rem 2rem; background: var(--aubergine-mid); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); }
-.aon-quote-text { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 3vw, 1.8rem); font-style: italic; color: var(--gold-light); max-width: 680px; margin: 0 auto 1.5rem; line-height: 1.55; }
-.aon-attr { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
-.aon-sub { font-size: 0.85rem; font-weight: 300; color: var(--text-muted); margin-top: 0.4rem; font-style: italic; }
+.michelin-moment { background: linear-gradient(135deg, rgba(232,112,74,.1) 0%, rgba(201,168,76,.07) 100%); border: 1px solid rgba(232,112,74,.3); border-radius: 8px; padding: 2.5rem; margin: 2.5rem 0; text-align: center; }
+.michelin-moment h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold-light); margin-bottom: .75rem; }
+.michelin-moment p { font-size: 1rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.75; max-width: 560px; margin: 0 auto; }
 
-/* SECOND QUOTE */
+.aon-moment { text-align: center; padding: 5rem 2rem; background: var(--aubergine-mid); border-top: 1px solid rgba(201,168,76,.15); border-bottom: 1px solid rgba(201,168,76,.15); }
+.aon-quote-text { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem,3vw,1.8rem); font-style: italic; color: var(--gold-light); max-width: 680px; margin: 0 auto 1.5rem; line-height: 1.55; }
+.aon-attr { font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); }
+.aon-sub { font-size: .85rem; font-weight: 300; color: var(--text-muted); margin-top: .4rem; font-style: italic; }
+
 .quote-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2.5rem 0; }
 .quote-block { border-top: 2px solid var(--gold); padding-top: 1.25rem; }
-.quote-block blockquote { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; color: var(--text-on-dark); line-height: 1.65; margin-bottom: 0.75rem; }
-.quote-block cite { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+.quote-block blockquote { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; color: var(--text-on-dark); line-height: 1.65; margin-bottom: .75rem; }
+.quote-block cite { font-size: 10px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--text-muted); }
 
-/* CREDENTIALS */
-.cred-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-top: 1.75rem; }
-.cred-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; padding: 1.5rem; text-align: center; }
-.cred-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold-light); display: block; line-height: 1; margin-bottom: 0.4rem; }
+.cred-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 1.25rem; margin-top: 1.75rem; }
+.cred-card { background: rgba(255,255,255,.03); border: 1px solid rgba(201,168,76,.2); border-radius: 6px; padding: 1.5rem; text-align: center; }
+.cred-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold-light); display: block; line-height: 1; margin-bottom: .4rem; }
 .cred-label { font-size: 11px; font-weight: 500; color: var(--text-muted); line-height: 1.4; }
 
-/* PRESS CLIPS */
-.clips { display: flex; flex-direction: column; gap: 1px; background: rgba(201,168,76,0.1); border-radius: 6px; overflow: hidden; border: 1px solid rgba(201,168,76,0.2); margin-top: 1.5rem; }
-.clip { background: var(--aubergine-deep); padding: 1rem 1.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-.clip:hover { background: rgba(201,168,76,0.04); }
-.clip-pub { font-weight: 600; font-size: 0.9rem; color: var(--text-on-dark); display: block; margin-bottom: 0.2rem; }
-.clip-title { font-size: 0.85rem; font-weight: 300; color: var(--text-muted); }
+.clips { display: flex; flex-direction: column; gap: 1px; background: rgba(201,168,76,.1); border-radius: 6px; overflow: hidden; border: 1px solid rgba(201,168,76,.2); margin-top: 1.5rem; }
+.clip { background: var(--aubergine-deep); padding: 1rem 1.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; transition: background .15s; }
+.clip:hover { background: rgba(201,168,76,.04); }
+.clip-pub { font-weight: 600; font-size: .9rem; color: var(--text-on-dark); display: block; margin-bottom: .2rem; }
+.clip-title { font-size: .85rem; font-weight: 300; color: var(--text-muted); }
 .clip-year { font-size: 11px; color: var(--gold); font-weight: 600; white-space: nowrap; }
 
-/* CONTACT */
-.contact-box { background: linear-gradient(135deg, rgba(192,57,107,0.1) 0%, rgba(201,168,76,0.06) 100%); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 3rem; text-align: center; margin-top: 1.75rem; }
-.contact-box h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--text-on-dark); margin-bottom: 0.75rem; }
+.contact-box { background: linear-gradient(135deg,rgba(192,57,107,.1) 0%,rgba(201,168,76,.06) 100%); border: 1px solid rgba(201,168,76,.3); border-radius: 8px; padding: 3rem; text-align: center; margin-top: 1.75rem; }
+.contact-box h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--text-on-dark); margin-bottom: .75rem; }
 .contact-box p { font-size: 1rem; font-weight: 300; color: var(--text-muted); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
 .contact-info { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
-.contact-detail { text-align: center; }
-.contact-detail-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.3rem; }
-.contact-detail-val { font-size: 0.95rem; color: var(--text-on-dark); font-weight: 400; }
-.btn { display: inline-block; padding: 0.85rem 2rem; background: var(--gold); color: #1A0F24; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: background 0.2s; }
+.c-detail-label { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .3rem; }
+.c-detail-val { font-size: .95rem; color: var(--text-on-dark); }
+.btn { display: inline-block; padding: .85rem 2rem; background: var(--gold); color: #1A0F24; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: background .2s; }
 .btn:hover { background: var(--gold-light); }
-.btn-ghost { display: inline-block; padding: 0.85rem 2rem; border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: border-color 0.2s; margin-left: 1rem; }
+.btn-ghost { display: inline-block; padding: .85rem 2rem; border: 1px solid rgba(201,168,76,.4); color: var(--gold-light); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: border-color .2s; margin-left: 1rem; }
 .btn-ghost:hover { border-color: var(--gold); }
 
-/* BACK LINK */
-.back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; padding: 1.25rem 2rem; transition: color 0.2s; }
-.back:hover { color: var(--gold); }
-
-/* FOOTER */
-.footer { background: #080410; padding: 1.25rem 2rem; text-align: center; border-top: 1px solid rgba(201,168,76,0.12); font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; }
+.footer { background: #080410; padding: 1.25rem 2rem; text-align: center; border-top: 1px solid rgba(201,168,76,.12); font-size: 11px; color: var(--text-muted); }
 .footer a { color: var(--gold); text-decoration: none; }
 
-@media (max-width: 600px) {
-  .quote-pair { grid-template-columns: 1fr; }
-}
+@media (max-width:600px) { .quote-pair { grid-template-columns:1fr; } .hero-stats { gap:1.5rem; } }
 </style>
 </head>
 <body>
 
+<div class="urgent-bar">
+  <p>The inaugural <strong>Michelin Great Lakes Guide publishes in 2027.</strong> Inspectors are actively surveying the Cleveland region now. ThìNì Thai is 35 minutes from Cleveland.</p>
+</div>
+
 <a href="../index.html" class="back">← Full strategy</a>
 
-<!-- HERO -->
 <div class="hero">
   <span class="press-tag">Press &amp; Media</span>
-  <p class="hero-lede">A chef from <em>Chiang Mai</em> brought Thailand to Ohio.<br>His wife is still there. His food is unlike anything else in the Midwest.</p>
+  <p class="hero-lede">A chef from <em>Chiang Mai</em> brought Thailand to Ohio five years ago.<br>His wife is still there. Michelin arrives in 2027.</p>
   <div class="hero-rule"></div>
   <h1 class="hero-name">ThìNì Thai</h1>
   <p class="hero-place">19 S Main Street &nbsp;·&nbsp; Oberlin, Ohio</p>
   <div class="hero-stats">
-    <div class="stat"><span class="stat-num">4.7★</span><span class="stat-label">Rating</span></div>
-    <div class="stat"><span class="stat-num">290+</span><span class="stat-label">Reviews</span></div>
+    <div class="stat"><span class="stat-num">4.7★</span><span class="stat-label">290+ Reviews</span></div>
     <div class="stat"><span class="stat-num">90%</span><span class="stat-label">Ingredients from Thailand</span></div>
-    <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Years in Oberlin</span></div>
+    <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Years of Consistency</span></div>
+    <div class="stat"><span class="stat-num">2027</span><span class="stat-label">Michelin Great Lakes Guide</span></div>
   </div>
 </div>
 
-<!-- CONTENT -->
 <div class="content">
 
-  <!-- THE STORY -->
   <div class="block">
     <span class="eyebrow">The Story</span>
     <h2 class="block-title">12 time zones from home. Still cooking.</h2>
     <div class="rule"></div>
-    <p class="body">Chef Aon Krittathiranon grew up in Chiang Mai, in the mountainous north of Thailand. He ran Red Chili Cooking School there, a top-rated culinary school teaching the regional traditions of Northern Thai cuisine. In 2019, two brothers from Oberlin — Matt and Jason Adelman, owners of The Feve — traveled to Chiang Mai and met Aon through a chain of coincidences. He invited them home and cooked for them.</p>
-    <p class="body">They recognized immediately what they were tasting. They asked him to move to Oberlin to open a restaurant together. He said yes. He gave his cooking school to his brother. He moved <strong>12 time zones away from his family</strong> to bring the food of Northern Thailand to a small American college town.</p>
+    <p class="body">Chef Aon Krittathiranon grew up in Chiang Mai, in the mountainous north of Thailand. He ran Red Chili Cooking School there, a top-rated culinary school teaching the regional traditions of Northern Thai cuisine. In 2019, Matt and Jason Adelman, Oberlin brothers who own The Feve, traveled to Chiang Mai and met Aon through a string of coincidence. He invited them home and cooked for them.</p>
+    <p class="body">They recognized immediately what they were tasting. They asked him to move to Oberlin, Ohio to open a restaurant. He said yes. He gave his cooking school to his brother. He moved <strong>12 time zones away from his family</strong> to bring the food of Northern Thailand to a small American college town.</p>
 
     <div class="pull">
-      <p>ThìNì means "is here" in Thai. It is not a restaurant name. It is a declaration: Thailand is here. Aon has been making that declaration every service, four nights a week, for more than five years.</p>
+      <p>ThìNì means "is here" in Thai. It is not a restaurant name. It is a declaration: Thailand is here. Aon has been making it every service, four nights a week, for more than five years.</p>
     </div>
 
-    <p class="body">His wife is still in Thailand. A visa situation with no clear resolution has kept them separated for years. He travels back when he needs to source ingredients — <strong>90 percent of what the restaurant uses comes directly from Thailand</strong>, including the charcoal for the grill and the restaurant's own dinnerware. And then he returns to Oberlin and cooks.</p>
-    <p class="body">The mural on the building says, in Thai: <em>"With love from Thailand."</em></p>
-    <p class="body">He built his restaurant through a pandemic, two months after opening, on carryout orders alone. He moved to a bold new building on South Main Street painted in deep aubergine and hot pink with gold trim on the roofline. He has earned a 4.7-star rating across nearly 300 reviews. Guests describe driving an hour and calling it the best Thai food they have ever had — including in Bangkok.</p>
-    <p class="body">He is still here. She is still waiting.</p>
+    <p class="body">His wife is still in Thailand. A visa situation with no clear resolution has kept them separated throughout. He travels back to source ingredients — <strong>90 percent of what the restaurant uses comes directly from Thailand</strong>, including the charcoal for the grill and the restaurant's own dinnerware. The bar uses Thai herb tinctures. The mural on the building says, in Thai: <em>"With love from Thailand."</em></p>
+    <p class="body">ThìNì Thai survived a pandemic that arrived two months after opening, built its following on carryout orders, moved into a striking new building on South Main Street painted in deep aubergine and hot pink with gold on the roofline, and has held a 4.7-star rating across nearly 300 reviews across five years of service. Guests describe driving an hour and calling it the best Thai food they have ever had, including in Bangkok.</p>
+    <p class="body">He said on record: <em>"I work because I love to. That is why I'm happy."</em> Given everything he is carrying, that is the most quietly extraordinary thing a chef has ever said.</p>
   </div>
 
 </div>
 
-<!-- AON IN HIS OWN WORDS -->
 <div class="aon-moment">
   <p class="aon-quote-text">"My dream and passion is always to show my food to the world. I want people to experience Thailand as it is in the food where I am from."</p>
   <span class="aon-attr">Chef Aon Krittathiranon</span>
-  <p class="aon-sub">ThìNì Thai, Oberlin, Ohio</p>
+  <p class="aon-sub">ThìNì Thai &nbsp;·&nbsp; Oberlin, Ohio</p>
 </div>
 
 <div class="content">
 
-  <!-- THE FOOD -->
   <div class="block">
     <span class="eyebrow">The Food</span>
     <h2 class="block-title">Northern Thai cuisine. Almost entirely absent from American dining.</h2>
     <div class="rule"></div>
-    <p class="body">ThìNì Thai does not serve generalized Thai food. Aon cooks <strong>Northern Thai cuisine</strong> — the specific regional traditions of Chiang Mai, dishes that are almost entirely absent from American restaurant culture. Khao Soi, the comfort food of the north, made from curry paste, Burmese curry powder, and coconut milk served over wheat noodles with crispy egg noodles on top. Gang Hung Ley Moo, a slow-stewed pork belly curry loaded with pickled garlic and ginger. Gang Aum Beef fortified with lemongrass, shrimp paste, and Galangal.</p>
-    <p class="body">Curries are made from freshly mortared herbs and spices every day. The bar uses Thai herb tinctures. Nothing is Americanized. Nothing is softened for a different palate. When Matt Adelman brought Aon to Oberlin, they made a pact: <em>"He knew he would not tweak recipes to favor an American palette. He's very proud of the culinary uniqueness that the region he is from possesses."</em></p>
+    <p class="body">ThìNì Thai does not serve generalized Thai food. Aon cooks <strong>Northern Thai cuisine</strong>, the specific regional traditions of Chiang Mai, dishes that are nearly absent from American restaurant culture. Khao Soi, the layered curry noodle soup that is Chiang Mai's signature comfort food. Gang Hung Ley Moo, slow-stewed pork belly curry with pickled garlic and ginger. Gang Aum Beef fortified with lemongrass and Galangal. Curries made from freshly mortared herbs and spices every single day.</p>
+    <p class="body">When the Adelmans brought Aon to Oberlin, the agreement was absolute: <em>"He knew he would not tweak recipes to favor an American palette. He's very proud of the culinary uniqueness that the region he is from possesses. It shines through."</em></p>
 
     <div class="quote-pair">
       <div class="quote-block">
         <blockquote>"When you take one bite of Thai food, you get all of the flavors: spicy, sour, sweet, salty. One bite, all the flavor."</blockquote>
-        <cite>— Chef Aon</cite>
+        <cite>— Chef Aon Krittathiranon</cite>
       </div>
       <div class="quote-block">
         <blockquote>"When you meet Aon, you just get it. His energy is amazing. ThìNì Thai happened because we met him."</blockquote>
@@ -175,28 +159,33 @@ body { font-family: 'Inter', sans-serif; background: var(--aubergine-deep); colo
       </div>
     </div>
 
-    <p class="body">Cleveland.com described the experience as <em>"geographic dissociation — a travel experience without the travel."</em> Guests who have traveled extensively through Thailand describe tasting things at ThìNì that they have not found anywhere else in Ohio.</p>
+    <p class="body">Cleveland.com called it <em>"geographic dissociation — a travel experience without the travel."</em> Guests who have traveled extensively in Thailand describe tasting things at ThìNì that they have not found anywhere else in Ohio.</p>
   </div>
 
-  <!-- CREDENTIALS -->
+  <div class="block">
+    <div class="michelin-moment">
+      <h3>Michelin is here. The guide publishes in 2027.</h3>
+      <p>The inaugural Michelin Great Lakes Guide is confirmed for 2027. Inspectors are actively surveying the Cleveland region now. ThìNì Thai, 35 minutes from Cleveland, holds five years of documented consistency, sources 90% of ingredients directly from Thailand, and serves a regional cuisine almost entirely absent from American dining. The foundation is there. The moment is now.</p>
+    </div>
+  </div>
+
   <div class="block">
     <span class="eyebrow">By the Numbers</span>
-    <h2 class="block-title">The foundation is already there.</h2>
+    <h2 class="block-title">Five years of documented excellence.</h2>
     <div class="rule"></div>
     <div class="cred-grid">
       <div class="cred-card"><span class="cred-num">4.7★</span><span class="cred-label">Star rating across 290+ reviews</span></div>
       <div class="cred-card"><span class="cred-num">90%</span><span class="cred-label">Ingredients imported directly from Thailand</span></div>
-      <div class="cred-card"><span class="cred-num">5+</span><span class="cred-label">Years serving Oberlin, through a pandemic</span></div>
-      <div class="cred-card"><span class="cred-num">1hr</span><span class="cred-label">Distance guests regularly drive to eat here</span></div>
+      <div class="cred-card"><span class="cred-num">5+</span><span class="cred-label">Years in Oberlin, through a pandemic</span></div>
+      <div class="cred-card"><span class="cred-num">35mi</span><span class="cred-label">From Cleveland, in the Michelin survey region</span></div>
     </div>
   </div>
 
-  <!-- PRESS CLIPS -->
   <div class="block">
     <span class="eyebrow">Press to Date</span>
     <h2 class="block-title">What has already been written.</h2>
     <div class="rule"></div>
-    <p class="body">ThìNì Thai has earned meaningful regional coverage since opening. The story has not yet been told at the national level — that is what this moment is for.</p>
+    <p class="body">ThìNì Thai has built a meaningful regional press record since opening. The national story has not yet been told. That is what this moment is for.</p>
     <div class="clips">
       <div class="clip">
         <div><span class="clip-pub">The Oberlin Review</span><span class="clip-title">On the Record with ThiNi Thai Chef Aon Krittathiranon</span></div>
@@ -207,34 +196,24 @@ body { font-family: 'Inter', sans-serif; background: var(--aubergine-deep); colo
         <span class="clip-year">2024</span>
       </div>
       <div class="clip">
-        <div><span class="clip-pub">Google Reviews</span><span class="clip-title">4.7 stars, 290+ reviews — consistent excellence across five years of service</span></div>
+        <div><span class="clip-pub">Google Reviews</span><span class="clip-title">4.7 stars across 290+ reviews — consistent excellence documented over five years</span></div>
         <span class="clip-year">Ongoing</span>
       </div>
     </div>
   </div>
 
-  <!-- CONTACT -->
   <div class="block">
     <span class="eyebrow">Press Inquiries</span>
     <h2 class="block-title">Chef Aon is available to speak.</h2>
     <div class="rule"></div>
-    <p class="body">Chef Aon Krittathiranon has agreed to share his story with press. The owner is available to arrange kitchen visits, tastings, and interviews. High-resolution photography is available upon request.</p>
+    <p class="body">Chef Aon Krittathiranon has agreed to share his story with press. The owners are available to arrange kitchen visits, tastings, and interviews. High-resolution photography is available upon request.</p>
     <div class="contact-box">
       <h3>Get in touch</h3>
-      <p>To arrange an interview with Chef Aon, a kitchen visit, or to request the full press kit, contact the restaurant directly or reach out through Clarity Companion LLC.</p>
+      <p>To arrange an interview with Chef Aon, a kitchen visit, or to request the full press kit including photography, contact the restaurant directly or reach out through Clarity Companion LLC.</p>
       <div class="contact-info">
-        <div class="contact-detail">
-          <span class="contact-detail-label">Restaurant</span>
-          <span class="contact-detail-val">(440) 775-3373</span>
-        </div>
-        <div class="contact-detail">
-          <span class="contact-detail-label">Website</span>
-          <span class="contact-detail-val">thinithai.com</span>
-        </div>
-        <div class="contact-detail">
-          <span class="contact-detail-label">Location</span>
-          <span class="contact-detail-val">19 S Main St, Oberlin OH</span>
-        </div>
+        <div><span class="c-detail-label">Restaurant</span><span class="c-detail-val">(440) 775-3373</span></div>
+        <div><span class="c-detail-label">Website</span><span class="c-detail-val">thinithai.com</span></div>
+        <div><span class="c-detail-label">Location</span><span class="c-detail-val">19 S Main St, Oberlin OH</span></div>
       </div>
       <a href="tel:4407753373" class="btn">Call the restaurant</a>
       <a href="../index.html" class="btn-ghost">Full strategy →</a>
