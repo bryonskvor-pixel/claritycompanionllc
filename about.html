@@ -121,7 +121,7 @@
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
     .nav-mobile-menu {
-      display: none;
+      display: flex;
       position: fixed;
       top: 57px; left: 0; right: 0;
       background: rgba(27,42,56,0.98);
@@ -130,9 +130,20 @@
       z-index: 99;
       flex-direction: column;
       padding: 8px 0 16px;
+      transform: translateY(-12px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform 0.28s ease, opacity 0.28s ease, visibility 0s linear 0.28s;
     }
 
-    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: transform 0.28s ease, opacity 0.28s ease;
+    }
 
     .nav-mobile-menu a {
       padding: 16px 28px;
@@ -486,6 +497,57 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
     .fade-up-delay-1 { transition-delay: 0.12s; }
     .fade-up-delay-2 { transition-delay: 0.24s; }
+
+    /* ── AMBIENT ANIMATIONS ── */
+    @keyframes ambientPulse {
+      0%, 100% { opacity: 0.65; }
+      50%       { opacity: 1; }
+    }
+
+    @keyframes starDrift {
+      0%   { transform: translate(0px, 0px); }
+      100% { transform: translate(15px, 10px); }
+    }
+
+    @keyframes starGlow {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(212,169,106,0)); }
+      50%       { filter: drop-shadow(0 0 8px rgba(212,169,106,0.45)); }
+    }
+
+    /* Hero breathing glow */
+    .hero::after  { animation: ambientPulse 7s ease-in-out infinite; }
+
+    /* Starfield slow drift */
+    .hero::before { animation: starDrift 28s linear infinite alternate; }
+
+    /* Nav star pulse */
+    .nav-home svg { animation: starGlow 4s ease-in-out infinite; }
+
+    /* Nav active page underline */
+    .nav-links a { position: relative; }
+    .nav-links .active { color: var(--amber); }
+    .nav-links .active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 0; right: 0;
+      height: 1px;
+      background: var(--amber);
+      box-shadow: 0 0 6px rgba(212,169,106,0.5);
+    }
+
+    /* Manifesto dot entrance pop */
+    .manifesto-dot {
+      transform: scale(0);
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .manifesto-break.visible .manifesto-dot { transform: scale(1); }
+
+    /* Pull quote border reveal */
+    .pull-quote { transition: border-left-color 0.7s ease 0.2s; }
+    .pull-quote.fade-up:not(.visible) { border-left-color: transparent; }
+
+    /* Eyebrow letter-spacing reveal on scroll */
+    .hero-eyebrow { letter-spacing: 0.4em; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
