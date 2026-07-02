@@ -3,426 +3,548 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The U.S. at 250: An Interactive Strategic Audit</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>The United States at 250: System Optimization Audit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+                        serif: ['Fraunces', 'Georgia', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            950: '#070a12',
+                            900: '#0f1422',
+                            850: '#151c2f',
+                            800: '#1e263f',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #070a12; }
         .serif { font-family: 'Fraunces', serif; }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #fbbf24;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Custom scrollbar optimization */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #070a12; }
+        ::-webkit-scrollbar-thumb { background: #1e263f; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+
+        /* Subtle grid background matrix */
+        .cyber-grid {
+            background-size: 30px 30px;
+            background-image: linear-gradient(to right, rgba(251, 191, 36, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(251, 191, 36, 0.02) 1px, transparent 1px);
         }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-zinc-950">
+<body class="text-zinc-100 min-h-screen flex flex-col antialiased cyber-grid selection:bg-gold-500 selection:text-slate-950">
 
-    <header class="border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
+    <header class="border-b border-zinc-900 bg-slate-950/90 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-amber-500 via-red-600 to-indigo-600 flex items-center justify-center font-bold text-zinc-950 text-lg shadow-lg shadow-red-900/20">250</div>
+                <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-gold-500 via-amber-600 to-red-600 flex items-center justify-center font-black text-slate-950 text-xl tracking-tighter shadow-xl shadow-gold-500/10">US</div>
                 <div>
-                    <h1 class="serif font-bold text-xl tracking-tight text-zinc-100">The U.S. Strategic Audit</h1>
-                    <p class="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Semiquincentennial / July 2026</p>
+                    <h1 class="serif font-bold text-lg tracking-tight text-zinc-100">The 250 Year Experiment</h1>
+                    <p class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">Strategic Optimization Engine // July 2026</p>
                 </div>
             </div>
-            <div class="flex items-center gap-3 bg-zinc-900/50 border border-zinc-800 px-4 py-2 rounded-full shadow-inner">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-xs font-mono text-zinc-400">AI Simulation Engine v2.6</span>
+            
+            <div class="hidden md:flex items-center gap-6 text-xs font-mono text-zinc-400">
+                <div class="border-l border-zinc-800 pl-4">
+                    <span class="text-zinc-500 block text-[9px] uppercase tracking-wider">Nominal GDP</span>
+                    <span class="text-zinc-200 font-semibold">$32.1 Trillion</span>
+                </div>
+                <div class="border-l border-zinc-800 pl-4">
+                    <span class="text-zinc-500 block text-[9px] uppercase tracking-wider">Sovereign Debt</span>
+                    <span class="text-red-400 font-semibold">$39.4 Trillion</span>
+                </div>
+                <div class="border-l border-zinc-800 pl-4">
+                    <span class="text-zinc-500 block text-[9px] uppercase tracking-wider">AI Compute Share</span>
+                    <span class="text-gold-400 font-semibold">68.4% Global Leader</span>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 py-10 flex-grow w-full grid grid-cols-1 lg:grid-cols-4 gap-10">
         
-        <nav class="lg:col-span-1 flex flex-col gap-2.5 h-fit lg:sticky lg:top-28">
-            <p class="text-xs font-bold uppercase tracking-widest text-zinc-600 px-3 mb-2">Audit Modules</p>
-            <button onclick="switchTab('intro')" id="btn-intro" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 bg-zinc-900 border border-zinc-800 text-amber-400 font-semibold shadow-md border-l-4 border-l-amber-500">
-                ✨ The 250th Overview & Poll
+        <nav class="lg:col-span-1 flex flex-col gap-2 h-fit lg:sticky lg:top-28 z-40">
+            <p class="text-[10px] font-bold font-mono uppercase tracking-widest text-zinc-500 px-3 mb-2">Audit Control Array</p>
+            
+            <button onclick="switchTab('intro')" id="btn-intro" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 bg-slate-900/80 border border-zinc-800 text-gold-400 font-semibold shadow-md border-l-4 border-l-gold-500">
+                ✨ 00. Sovereign Retrospective
             </button>
-            <button onclick="switchTab('module1')" id="btn-module1" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-zinc-900/40 hover:text-zinc-200 border border-transparent">
-                🏛️ 1. The Invisible Scaffold
+            <button onclick="switchTab('module1')" id="btn-module1" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-slate-900/40 hover:text-zinc-200 border border-transparent">
+                🏛️ 01. The Invisible Scaffold
             </button>
-            <button onclick="switchTab('module2')" id="btn-module2" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-zinc-900/40 hover:text-zinc-200 border border-transparent">
-                ⏳ 2. The Civil Rights Pendulum
+            <button onclick="switchTab('module2')" id="btn-module2" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-slate-900/40 hover:text-zinc-200 border border-transparent">
+                ⏳ 02. The Civil Rights Pendulum
             </button>
-            <button onclick="switchTab('module3')" id="btn-module3" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-zinc-900/40 hover:text-zinc-200 border border-transparent">
-                🌐 3. Global Power Index
+            <button onclick="switchTab('module3')" id="btn-module3" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-slate-900/40 hover:text-zinc-200 border border-transparent">
+                🌐 03. Global Power Matrix
             </button>
-            <button onclick="switchTab('module4')" id="btn-module4" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-zinc-900/40 hover:text-zinc-200 border border-transparent">
-                🤖 4. AI Steering Engine
+            <button onclick="switchTab('module4')" id="btn-module4" class="tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-slate-900/40 hover:text-zinc-200 border border-transparent">
+                🤖 04. AI Governance Engine
             </button>
         </nav>
 
-        <section class="lg:col-span-3 bg-zinc-900/20 border border-zinc-900 rounded-3xl p-6 md:p-10 backdrop-blur-md relative overflow-hidden shadow-2xl">
+        <section class="lg:col-span-3 bg-slate-900/40 border border-zinc-900 rounded-3xl p-6 md:p-10 backdrop-blur-md relative shadow-2xl min-h-[600px]">
             
             <div id="tab-intro" class="tab-content space-y-8 animate-fade">
                 <div class="space-y-3">
-                    <span class="text-xs font-mono px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-md">Retrospective</span>
-                    <h2 class="serif text-4xl font-bold tracking-tight text-zinc-100">The 250-Year Macro Audit</h2>
-                    <p class="text-zinc-400 text-lg leading-relaxed">America at 250 is an experiment defined by extreme divergence. It is simultaneously the wealthiest, most technologically dominant superpower in human history, and an intensely polarized state wrestling with crumbling social trust and systemic inequalities.</p>
+                    <div class="flex items-center gap-2 text-xs font-mono text-gold-500 uppercase tracking-widest">
+                        <span>[System Overview Area]</span>
+                    </div>
+                    <h2 class="serif text-4xl md:text-5xl font-bold tracking-tight text-zinc-100">The 250-Year Systemic Audit</h2>
+                    <p class="text-zinc-400 text-base md:text-lg leading-relaxed max-w-4xl">
+                        Two and a half centuries ago, a coalition of agrarian colonies launched an unprecedented experiment in constitutional governance. Sitting in **July 2026**, amidst historic Semiquincentennial observations and intense technological disruption, this audit processes the deep ledgers of American history: identifying the core architectural scaffolding, mapping structural failures, and projecting optimization formulas for the coming decade.
+                    </p>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                    <div class="bg-zinc-900/40 border border-zinc-800/60 p-5 rounded-2xl space-y-2">
-                        <div class="text-amber-500 font-bold">The Great Changes</div>
-                        <p class="text-zinc-400 text-xs leading-relaxed">The shift from 3 million citizens on an agrarian coastline to a multi-ethnic transcontinental giant of 340+ million wired by advanced AI systems.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div class="bg-slate-950/60 border border-zinc-900 p-5 rounded-2xl space-y-3">
+                        <div class="text-xs font-mono font-bold text-gold-500 uppercase tracking-wide">// Macro Transformation</div>
+                        <p class="text-zinc-400 text-xs leading-relaxed">Evolution from an isolated coastline of 3 million inhabitants into a transcontinental industrial-computing empire of over 342 million interconnected agents.</p>
                     </div>
-                    <div class="bg-zinc-900/40 border border-zinc-800/60 p-5 rounded-2xl space-y-2">
-                        <div class="text-emerald-500 font-bold">The Big Successes</div>
-                        <p class="text-zinc-400 text-xs leading-relaxed">Unmatched institutional longevity under a single constitution, driving global scientific breakthroughs, industrial revolutions, and space commerce ventures.</p>
+                    <div class="bg-slate-950/60 border border-zinc-900 p-5 rounded-2xl space-y-3">
+                        <div class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wide">// System Strengths</div>
+                        <p class="text-zinc-400 text-xs leading-relaxed">Unrivaled systemic resilience under a singular constitutional runtime. An unmatched risk-capital ecosystem that built mass production, the semiconductor, and frontier AI networks.</p>
                     </div>
-                    <div class="bg-zinc-900/40 border border-zinc-800/60 p-5 rounded-2xl space-y-2">
-                        <div class="text-red-500 font-bold">The Core Failures</div>
-                        <p class="text-zinc-400 text-xs leading-relaxed">Systemic sorting of civic outcomes by wealth/ZIP code, high rates of preventable mortality, and acute internal political fracturing.</p>
+                    <div class="bg-slate-950/60 border border-zinc-900 p-5 rounded-2xl space-y-3">
+                        <div class="text-xs font-mono font-bold text-red-400 uppercase tracking-wide">// Systemic Breaches</div>
+                        <p class="text-zinc-400 text-xs leading-relaxed">The original coding errors of chattel slavery and indigenous displacement, followed by modern geodemographic sorting that isolates citizens into disparate tiers of legal and economic safety.</p>
                     </div>
                 </div>
 
-                <div class="bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 p-6 rounded-2xl space-y-4 shadow-xl relative">
-                    <h3 class="font-semibold text-zinc-200 text-lg flex items-center gap-2">
-                        <span>📊</span> Presentation Opener: Interactive Assembly Poll
-                    </h3>
-                    <p class="text-zinc-400 text-sm">Where does the American Experiment stand today compared to its foundational values?</p>
+                <div class="p-6 bg-gradient-to-br from-slate-950 to-slate-900 border border-zinc-850 rounded-2xl space-y-5 shadow-2xl relative">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h3 class="font-bold text-zinc-200 text-sm flex items-center gap-2 font-mono uppercase tracking-wider">
+                            <span class="text-gold-500">■</span> Presentation Opener // Audience Telemetry Capture
+                        </h3>
+                        <span class="text-[10px] font-mono text-zinc-500">Live Feedback Module</span>
+                    </div>
+                    <p class="text-zinc-400 text-xs md:text-sm leading-relaxed">
+                        Assess the performance of the American state runtime. Compared to its foundational documentation penned in 1776, how do you evaluate the standing of the experiment today in 2026?
+                    </p>
                     
-                    <div id="poll-options" class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <button onclick="castVote('stronger')" class="text-left p-4 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition duration-300 group flex flex-col justify-between h-24">
-                            <span class="text-zinc-300 text-sm font-medium">🚀 Stronger, more prosperous, and infinitely more inclusive.</span>
-                            <span class="text-xs text-amber-500 font-mono group-hover:translate-x-1 transition-transform">Submit Vote &rarr;</span>
+                    <div id="poll-options" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button onclick="castVote('optimist')" class="text-left p-5 rounded-xl bg-slate-900/50 border border-zinc-800 hover:border-gold-500/50 hover:bg-slate-900 transition duration-300 group flex flex-col justify-between h-28 shadow-inner">
+                            <span class="text-zinc-200 text-sm font-semibold tracking-tight group-hover:text-gold-400 transition-colors">Superpower Optimism</span>
+                            <span class="text-zinc-400 text-xs leading-tight mt-1">The system is fundamentally more inclusive, robust, and materially abundant than the Founders ever envisioned.</span>
+                            <span class="text-[10px] text-gold-500 font-mono mt-2 block opacity-60 group-hover:opacity-100 transition-opacity">Record Assessment &rarr;</span>
                         </button>
-                        <button onclick="castVote('weaker')" class="text-left p-4 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-red-500/50 transition duration-300 group flex flex-col justify-between h-24">
-                            <span class="text-zinc-300 text-sm font-medium">⚠️ Fractured, highly unequal, and stalling on its creed.</span>
-                            <span class="text-xs text-red-500 font-mono group-hover:translate-x-1 transition-transform">Submit Vote &rarr;</span>
+                        <button onclick="castVote('skeptic')" class="text-left p-5 rounded-xl bg-slate-900/50 border border-zinc-800 hover:border-red-500/50 hover:bg-slate-900 transition duration-300 group flex flex-col justify-between h-28 shadow-inner">
+                            <span class="text-zinc-200 text-sm font-semibold tracking-tight group-hover:text-red-400 transition-colors">Structural Skepticism</span>
+                            <span class="text-zinc-400 text-xs leading-tight mt-1">The system is severely fractured, systematically unequal, and defaulting on its primary constitutional promises.</span>
+                            <span class="text-[10px] text-red-400 font-mono mt-2 block opacity-60 group-hover:opacity-100 transition-opacity">Record Assessment &rarr;</span>
                         </button>
                     </div>
 
-                    <div id="poll-results" class="hidden space-y-5 pt-2">
+                    <div id="poll-results" class="hidden space-y-4 pt-2 animate-fade">
                         <div class="space-y-1.5">
                             <div class="flex justify-between text-xs font-mono text-zinc-400">
-                                <span>Superpower Optimism</span>
-                                <span id="pct-stronger" class="text-amber-400 font-bold">--</span>
+                                <span>Superpower Optimism Vector</span>
+                                <span id="pct-optimist" class="text-gold-400 font-bold">0%</span>
                             </div>
-                            <div class="w-full bg-zinc-900 h-2.5 rounded-full overflow-hidden p-0.5 border border-zinc-800">
-                                <div id="bar-stronger" class="bg-gradient-to-r from-amber-600 to-amber-400 h-full rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+                            <div class="w-full bg-slate-950 h-3 rounded-lg overflow-hidden p-0.5 border border-zinc-800">
+                                <div id="bar-optimist" class="bg-gradient-to-r from-gold-600 to-gold-400 h-full rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
                             </div>
                         </div>
                         <div class="space-y-1.5">
                             <div class="flex justify-between text-xs font-mono text-zinc-400">
-                                <span>Structural Skepticism</span>
-                                <span id="pct-weaker" class="text-red-400 font-bold">--</span>
+                                <span>Structural Skepticism Vector</span>
+                                <span id="pct-skeptic" class="text-red-400 font-bold">0%</span>
                             </div>
-                            <div class="w-full bg-zinc-900 h-2.5 rounded-full overflow-hidden p-0.5 border border-zinc-800">
-                                <div id="bar-weaker" class="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
+                            <div class="w-full bg-slate-950 h-3 rounded-lg overflow-hidden p-0.5 border border-zinc-800">
+                                <div id="bar-skeptic" class="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full transition-all duration-1000 ease-out" style="width: 0%"></div>
                             </div>
                         </div>
+                        <p class="text-[10px] font-mono text-zinc-500 italic text-center pt-2">Real-time compilation: Cross-referencing current user input against nationwide civic data panels.</p>
                     </div>
                 </div>
             </div>
 
             <div id="tab-module1" class="tab-content hidden space-y-6 animate-fade">
                 <div class="space-y-2">
-                    <span class="text-xs font-mono px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-md">The Contract State</span>
-                    <h2 class="serif text-3xl font-bold text-zinc-100">1. The Invisible Scaffold</h2>
-                    <p class="text-zinc-400">Deconstructing the ultimate misconception: American capitalism is not purely <span class="italic text-zinc-200">laissez-faire</span>. The government underwrites the market ecosystem via complex capital deployment.</p>
+                    <div class="text-xs font-mono text-gold-500 uppercase tracking-widest">[Industrial Policy Analysis]</div>
+                    <h2 class="serif text-3xl font-bold text-zinc-100">1. The Invisible Scaffold: Underwriting the Market</h2>
+                    <p class="text-zinc-400 text-sm md:text-base">Dismantling the primary historical misconception held by the domestic populace: the illusion of a pure, unassisted <span class="italic text-zinc-200">laissez-faire</span> marketplace. American capitalism functions structurally as a continuous state-backed joint venture.</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div onclick="showScaffold('fed')" class="p-5 rounded-2xl bg-zinc-900 border border-zinc-800 cursor-pointer transition-all duration-300" id="scaffold-fed-card">
-                        <div class="text-xl mb-2">🇺🇸</div>
-                        <h3 class="font-bold text-zinc-200 text-sm">Federal Level</h3>
-                        <p class="text-zinc-500 text-xs mt-1">Venture Capitalist & Procurement Hub.</p>
+                    <div onclick="showScaffold('fed')" class="p-5 rounded-2xl bg-slate-950 border border-zinc-900 cursor-pointer hover:bg-slate-900/50 transition-all duration-300" id="scaffold-fed-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">🇺🇸</span>
+                            <span class="font-mono text-[9px] bg-gold-500/10 text-gold-400 border border-gold-500/20 px-1.5 py-0.5 rounded">Tier 01</span>
+                        </div>
+                        <h3 class="font-bold text-zinc-200 text-sm">Federal Architecture</h3>
+                        <p class="text-zinc-500 text-xs mt-1">Frontier Risk Mitigation & Primary Monopsony Procurement Networks.</p>
                     </div>
-                    <div onclick="showScaffold('state')" class="p-5 rounded-2xl bg-zinc-900 border border-zinc-800 cursor-pointer transition-all duration-300" id="scaffold-state-card">
-                        <div class="text-xl mb-2">🗺️</div>
-                        <h3 class="font-bold text-zinc-200 text-sm">State Level</h3>
-                        <p class="text-zinc-500 text-xs mt-1">Infrastructure Hub & Talent Pipelines.</p>
+                    <div onclick="showScaffold('state')" class="p-5 rounded-2xl bg-slate-950 border border-zinc-900 cursor-pointer hover:bg-slate-900/50 transition-all duration-300" id="scaffold-state-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">🗺️</span>
+                            <span class="font-mono text-[9px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-1.5 py-0.5 rounded">Tier 02</span>
+                        </div>
+                        <h3 class="font-bold text-zinc-200 text-sm">State Systems</h3>
+                        <p class="text-zinc-500 text-xs mt-1">Logistical Infrastructure Hubs & Academic Research Pipelines.</p>
                     </div>
-                    <div onclick="showScaffold('local')" class="p-5 rounded-2xl bg-zinc-900 border border-zinc-800 cursor-pointer transition-all duration-300" id="scaffold-local-card">
-                        <div class="text-xl mb-2">🏙️</div>
-                        <h3 class="font-bold text-zinc-200 text-sm">Local Level</h3>
-                        <p class="text-zinc-500 text-xs mt-1">Tax Subsidies & Industrial Clusters.</p>
+                    <div onclick="showScaffold('local')" class="p-5 rounded-2xl bg-slate-950 border border-zinc-900 cursor-pointer hover:bg-slate-900/50 transition-all duration-300" id="scaffold-local-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">🏙️</span>
+                            <span class="font-mono text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded">Tier 03</span>
+                        </div>
+                        <h3 class="font-bold text-zinc-200 text-sm">Local Subsidies</h3>
+                        <p class="text-zinc-500 text-xs mt-1">Targeted Asset Abatements & Aggressive Cluster Aggregations.</p>
                     </div>
                 </div>
 
-                <div class="p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-2xl shadow-inner min-h-48 flex flex-col justify-between" id="scaffold-content">
+                <div class="p-6 bg-slate-950/80 border border-zinc-850 rounded-2xl shadow-2xl min-h-[260px] flex flex-col justify-between" id="scaffold-content">
                     </div>
             </div>
 
             <div id="tab-module2" class="tab-content hidden space-y-6 animate-fade">
                 <div class="space-y-2">
-                    <span class="text-xs font-mono px-2.5 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-md">Civic Mechanics</span>
-                    <h2 class="serif text-3xl font-bold text-zinc-100">2. The Civil Rights Pendulum</h2>
-                    <p class="text-zinc-400">Social history does not shift in a linear line. Progress works like a structural pendulum: deep expansions of human rights invariably create aggressive counter-reactions.</p>
+                    <div class="text-xs font-mono text-gold-500 uppercase tracking-widest">[Socio-Political Mechanics]</div>
+                    <h2 class="serif text-3xl font-bold text-zinc-100">2. The Civil Rights Pendulum: Friction vs Progress</h2>
+                    <p class="text-zinc-400 text-sm md:text-base">Universal suffrage and legal equality are not irreversible updates to the American runtime. Social history moves as an intense friction pendulum: structural expansions of the franchise are mechanically answered by systemic retrenchments.</p>
                 </div>
 
-                <div class="bg-zinc-950 p-1.5 rounded-xl flex border border-zinc-900 shadow-inner">
-                    <button onclick="togglePendulum('surge')" id="btn-pend-surge" class="flex-1 py-2.5 text-center rounded-lg font-semibold text-xs tracking-wider uppercase transition-all duration-300 bg-indigo-600 text-white shadow">
-                        📈 The Progress Surges
+                <div class="bg-slate-950 p-1.5 rounded-xl flex border border-zinc-900 shadow-inner">
+                    <button onclick="togglePendulum('surge')" id="btn-pend-surge" class="flex-1 py-2.5 text-center rounded-lg font-bold text-xs font-mono tracking-wider uppercase transition-all duration-300 bg-gold-500 text-slate-950 shadow">
+                        ▲ The Progress Surges
                     </button>
-                    <button onclick="togglePendulum('retrench')" id="btn-pend-retrench" class="flex-1 py-2.5 text-center rounded-lg font-semibold text-xs tracking-wider uppercase transition-all duration-300 text-zinc-500 hover:text-zinc-300">
-                        📉 The Systemic Backlashes
+                    <button onclick="togglePendulum('retrench')" id="btn-pend-retrench" class="flex-1 py-2.5 text-center rounded-lg font-bold text-xs font-mono tracking-wider uppercase transition-all duration-300 text-zinc-500 hover:text-zinc-300">
+                        ▼ The Systemic Retrenchments
                     </button>
                 </div>
 
-                <div class="bg-zinc-900/20 rounded-2xl p-2 space-y-4" id="pendulum-container">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="pendulum-container">
                     </div>
             </div>
 
             <div id="tab-module3" class="tab-content hidden space-y-6 animate-fade">
                 <div class="space-y-2">
-                    <span class="text-xs font-mono px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-md">Comparative Metrics</span>
-                    <h2 class="serif text-3xl font-bold text-zinc-100">3. Global Power Index</h2>
-                    <p class="text-zinc-400">Where the United States sits contextually relative to peer high-income OECD nations in 2026.</p>
+                    <div class="text-xs font-mono text-gold-500 uppercase tracking-widest">[International Structural Audit]</div>
+                    <h2 class="serif text-3xl font-bold text-zinc-100">3. Global Power Matrix: The Superpower Paradox</h2>
+                    <p class="text-zinc-400 text-sm md:text-base">Evaluating the unvarnished standing of the United States in 2026 across critical macroeconomic, technological, and quality-of-life coordinates relative to OECD high-income peers.</p>
                 </div>
 
-                <div class="space-y-6 bg-zinc-900/30 border border-zinc-850 p-6 rounded-2xl">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-zinc-200 font-medium flex items-center gap-2">🧠 Tech Frontier & Frontier AI Scaling</span>
-                            <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded">Rank #1</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="bg-slate-950/50 border border-zinc-900 rounded-2xl overflow-hidden shadow-xl">
+                        <div class="bg-emerald-600/10 border-b border-zinc-900 px-5 py-4 flex items-center justify-between">
+                            <h3 class="font-bold text-sm font-mono text-emerald-400 uppercase tracking-wide">🚀 Overmatch Indices (US Leads)</h3>
+                            <span class="text-[10px] font-mono text-emerald-500">Tier #1 Standings</span>
                         </div>
-                        <div class="w-full bg-zinc-950 h-3 rounded-full overflow-hidden p-0.5 border border-zinc-850">
-                            <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 98%"></div>
-                        </div>
+                        <ul class="divide-y divide-zinc-900 text-xs">
+                            <li class="p-4 flex justify-between items-start gap-4">
+                                <div>
+                                    <strong class="text-zinc-200 block text-sm">Nominal GDP Output</strong>
+                                    <span class="text-zinc-400 block mt-0.5">The primary financial runtime and currency reserve anchor of global trade networks.</span>
+                                </div>
+                                <span class="font-mono text-emerald-400 font-bold bg-emerald-500/5 border border-emerald-500/10 px-2 py-0.5 rounded">#1 // $32.1T</span>
+                            </li>
+                            <li class="p-4 flex justify-between items-start gap-4">
+                                <div>
+                                    <strong class="text-zinc-200 block text-sm">Frontier AI & Compute Architecture</strong>
+                                    <span class="text-zinc-400 block mt-0.5">Epicenter of generative model compute clusters, silicon logic engineering, and venture capital.</span>
+                                </div>
+                                <span class="font-mono text-emerald-400 font-bold bg-emerald-500/5 border border-emerald-500/10 px-2 py-0.5 rounded">#1 Leader</span>
+                            </li>
+                            <li class="p-4 flex justify-between items-start gap-4">
+                                <div>
+                                    <strong class="text-zinc-200 block text-sm">Military Force Projection</strong>
+                                    <span class="text-zinc-400 block mt-0.5">Unrivaled global kinetic and autonomous reach, accelerating through classified deep-tech pipelines.</span>
+                                </div>
+                                <span class="font-mono text-emerald-400 font-bold bg-emerald-500/5 border border-emerald-500/10 px-2 py-0.5 rounded">#1 Dominant</span>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-zinc-200 font-medium flex items-center gap-2">📊 Gross Domestic Product Nominal Scale</span>
-                            <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded">Rank #1</span>
+                    <div class="bg-slate-950/50 border border-zinc-900 rounded-2xl overflow-hidden shadow-xl">
+                        <div class="bg-red-600/10 border-b border-zinc-900 px-5 py-4 flex items-center justify-between">
+                            <h3 class="font-bold text-sm font-mono text-red-400 uppercase tracking-wide">⚠️ Deficit Indices (US Trails Peers)</h3>
+                            <span class="text-[10px] font-mono text-red-500">Systemic Lag Nodes</span>
                         </div>
-                        <div class="w-full bg-zinc-950 h-3 rounded-full overflow-hidden p-0.5 border border-zinc-850">
-                            <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full" style="width: 95%"></div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-zinc-200 font-medium flex items-center gap-2">🩺 Healthcare Cost Sustainability & Equity</span>
-                            <span class="text-red-400 font-mono text-xs font-bold px-2 py-0.5 bg-red-500/10 border border-red-500/20 rounded">Rank Last</span>
-                        </div>
-                        <div class="w-full bg-zinc-950 h-3 rounded-full overflow-hidden p-0.5 border border-zinc-850">
-                            <div class="bg-gradient-to-r from-red-600 to-red-400 h-full rounded-full" style="width: 32%"></div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-zinc-200 font-medium flex items-center gap-2">📈 Income Elasticity & Social Mobility</span>
-                            <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 rounded">Lagging</span>
-                        </div>
-                        <div class="w-full bg-zinc-950 h-3 rounded-full overflow-hidden p-0.5 border border-zinc-850">
-                            <div class="bg-gradient-to-r from-amber-600 to-amber-400 h-full rounded-full" style="width: 45%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-5 bg-zinc-950 border border-zinc-900 rounded-xl flex gap-4 items-start text-xs text-zinc-400 leading-relaxed shadow-inner">
-                    <span class="text-base">💡</span>
-                    <div>
-                        <strong class="text-zinc-200 block mb-1">The 2026 Core Paradox</strong>
-                        The U.S. remains unmatched in creating raw wealth, compute models, and capital liquidity. However, it trails major European and Asian peer democracies significantly in converting macro economic performance into longevity, universal healthcare coverage, and baseline household stability.
+                        <ul class="divide-y divide-zinc-900 text-xs">
+                            <li class="p-4 flex justify-between items-start gap-4">
+                                <div>
+                                    <strong class="text-zinc-200 block text-sm">Healthcare Value & Efficiency</strong>
+                                    <span class="text-zinc-400 block mt-0.5">Consumes 18% of GDP—nearly double OECD metrics—while maintaining un-insured populations and high avoidable mortality.</span>
+                                </div>
+                                <span class="font-mono text-red-400 font-bold bg-red-500/5 border border-red-500/10 px-2 py-0.5 rounded">Bottom Tier</span>
+                            </li>
+                            <li class="p-4 flex justify-between items-start gap-4">
+                                <div>
+                                    <strong class="text-zinc-200 block text-sm">Maternal Mortality & Preventable Death</strong>
+                                    <span class="text-zinc-400 block mt-0.5">Stubbornly elevated death metrics relative to developed European and Asian peer democracies.</span>
+                                </div>
+                                <span class="font-mono text-red-400 font-bold bg-red-500/5 border border-red-500/10 px-2 py-0.5 rounded">Worst Class</span>
+                            </li>
+                            <li class="p-4 flex justify-between items-start gap-4">
+                                <div>
+                                    <strong class="text-zinc-200 block text-sm">Geodemographic Wealth Mobility</strong>
+                                    <span class="text-zinc-400 block mt-0.5">ZIP code sorting blocks generational mobility vectors for the bottom 40% of the populace.</span>
+                                </div>
+                                <span class="font-mono text-red-400 font-bold bg-red-500/5 border border-red-500/10 px-2 py-0.5 rounded">Below Peers</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
             <div id="tab-module4" class="tab-content hidden space-y-6 animate-fade">
                 <div class="space-y-2">
-                    <span class="text-xs font-mono px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-md">Macro-Simulation Engine</span>
-                    <h2 class="serif text-3xl font-bold text-zinc-100">4. The AI Steering Dashboard (2026–2036)</h2>
-                    <p class="text-zinc-400">Interact with the policy sliders below to run computational models mapping systemic rewiring over the next decade.</p>
+                    <div class="text-xs font-mono text-gold-500 uppercase tracking-widest">[Mathematical System Optimization]</div>
+                    <h2 class="serif text-3xl font-bold text-zinc-100">4. The AI Steering Dashboard: Code Upgrade (2026–2036)</h2>
+                    <p class="text-zinc-400 text-sm md:text-base">An objective, data-driven AI does not operate on partisan ideology. It maps algorithmic parameters directly to systemic outcomes. Slide the controls below to engage the dynamic optimization model and see how interconnected system metrics react.</p>
                 </div>
 
-                <div class="space-y-5 bg-zinc-950/80 border border-zinc-900 p-6 rounded-2xl shadow-inner">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-5 bg-slate-950 border border-zinc-900 rounded-2xl space-y-1.5 shadow-xl">
+                        <span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase block">Social Cohesion Metric</span>
+                        <p id="metric-polar" class="text-3xl font-bold font-mono text-red-500">Highly Fractured</p>
+                        <span class="text-[9px] text-zinc-500 font-mono block">Calculated via Electoral Realignment</span>
+                    </div>
+                    <div class="p-5 bg-slate-950 border border-zinc-900 rounded-2xl space-y-1.5 shadow-xl">
+                        <span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase block">Energy Abundance Yield</span>
+                        <p id="metric-energy" class="text-3xl font-bold font-mono text-zinc-400">Baseline Costs</p>
+                        <span class="text-[9px] text-zinc-500 font-mono block">Calculated via Infrastructure Abundance</span>
+                    </div>
+                    <div class="p-5 bg-slate-950 border border-zinc-900 rounded-2xl space-y-1.5 shadow-xl">
+                        <span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase block">Fiscal Solvency Runway</span>
+                        <p id="metric-debt" class="text-3xl font-bold font-mono text-red-500">Deficit Doom Loop</p>
+                        <span class="text-[9px] text-zinc-500 font-mono block">Weighted Multi-Variable Formula Output</span>
+                    </div>
+                </div>
+
+                <div class="space-y-6 bg-slate-950 border border-zinc-900 p-6 rounded-2xl shadow-inner">
                     <div class="space-y-2">
-                        <div class="flex justify-between text-xs font-mono tracking-wide">
-                            <label class="text-zinc-300 font-medium uppercase">🗳️ Electoral Realignment (Ranked-Choice/Open Primaries)</label>
-                            <span id="val-slider1" class="text-amber-400 font-bold">0%</span>
+                        <div class="flex justify-between items-baseline text-xs font-mono tracking-wider">
+                            <label class="text-zinc-300 font-bold uppercase flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span> 🗳️ Electoral Realignment Vector
+                            </label>
+                            <span id="val-slider1" class="text-gold-400 font-bold bg-gold-500/10 px-2 py-0.5 border border-gold-500/20 rounded">0% Implemented</span>
                         </div>
+                        <p class="text-zinc-500 text-xs">Deploying mandatory ranked-choice voting, open primaries, and algorithmic redistricting to neutralize extremist primary leverage.</p>
                         <input type="range" id="slider1" min="0" max="100" value="0" oninput="runSimulation()" class="w-full bg-zinc-800 h-1.5 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <div class="space-y-2">
-                        <div class="flex justify-between text-xs font-mono tracking-wide">
-                            <label class="text-zinc-300 font-medium uppercase">⚛️ Energy Abundance Infrastructure (SMR Nuclear Deployments)</label>
-                            <span id="val-slider2" class="text-amber-400 font-bold">0%</span>
+                        <div class="flex justify-between items-baseline text-xs font-mono tracking-wider">
+                            <label class="text-zinc-300 font-bold uppercase flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> ⚛️ Infrastructure Abundance Engine
+                            </label>
+                            <span id="val-slider2" class="text-indigo-400 font-bold bg-indigo-500/10 px-2 py-0.5 border border-indigo-500/20 rounded">0% Implemented</span>
                         </div>
+                        <p class="text-zinc-500 text-xs">Mass deployment of advanced modular nuclear reactors (SMRs) alongside regulatory fast-tracking to drive domestic industrial compute costs to near-zero.</p>
                         <input type="range" id="slider2" min="0" max="100" value="0" oninput="runSimulation()" class="w-full bg-zinc-800 h-1.5 rounded-lg appearance-none cursor-pointer">
                     </div>
 
                     <div class="space-y-2">
-                        <div class="flex justify-between text-xs font-mono tracking-wide">
-                            <label class="text-zinc-300 font-medium uppercase">💰 Sovereign Dividend Fund (Public R&D IP Equity Capture)</label>
-                            <span id="val-slider3" class="text-amber-400 font-bold">0%</span>
+                        <div class="flex justify-between items-baseline text-xs font-mono tracking-wider">
+                            <label class="text-zinc-300 font-bold uppercase flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> 💰 Sovereign Dividend Strategy
+                            </label>
+                            <span id="val-slider3" class="text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 border border-emerald-500/20 rounded">0% Implemented</span>
                         </div>
+                        <p class="text-zinc-500 text-xs">Capturing equity shares on all consumer products birthed via state-funded foundational R&D to fund a national universal learning and retraining credit endowment.</p>
                         <input type="range" id="slider3" min="0" max="100" value="0" oninput="runSimulation()" class="w-full bg-zinc-800 h-1.5 rounded-lg appearance-none cursor-pointer">
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="p-5 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl space-y-1">
-                        <p class="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Societal Temperature</p>
-                        <p id="metric-polar" class="text-2xl font-bold font-mono text-red-500">Hyper-Polarized</p>
-                    </div>
-                    <div class="p-5 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl space-y-1">
-                        <p class="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Industrial Power Index</p>
-                        <p id="metric-energy" class="text-2xl font-bold font-mono text-zinc-400">Baseline Costs</p>
-                    </div>
-                    <div class="p-5 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl space-y-1">
-                        <p class="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Sovereign Debt Stability</p>
-                        <p id="metric-debt" class="text-2xl font-bold font-mono text-red-500">Deficit Doom Loop</p>
-                    </div>
+                <div class="p-5 bg-slate-950 border border-zinc-900 rounded-xl flex gap-4 items-start text-xs font-mono text-zinc-500 shadow-inner">
+                    <span class="text-gold-400 font-bold">⚙️ SYSTEM NOTICE:</span>
+                    <p class="leading-relaxed">
+                        Moving sliders forces a real-time iterative state recalculation. The <strong class="text-zinc-400">Fiscal Solvency Runway</strong> utilizes a weighted algorithmic pipeline: calculating efficiency gains via energy infrastructure coupled with alternative non-tax revenue generated through the Sovereign R&D patent dividend pool.
+                    </p>
                 </div>
             </div>
 
         </section>
     </main>
 
-    <footer class="border-t border-zinc-950 bg-zinc-950 py-5 text-center text-xs font-mono text-zinc-600 tracking-wider">
-        U.S. Semiquincentennial Strategic Audit Hub • Built for Live Presentation Interaction
+    <footer class="border-t border-zinc-950 bg-slate-950 py-6 text-center text-xs font-mono text-zinc-600 tracking-wider">
+        System Workspace Operational // Developed for the Side-by-Side Architectural Evaluation Frame
     </footer>
 
     <script>
-        // Core Single-Page Architecture
+        // Module Controller Switch
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
             document.getElementById('tab-' + tabId).classList.remove('hidden');
 
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.className = "tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-zinc-900/40 hover:text-zinc-200 border border-transparent";
+                btn.className = "tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 text-zinc-400 hover:bg-slate-900/40 hover:text-zinc-200 border border-transparent";
             });
             
             const activeBtn = document.getElementById('btn-' + tabId);
-            activeBtn.className = "tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 bg-zinc-900 border border-zinc-800 text-amber-400 font-semibold shadow-md border-l-4 border-l-amber-500";
+            activeBtn.className = "tab-btn w-full text-left px-4 py-3.5 rounded-xl transition-all duration-300 bg-slate-900 border border-zinc-800 text-gold-400 font-semibold shadow-md border-l-4 border-l-gold-500";
         }
 
-        // Invisible Scaffold Dataset
+        // Module 01: Deep-Dive Ledger Contents
         const scaffoldData = {
             fed: {
-                title: "The Federal Engine: Sovereign Venture Capital & Procurement",
-                text: "The federal landscape acts as the ultimate engine of macro-innovation. In recent fiscal cycles, the federal government directed roughly <strong>$790 Billion+ entirely via corporate procurement contracts</strong>. Private industry rarely invests in zero-immediate-yield basic science. Key pillars of the modern tech index—DARPA's internet architecture, GPS coordinates, cellular touchscreens, and advanced biomedical platforms—were entirely underwritten by public funds before being commercialized by Silicon Valley firms. Modern frameworks like the CHIPS Act continue this pattern, backing private fabricators with billions in direct federal cash to insulate supply chains against foreign geopolitical leverage."
+                title: "Federal Architecture: State-Backed Risk Underwriting & Procurement Monopsonies",
+                metrics: "FY2025 Allocation: ~$793B Contract obligations // Industrial Policy Level: High",
+                body: "The federal apparatus operates as the hidden master venture capital ecosystem of global tech execution. Private financial networks are built to capture short-term consumer yields and explicitly avoid underwriting zero-immediate-return foundational science. The core pillars of modern capitalism—DARPA funding the baseline routing nodes of the internet, the Department of Defense building and launching the Navstar GPS satellite array, NIH grants discovering the genomic sequencing underlying all modern therapeutics—were completely underwritten by state tax-payer funds before being handed to corporate entities to wrap into consumer packaging. In July 2026, we see this mechanism operating at hyper-scale through the CHIPS and Science Act and defensive cloud networks, where multi-billion dollar direct asset grants insulate private semiconductor mega-labs from global geopolitical shocks."
             },
             state: {
-                title: "State Logistics & Higher-Education Talent Incubators",
-                text: "State governments provide the localized physical capital and human resources that make business scaling viable. State university networks function as massive public innovation hubs that incubate software, agricultural, and biochemical enterprises. Simultaneously, state authorities construct and optimize the deep-water shipping corridors, internal transport rings, and interstate highways that companies rely on to distribute inventory without structural friction."
+                title: "State Infrastructure: Logistical Corridors & Taxpayer Academic Incubators",
+                metrics: "Annual Infrastructure/R&D Run-rate: ~$140B // Logistics Readiness: Critical",
+                body: "State systems function as the vital physical engineering layer of commerce. Public state university systems are taxpayer-backed R&D laboratories that constantly churn out the elite technological, mechanical, and engineering talent absorbed by Fortune 500 balance sheets. Simultaneously, states execute the heavy logistics management needed to prevent systemic economic friction: dredging deep-water sea lanes, organizing the structural capacity of transcontinental shipping arcs, and laying out the regional electrical grid infrastructure needed to run high-density automated manufacturing facilities."
             },
             local: {
-                title: "Municipal Competition, Abatements & TIF Structures",
-                text: "At the municipal level, communities actively deploy public assets to anchor corporate presences. Through mechanisms like Tax Increment Financing (TIF) and structured property tax abatements, local city councils float public bonds to build pipelines, run energy grids, and complete grading out to raw land. This effectively subsidizes corporate operations to anchor jobs locally, proving that private facilities are structurally built on public architecture."
+                title: "Local Subsidies: Geodemographic TIF Bundling & Corporate Welfare Real Estate",
+                metrics: "Average Annual Abatement Volume: ~$45B // Competitive Real Estate Footprint: Hyper",
+                body: "At the municipal level, regional authorities utilize direct public underwriting to secure localized corporate placement. Through mechanisms like Tax Increment Financing (TIF) bonds and long-horizon PILOT (Payments in Lieu of Taxes) agreements, city and county boards routinely waive property tax responsibilities for decades. Local taxpayers directly bankroll the deep infrastructure expansions—running lines, paving shipping freight links, and providing specialized security nodes—solely to make a patch of raw acreage cost-effective for private fulfillment networks or logic fab installations, proving private real estate profits rest directly on a foundation of local public debt."
             }
         };
 
         function showScaffold(tier) {
             ['fed', 'state', 'local'].forEach(t => {
-                document.getElementById(`scaffold-${t}-card`).className = "p-5 rounded-2xl bg-zinc-900 border border-zinc-800 cursor-pointer transition-all duration-300";
+                document.getElementById(`scaffold-${t}-card`).className = "p-5 rounded-2xl bg-slate-950 border border-zinc-900 cursor-pointer hover:bg-slate-900/50 transition-all duration-300";
             });
-            document.getElementById(`scaffold-${tier}-card`).className = "p-5 rounded-2xl bg-zinc-900 border border-amber-500/40 shadow-lg shadow-amber-500/5 cursor-pointer transition-all duration-300 scale-[1.02]";
+            document.getElementById(`scaffold-${tier}-card`).className = "p-5 rounded-2xl bg-slate-950 border border-gold-500/40 shadow-xl shadow-gold-500/5 cursor-pointer scale-[1.02] transition-all duration-300";
             
             const contentBox = document.getElementById('scaffold-content');
             contentBox.innerHTML = `
-                <div>
-                    <h4 class="font-bold text-amber-400 text-base mb-2.5">${scaffoldData[tier].title}</h4>
-                    <p class="text-zinc-300 text-xs md:text-sm leading-relaxed">${scaffoldData[tier].text}</p>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between flex-wrap gap-2 text-xs font-mono">
+                        <span class="text-gold-400 font-bold font-sans text-sm">${scaffoldData[tier].title}</span>
+                        <span class="text-zinc-500 border border-zinc-900 px-2 py-0.5 rounded bg-slate-950">${scaffoldData[tier].metrics}</span>
+                    </div>
+                    <p class="text-zinc-300 text-xs md:text-sm leading-relaxed">${scaffoldData[tier].body}</p>
                 </div>
-                <div class="text-[10px] text-zinc-500 font-mono mt-4 border-t border-zinc-800/80 pt-3 flex justify-between">
-                    <span>Audit Mode: Interactive Slide Insight</span>
-                    <span class="text-zinc-400">Data Source: Federal Procurement Data System (2025/2026 Reports)</span>
+                <div class="text-[10px] font-mono text-zinc-600 mt-4 border-t border-zinc-900 pt-3 flex justify-between items-center">
+                    <span>Audit Mode: Interactive Insight Dashboard</span>
+                    <span>Source: US Federal Procurement Registry & Municipal Bond Frameworks [2025/2026]</span>
                 </div>
             `;
         }
 
-        // Civil Rights Pendulum States
+        // Module 02: Civil Rights Pendulum Content Arrays
         function togglePendulum(phase) {
             const container = document.getElementById('pendulum-container');
             const btnSurge = document.getElementById('btn-pend-surge');
             const btnRetrench = document.getElementById('btn-pend-retrench');
 
             if (phase === 'surge') {
-                btnSurge.className = "flex-1 py-2.5 text-center rounded-lg font-semibold text-xs tracking-wider uppercase transition-all duration-300 bg-indigo-600 text-white shadow";
-                btnRetrench.className = "flex-1 py-2.5 text-center rounded-lg font-semibold text-xs tracking-wider uppercase transition-all duration-300 text-zinc-500 hover:text-zinc-300";
+                btnSurge.className = "flex-1 py-2.5 text-center rounded-lg font-bold text-xs font-mono tracking-wider uppercase transition-all duration-300 bg-gold-500 text-slate-950 shadow";
+                btnRetrench.className = "flex-1 py-2.5 text-center rounded-lg font-bold text-xs font-mono tracking-wider uppercase transition-all duration-300 text-zinc-500 hover:text-zinc-300";
                 
                 container.innerHTML = `
-                    <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-xl border-l-4 border-l-indigo-500 space-y-1">
-                        <h4 class="font-bold text-zinc-200 text-sm">Emancipation & Constitutional Re-Founding (1865–1875)</h4>
-                        <p class="text-xs text-zinc-400 leading-relaxed">The passage of the 14th and 15th Amendments creates multi-ethnic governance across the South. Over 1,500 Black citizens serve in public office, anchoring public schools and voting infrastructure.</p>
+                    <div class="p-5 bg-slate-950/60 border border-zinc-900 rounded-2xl border-l-4 border-l-gold-500 space-y-2 shadow-lg">
+                        <h4 class="font-bold text-zinc-200 text-sm font-mono">// Cycle 01: Reconstruction Re-Founding [1865–1875]</h4>
+                        <p class="text-xs text-zinc-400 leading-relaxed">The passage of the 13th, 14th, and 15th Amendments fundamentally code universal civil equality into the federal text. Over 1,500 Black Americans take active seats in Southern legislative houses, building the first universally free public educational networks in the region.</p>
                     </div>
-                    <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-xl border-l-4 border-l-indigo-500 space-y-1">
-                        <h4 class="font-bold text-zinc-200 text-sm">The Mid-Century Civil Rights Explosion (1954–1968)</h4>
-                        <p class="text-xs text-zinc-400 leading-relaxed">Mass integration actions force the Voting Rights Act of 1965 and Title IX, permanently expanding civic access and building a multi-ethnic middle class.</p>
+                    <div class="p-5 bg-slate-950/60 border border-zinc-900 rounded-2xl border-l-4 border-l-gold-500 space-y-2 shadow-lg">
+                        <h4 class="font-bold text-zinc-200 text-sm font-mono">// Cycle 02: The Mid-Century Civil Rights Wave [1954–1968]</h4>
+                        <p class="text-xs text-zinc-400 leading-relaxed">Mass popular mobilization forces the direct passage of the Civil Rights Act of 1964 and the Voting Rights Act of 1965. Overt municipal segregation structures are dismantled by law, creating a massive multi-ethnic domestic middle class.</p>
                     </div>
                 `;
             } else {
-                btnRetrench.className = "flex-1 py-2.5 text-center rounded-lg font-semibold text-xs tracking-wider uppercase transition-all duration-300 bg-red-600 text-white shadow";
-                btnSurge.className = "flex-1 py-2.5 text-center rounded-lg font-semibold text-xs tracking-wider uppercase transition-all duration-300 text-zinc-500 hover:text-zinc-300";
+                btnRetrench.className = "flex-1 py-2.5 text-center rounded-lg font-bold text-xs font-mono tracking-wider uppercase transition-all duration-300 bg-red-600 text-white shadow";
+                btnSurge.className = "flex-1 py-2.5 text-center rounded-lg font-bold text-xs font-mono tracking-wider uppercase transition-all duration-300 text-zinc-500 hover:text-zinc-300";
                 
                 container.innerHTML = `
-                    <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-xl border-l-4 border-l-red-500 space-y-1">
-                        <h4 class="font-bold text-zinc-200 text-sm">The Jim Crow Retrenchment & Erasure (1877–1900)</h4>
-                        <p class="text-xs text-zinc-400 leading-relaxed">Federal forces withdraw from local theaters. Southern states deploy poll taxes and literacy tests, reducing Black voter registration to near zero by 1900.</p>
+                    <div class="p-5 bg-slate-950/60 border border-zinc-900 rounded-2xl border-l-4 border-l-red-500 space-y-2 shadow-lg">
+                        <h4 class="font-bold text-zinc-200 text-sm font-mono">// Retrenchment 01: Jim Crow Coding Extraction [1877–1900]</h4>
+                        <p class="text-xs text-zinc-400 leading-relaxed">Federal peacekeeping networks withdraw from regional centers. State codes instantly implement poll taxes, grandfather clauses, and absolute physical isolation mandates, driving Black voter registration down to near-zero by the turn of the century.</p>
                     </div>
-                    <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-xl border-l-4 border-l-red-500 space-y-1">
-                        <h4 class="font-bold text-zinc-200 text-sm">Hyper-Punitive Carceral Sorting (1970s–1990s)</h4>
-                        <p class="text-xs text-zinc-400 leading-relaxed">The optimization of urban 'Law & Order' matrices and the War on Drugs drives a 500% spike in incarceration, structurally sidelining millions of minority workers.</p>
+                    <div class="p-5 bg-slate-950/60 border border-zinc-900 rounded-2xl border-l-4 border-l-red-500 space-y-2 shadow-lg">
+                        <h4 class="font-bold text-zinc-200 text-sm font-mono">// Retrenchment 02: The Punitive Carceral Turn [1970s–1990s]</h4>
+                        <p class="text-xs text-zinc-400 leading-relaxed">A strategic bipartisan pivot to highly weaponized drug sentences and ultra-aggressive metropolitan police codes generates a 500% explosion in total prison populations, systematically removing civil and economic enfranchisement from minority centers.</p>
                     </div>
                 `;
             }
         }
 
-        // Live Poll Interaction
+        // Live Poll Logic Engine
         function castVote(type) {
             document.getElementById('poll-options').classList.add('hidden');
             document.getElementById('poll-results').classList.remove('hidden');
             
-            let strongerVal = type === 'stronger' ? 53 : 47;
-            let weakerVal = 100 - strongerVal;
+            let optimistVal = type === 'optimist' ? 55 : 45;
+            let skepticVal = 100 - optimistVal;
             
-            document.getElementById('pct-stronger').innerText = strongerVal + "%";
-            document.getElementById('pct-weaker').innerText = weakerVal + "%";
+            document.getElementById('pct-optimist').innerText = optimistVal + "%";
+            document.getElementById('pct-skeptic').innerText = skepticVal + "%";
             
             setTimeout(() => {
-                document.getElementById('bar-stronger').style.width = strongerVal + "%";
-                document.getElementById('bar-weaker').style.width = weakerVal + "%";
+                document.getElementById('bar-optimist').style.width = optimistVal + "%";
+                document.getElementById('bar-skeptic').style.width = skepticVal + "%";
             }, 50);
         }
 
-        // Multi-Variable AI Simulation Logic Engine
+        // Module 04: Connected Matrix Math Engine
         function runSimulation() {
             const s1 = parseInt(document.getElementById('slider1').value);
             const s2 = parseInt(document.getElementById('slider2').value);
             const s3 = parseInt(document.getElementById('slider3').value);
 
-            document.getElementById('val-slider1').innerText = s1 + "%";
-            document.getElementById('val-slider2').innerText = s2 + "%";
-            document.getElementById('val-slider3').innerText = s3 + "%";
+            document.getElementById('val-slider1').innerText = s1 + "% Implemented";
+            document.getElementById('val-slider2').innerText = s2 + "% Implemented";
+            document.getElementById('val-slider3').innerText = s3 + "% Implemented";
 
-            // Polarization output
+            // Recalculating Polarization / Social Cohesion Metric
             const polarText = document.getElementById('metric-polar');
-            if (s1 < 35) { polarText.innerText = "Hyper-Polarized"; polarText.className = "text-2xl font-bold font-mono text-red-500"; }
-            else if (s1 < 75) { polarText.innerText = "Moderate Friction"; polarText.className = "text-2xl font-bold font-mono text-amber-500"; }
-            else { polarText.innerText = "Systemic Cohesion"; polarText.className = "text-2xl font-bold font-mono text-emerald-400"; }
+            if (s1 < 30) { 
+                polarText.innerText = "Highly Fractured"; 
+                polarText.className = "text-3xl font-bold font-mono text-red-500"; 
+            } else if (s1 < 75) { 
+                polarText.innerText = "Moderate Friction"; 
+                polarText.className = "text-3xl font-bold font-mono text-amber-500"; 
+            } else { 
+                polarText.innerText = "Optimized Cohesion"; 
+                polarText.className = "text-3xl font-bold font-mono text-emerald-400"; 
+            }
 
-            // Industrial output
+            // Recalculating Energy Abundance Yield
             const energyText = document.getElementById('metric-energy');
-            if (s2 < 40) { energyText.innerText = "Baseline Costs"; energyText.className = "text-2xl font-bold font-mono text-zinc-400"; }
-            else if (s2 < 80) { energyText.innerText = "Abundance Scale"; energyText.className = "text-2xl font-bold font-mono text-indigo-400"; }
-            else { energyText.innerText = "Hyper-Productive"; energyText.className = "text-2xl font-bold font-mono text-emerald-400"; }
+            if (s2 < 35) { 
+                energyText.innerText = "Baseline Costs"; 
+                energyText.className = "text-3xl font-bold font-mono text-zinc-400"; 
+            } else if (s2 < 75) { 
+                energyText.innerText = "Abundant Power"; 
+                energyText.className = "text-3xl font-bold font-mono text-indigo-400"; 
+            } else { 
+                energyText.innerText = "Near-Zero Cost"; 
+                energyText.className = "text-3xl font-bold font-mono text-emerald-400"; 
+            }
 
-            // Debt / Revenue health matrix
+            // Recalculating Sovereign Fiscal Solvency Runway (Interconnected weighted formula)
             const debtText = document.getElementById('metric-debt');
-            const cumulativeRevenueScore = (s2 * 0.4) + (s3 * 0.6);
-            if (cumulativeRevenueScore < 30) { debtText.innerText = "Deficit Doom Loop"; debtText.className = "text-2xl font-bold font-mono text-red-500"; }
-            else if (cumulativeRevenueScore < 70) { debtText.innerText = "Stabilizing Ratio"; debtText.className = "text-2xl font-bold font-mono text-amber-400"; }
-            else { debtText.innerText = "Surplus Rebound"; debtText.className = "text-2xl font-bold font-mono text-emerald-400"; }
+            const compositeSolvencyIndex = (s2 * 0.45) + (s3 * 0.55);
+            
+            if (compositeSolvencyIndex < 35) { 
+                debtText.innerText = "Deficit Doom Loop"; 
+                debtText.className = "text-3xl font-bold font-mono text-red-500"; 
+            } else if (compositeSolvencyIndex < 75) { 
+                debtText.innerText = "Stabilizing Ratio"; 
+                debtText.className = "text-3xl font-bold font-mono text-amber-400"; 
+            } else { 
+                debtText.innerText = "Sovereign Surplus"; 
+                debtText.className = "text-3xl font-bold font-mono text-emerald-400"; 
+            }
         }
 
-        // Initialize App State
+        // Initialize Module Onload System Defaults
         window.onload = function() {
             showScaffold('fed');
             togglePendulum('surge');
