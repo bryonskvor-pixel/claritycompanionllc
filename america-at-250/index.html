@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The American Argument — 250 Years</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital@0;1&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E8E2D2;
+    --paper-2:#DED7C4;
+    --paper-3:#D3CAB4;
+    --ink:#17212E;
+    --ink-soft:#4A5462;
+    --brick:#A83E2B;      /* accent + "my read" */
+    --steel:#35597B;      /* interactive */
+    --forest:#3D6B4E;     /* settled */
+    --ochre:#9A6E17;      /* debated */
+    --line:rgba(23,33,46,0.16);
+    --line-2:rgba(23,33,46,0.30);
+    --shadow:0 1px 0 rgba(23,33,46,0.06), 0 12px 30px -18px rgba(23,33,46,0.45);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Public Sans",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.04;
+    background-image:radial-gradient(var(--ink) 0.5px, transparent 0.5px);
+    background-size:4px 4px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+  a{color:var(--steel);}
+
+  h1,h2,h3{font-family:"Libre Caslon Display",Georgia,serif;font-weight:400;line-height:1.08;letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:600;
+    letter-spacing:0.22em;text-transform:uppercase;color:var(--brick);
+  }
+  .mono{font-family:"JetBrains Mono",monospace;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(232,226,210,0.90);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:1080px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .nav-brand{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;}
+  .nav-brand b{color:var(--brick);}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.04em;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink-soft);}
+  .dot{width:9px;height:9px;border-radius:2px;display:inline-block;}
+  .dot.settled{background:var(--forest);}
+  .dot.debated{background:var(--ochre);}
+  .dot.myread{background:var(--brick);}
+
+  /* tags inline */
+  .tag{
+    font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap;vertical-align:middle;
+    border:1px solid;
+  }
+  .tag.settled{color:var(--forest);border-color:rgba(61,107,78,0.4);background:rgba(61,107,78,0.08);}
+  .tag.debated{color:var(--ochre);border-color:rgba(154,110,23,0.4);background:rgba(154,110,23,0.08);}
+  .tag.myread{color:var(--brick);border-color:rgba(168,62,43,0.4);background:rgba(168,62,43,0.08);}
+  .tag.current{color:var(--steel);border-color:rgba(53,89,123,0.4);background:rgba(53,89,123,0.08);}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0;border-top:1px solid var(--line);}
+  section:first-of-type{border-top:none;}
+  .sec-head{margin-bottom:36px;}
+  .sec-head .eyebrow{display:block;margin-bottom:10px;}
+  .sec-head h2{font-size:clamp(30px,4.4vw,50px);margin:0;}
+  .sec-head p.lead{font-size:19px;color:var(--ink-soft);max-width:64ch;margin:16px 0 0;}
+  .num{font-family:"JetBrains Mono",monospace;color:var(--brick);font-size:13px;font-weight:600;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 72px;position:relative;}
+  .hero .dateline{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);}
+  .hero h1{font-size:clamp(46px,9vw,104px);margin:18px 0 0;letter-spacing:-0.02em;}
+  .hero h1 .yr{color:var(--brick);}
+  .hero .thesis{
+    font-family:"Libre Caslon Text",Georgia,serif;font-size:clamp(20px,2.6vw,27px);
+    line-height:1.42;max-width:40ch;margin:30px 0 0;
+  }
+  .hero .thesis b{font-style:normal;color:var(--brick);}
+  .rule{height:2px;background:var(--ink);width:64px;margin:34px 0;}
+
+  /* lens picker */
+  .lens{margin-top:10px;}
+  .lens-btns{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;}
+  .lens-btn{
+    font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.04em;
+    padding:7px 12px;border:1px solid var(--line-2);background:transparent;color:var(--ink-soft);
+    border-radius:4px;cursor:pointer;transition:all .18s ease;
+  }
+  .lens-btn:hover{border-color:var(--steel);color:var(--steel);}
+  .lens-btn[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .lens-read{margin-top:16px;font-family:"Libre Caslon Text",serif;font-size:18px;color:var(--ink);min-height:3.2em;max-width:66ch;}
+  .lens-read b{color:var(--brick);font-style:italic;}
+
+  /* ---------- TRANSFORMATION ---------- */
+  .toggle{display:inline-flex;border:1px solid var(--ink);border-radius:6px;overflow:hidden;margin-bottom:30px;}
+  .toggle button{
+    font-family:"JetBrains Mono",monospace;font-weight:600;font-size:15px;letter-spacing:0.08em;
+    padding:11px 26px;background:transparent;color:var(--ink);border:none;cursor:pointer;transition:all .2s ease;
+  }
+  .toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper);}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .metric{background:var(--paper);padding:24px 22px;}
+  .metric .mlabel{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .metric .mval{font-family:"Libre Caslon Display",serif;font-size:clamp(34px,5vw,52px);line-height:1;margin:14px 0 6px;color:var(--ink);}
+  .metric .mval.text{font-size:clamp(22px,3.2vw,30px);}
+  .metric .mnote{font-size:14px;color:var(--ink-soft);}
+
+  /* ---------- LEDGER ---------- */
+  .ledger-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line-2);background:var(--paper-2);}
+  table.ledger{border-collapse:collapse;width:100%;min-width:720px;}
+  table.ledger th,table.ledger td{border:1px solid var(--line);padding:0;text-align:left;vertical-align:top;}
+  table.ledger thead th{
+    background:var(--ink);color:var(--paper);font-family:"JetBrains Mono",monospace;font-weight:600;
+    font-size:11px;letter-spacing:0.06em;text-transform:uppercase;padding:12px 12px;line-height:1.3;
+  }
+  table.ledger thead th:first-child{background:var(--ink);}
+  .row-label{
+    background:var(--paper-3);font-family:"Libre Caslon Display",serif;font-size:19px;
+    padding:14px 14px;width:150px;color:var(--ink);
+  }
+  .row-label small{display:block;font-family:"Public Sans";font-size:11px;color:var(--ink-soft);font-weight:400;margin-top:2px;letter-spacing:0;text-transform:none;}
+  td.cell{cursor:pointer;transition:filter .15s ease,outline .1s ease;}
+  td.cell button{
+    all:unset;display:block;width:100%;height:100%;cursor:pointer;padding:14px 12px;box-sizing:border-box;
+  }
+  td.cell .status{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+  td.cell .cellhint{font-size:12.5px;color:var(--ink);margin-top:6px;line-height:1.35;opacity:0.9;}
+  td.cell.advance{background:rgba(61,107,78,0.16);}
+  td.cell.partial{background:rgba(154,110,23,0.15);}
+  td.cell.regress{background:rgba(168,62,43,0.16);}
+  td.cell.advance .status{color:var(--forest);}
+  td.cell.partial .status{color:var(--ochre);}
+  td.cell.regress .status{color:var(--brick);}
+  td.cell:hover{filter:brightness(1.04) saturate(1.15);}
+  td.cell:focus-within{outline:2px solid var(--steel);outline-offset:-2px;}
+  td.cell.active{outline:2px solid var(--ink);outline-offset:-2px;}
+  .ledger-key{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 22px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.04em;color:var(--ink-soft);}
+  .ledger-key span{display:inline-flex;align-items:center;gap:7px;}
+  .kbox{width:14px;height:14px;border-radius:2px;display:inline-block;border:1px solid var(--line-2);}
+  .kbox.advance{background:rgba(61,107,78,0.5);}
+  .kbox.partial{background:rgba(154,110,23,0.5);}
+  .kbox.regress{background:rgba(168,62,43,0.5);}
+  .ledger-detail{
+    margin-top:22px;border:1px solid var(--line-2);background:var(--paper);padding:24px 24px;min-height:120px;
+    box-shadow:var(--shadow);
+  }
+  .ledger-detail .dhead{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+  .ledger-detail h3{font-size:24px;margin:0 0 10px;}
+  .ledger-detail p{margin:0;font-size:17px;max-width:70ch;}
+
+  /* ---------- CARD GRIDS ---------- */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .card{
+    background:var(--paper-2);border:1px solid var(--line);padding:22px 22px;border-radius:5px;box-shadow:var(--shadow);
+  }
+  .card h3{font-size:20px;margin:0 0 8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+  .card p{margin:0;font-size:15.5px;color:var(--ink);}
+  .card .cardnum{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--brick);font-weight:600;}
+
+  /* ---------- MYTH FLIP CARDS ---------- */
+  .myths{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .flip{perspective:1400px;height:230px;cursor:pointer;background:none;border:none;padding:0;text-align:left;font:inherit;color:inherit;}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;}
+  .flip.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{
+    position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line-2);border-radius:5px;
+    padding:22px;display:flex;flex-direction:column;box-shadow:var(--shadow);overflow:auto;
+  }
+  .flip-front{background:var(--paper-2);}
+  .flip-back{background:var(--ink);color:var(--paper);transform:rotateY(180deg);}
+  .flip-back .tag{filter:brightness(1.7);}
+  .flip .kicker{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;}
+  .flip-front .kicker{color:var(--brick);}
+  .flip-back .kicker{color:#E8B4A6;}
+  .flip h3{font-size:19px;margin:0 0 8px;line-height:1.2;}
+  .flip-front h3{color:var(--ink);}
+  .flip-back h3{color:var(--paper);}
+  .flip p{font-size:14.5px;margin:0;line-height:1.5;}
+  .flip .flto{margin-top:auto;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;padding-top:10px;}
+
+  /* ---------- VS WORLD ---------- */
+  .world{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .wcol{border:1px solid var(--line-2);border-radius:5px;overflow:hidden;}
+  .wcol h3{margin:0;padding:16px 20px;font-size:20px;color:var(--paper);}
+  .wcol.up h3{background:var(--forest);}
+  .wcol.down h3{background:var(--brick);}
+  .wcol ul{list-style:none;margin:0;padding:8px 0;}
+  .wcol li{padding:12px 20px;border-top:1px solid var(--line);font-size:15px;display:flex;justify-content:space-between;gap:14px;align-items:baseline;}
+  .wcol li:first-child{border-top:none;}
+  .wcol li b{font-weight:600;}
+  .wcol li .rk{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+
+  /* ---------- CURRENT SNAPSHOT ---------- */
+  .snap{background:var(--ink);color:var(--paper);border-top:2px solid var(--brick);}
+  .snap .sec-head h2{color:var(--paper);}
+  .snap .sec-head .eyebrow{color:#E8B4A6;}
+  .snap .sec-head p.lead{color:rgba(232,226,210,0.75);}
+  .snap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(232,226,210,0.14);border:1px solid rgba(232,226,210,0.14);}
+  .snap-item{background:var(--ink);padding:22px 22px;}
+  .snap-item h3{color:var(--paper);font-size:19px;margin:0 0 8px;}
+  .snap-item p{margin:0;font-size:14.5px;color:rgba(232,226,210,0.82);}
+  .snap-item .st{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#8Fb0cf;display:block;margin-top:10px;}
+
+  /* ---------- STEER ---------- */
+  .steer-intro{max-width:70ch;font-size:18px;color:var(--ink);margin-bottom:8px;}
+  .move{border-left:3px solid var(--brick);padding:20px 22px;margin:16px 0;background:var(--paper-2);border-radius:0 5px 5px 0;box-shadow:var(--shadow);}
+  .move .mtop{display:flex;justify-content:space-between;gap:14px;align-items:baseline;flex-wrap:wrap;}
+  .move h3{font-size:22px;margin:0;}
+  .move .conf{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;white-space:nowrap;}
+  .conf.high{background:rgba(61,107,78,0.16);color:var(--forest);}
+  .conf.med{background:rgba(154,110,23,0.16);color:var(--ochre);}
+  .conf.low{background:rgba(168,62,43,0.16);color:var(--brick);}
+  .move p.body{margin:12px 0 0;font-size:16px;}
+  .move .counter{margin:14px 0 0;padding-top:12px;border-top:1px dashed var(--line-2);font-size:14.5px;color:var(--ink-soft);}
+  .move .counter b{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--brick);display:block;margin-bottom:3px;}
+
+  /* ---------- CLOSE ---------- */
+  .close{text-align:center;}
+  .close h2{font-size:clamp(30px,5vw,54px);max-width:20ch;margin:0 auto;}
+  .close .thesis-2{font-family:"Libre Caslon Text",serif;font-size:20px;max-width:52ch;margin:24px auto 0;color:var(--ink-soft);}
+  .grade{margin:44px auto 0;max-width:560px;}
+  .grade .glabel{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px;}
+  .grade-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+  .grade-btn{
+    font-family:"Libre Caslon Display",serif;font-size:26px;width:56px;height:56px;border:1px solid var(--line-2);
+    background:var(--paper);color:var(--ink);border-radius:6px;cursor:pointer;transition:all .16s ease;
+  }
+  .grade-btn:hover{border-color:var(--steel);color:var(--steel);}
+  .grade-btn[aria-pressed="true"]{background:var(--brick);color:var(--paper);border-color:var(--brick);}
+  .grade-read{margin-top:22px;font-family:"Libre Caslon Text",serif;font-size:19px;min-height:2.4em;color:var(--ink);}
+
+  footer{border-top:1px solid var(--line);padding:40px 0 70px;color:var(--ink-soft);font-size:13.5px;line-height:1.7;}
+  footer .mono{font-size:12px;letter-spacing:0.04em;}
+  footer b{color:var(--ink);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:760px){
+    body{font-size:16px;}
+    .metrics,.cards,.myths,.world,.snap-grid{grid-template-columns:1fr;}
+    .legend{display:none;}
+    section{padding:60px 0;}
+    .hero{padding:64px 0 48px;}
+    .row-label{width:auto;}
+    .myths .flip{height:250px;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .flip-inner{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">The American Argument <b>· 250</b></div>
+    <div class="legend">
+      <span><i class="dot settled"></i>Settled</span>
+      <span><i class="dot debated"></i>Debated</span>
+      <span><i class="dot myread"></i>My read</span>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="dateline">United States of America · 1776 – 2026 · Semiquincentennial</div>
+    <h1>The American<br>Argument<span class="yr">.</span></h1>
+    <div class="rule"></div>
+    <p class="thesis">For 250 years, America has been an argument between the promise it wrote down and the country it actually built. The words <b>all men are created equal</b> were true as an aspiration and false as a description, on the same day, in the same document. Everything since is the slow, contested, often reversed work of closing that gap: widening who counts as fully American, and sometimes narrowing it again.</p>
+
+    <div class="lens">
+      <div class="eyebrow" style="margin-top:38px;">Choose your lens</div>
+      <p style="color:var(--ink-soft);max-width:60ch;margin:8px 0 0;font-size:15px;">This page reads the story through one lens. The facts below do not change. Their meaning does. Pick another and reread.</p>
+      <div class="lens-btns" id="lensBtns">
+        <button class="lens-btn" data-lens="creed" aria-pressed="true">Creed vs practice</button>
+        <button class="lens-btn" data-lens="triumph" aria-pressed="false">Triumphalist</button>
+        <button class="lens-btn" data-lens="declension" aria-pressed="false">Declension</button>
+        <button class="lens-btn" data-lens="cyclical" aria-pressed="false">Cyclical</button>
+        <button class="lens-btn" data-lens="material" aria-pressed="false">Materialist</button>
+      </div>
+      <div class="lens-read" id="lensRead"></div>
+    </div>
+  </header>
+
+  <!-- ================= TRANSFORMATION ================= -->
+  <section id="transformation">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="num">01</span> &nbsp;The transformation</span>
+      <h2>Same country, 250 years apart.</h2>
+      <p class="lead">Flip the switch. A rural republic on the Atlantic edge became a continental, industrial, then digital superpower. The scale of the change is not in dispute. What it cost, and who it reached, is the rest of the page.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="toggle" id="yearToggle" role="group" aria-label="Select year">
+        <button data-year="1776" aria-pressed="true">1776</button>
+        <button data-year="2026" aria-pressed="false">2026</button>
+      </div>
+      <div class="metrics" id="metrics"></div>
+    </div>
+  </section>
+
+  <!-- ================= LEDGER ================= -->
+  <section id="ledger">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="num">02</span> &nbsp;The ledger of promises</span>
+      <h2>Keeping the country's word.</h2>
+      <p class="lead">The founding made five promises. This is an accounting of how well each was kept across five turning points. Tap any cell to read the entry. Green is a step toward the promise, amber is partial or mixed, red is a breach or a retreat.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="ledger-key">
+        <span><i class="kbox advance"></i>Advanced</span>
+        <span><i class="kbox partial"></i>Partial / mixed</span>
+        <span><i class="kbox regress"></i>Breached / regressed</span>
+      </div>
+      <div class="ledger-wrap">
+        <table class="ledger" id="ledgerTable">
+          <thead>
+            <tr>
+              <th>Promise \ Era</th>
+              <th>Founding<br><span style="opacity:.7">1776–1800</span></th>
+              <th>Civil War &amp; Reconstruction<br><span style="opacity:.7">1861–1877</span></th>
+              <th>Progressive &amp; New Deal<br><span style="opacity:.7">1900–1945</span></th>
+              <th>Civil Rights<br><span style="opacity:.7">1945–1975</span></th>
+              <th>The Present<br><span style="opacity:.7">1975–2026</span></th>
+            </tr>
+          </thead>
+          <tbody id="ledgerBody"></tbody>
+        </table>
+      </div>
+      <div class="ledger-detail" id="ledgerDetail">
+        <div class="dhead">Select a cell</div>
+        <h3>Read the country's ledger, entry by entry.</h3>
+        <p>Each cell holds a short account of how a founding promise fared in that era. Start anywhere. The diagonal from top-left to bottom-right is the story of the creed slowly, unevenly, catching up to its own words.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SUCCESSES ================= -->
+  <section id="successes">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="num">03</span> &nbsp;What it got right</span>
+      <h2>The biggest successes.</h2>
+      <p class="lead">Not a victory lap. These are the achievements that hold up under scrutiny, including from people who dislike the country.</p>
+    </div>
+    <div class="cards reveal" id="successCards"></div>
+  </section>
+
+  <!-- ================= FAILURES ================= -->
+  <section id="failures">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="num">04</span> &nbsp;What it failed</span>
+      <h2>The biggest failures and unmet ideals.</h2>
+      <p class="lead">The gap between the creed and the country, named plainly. A page that only lists the wins is a brochure, not a history.</p>
+    </div>
+    <div class="cards reveal" id="failureCards"></div>
+  </section>
+
+  <!-- ================= MYTHS ================= -->
+  <section id="myths">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="num">05</span> &nbsp;Myth-busting</span>
+      <h2>What most people get wrong.</h2>
+      <p class="lead">Chosen to annoy every side about equally. Tap a card to turn it over. If the section only punctured one team's beliefs, it would be propaganda, not history.</p>
+    </div>
+    <div class="myths reveal" id="mythCards"></div>
+  </section>
+
+  <!-- ================= VS WORLD ================= -->
+  <section id="world">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="num">06</span> &nbsp;America vs the world</span>
+      <h2>Where it actually stands.</h2>
+      <p class="lead">Among wealthy nations, the United States leads on a few things by a wide margin and trails on several that shape ordinary lives. Figures are broadly stable year to year, drawn from roughly 2023–2025. Verify the latest before anything goes public.</p>
+    </div>
+    <div class="world reveal">
+      <div class="wcol up">
+        <h3>Punches above</h3>
+        <ul>
+          <li><span><b>Economy.</b> Largest in the world by output.</span><span class="rk">#1 · ~$29T (2025)</span></li>
+          <li><span><b>Innovation &amp; universities.</b> Dominates frontier tech and top-ranked research.</span><span class="rk">#1 tier</span></li>
+          <li><span><b>Military reach.</b> Spends more than the next several nations combined.</span><span class="rk">#1</span></li>
+          <li><span><b>Cultural &amp; soft power.</b> Outsized global reach in media, software, finance.</span><span class="rk">#1 tier</span></li>
+          <li><span><b>Attracting talent.</b> Still the top destination for global migrants and researchers.</span><span class="rk">#1</span></li>
+        </ul>
+      </div>
+      <div class="wcol down">
+        <h3>Falls below</h3>
+        <ul>
+          <li><span><b>Life expectancy.</b> Below nearly every wealthy peer.</span><span class="rk">~78 yrs</span></li>
+          <li><span><b>Healthcare value.</b> Spends the most per person for worse outcomes.</span><span class="rk">Most $, mid results</span></li>
+          <li><span><b>Incarceration.</b> Among the highest rates on earth.</span><span class="rk">Top tier</span></li>
+          <li><span><b>Economic mobility.</b> Trails much of the developed world.</span><span class="rk">Below peers</span></li>
+          <li><span><b>Gun deaths &amp; maternal mortality.</b> Far above comparable nations.</span><span class="rk">Worst in class</span></li>
+          <li><span><b>Democracy indices.</b> Still a democracy, downgraded by some raters lately.</span><span class="rk">"Flawed" (some)</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:16px;font-size:14px;color:var(--ink-soft);"><span class="tag settled">Settled</span> for most rows above. <span class="tag debated">Debated</span> for economic mobility and the democracy ratings, where method and interpretation vary.</p>
+  </section>
+
+  <!-- ================= CURRENT SNAPSHOT ================= -->
+  <section id="now" class="snap">
+    <div class="wrap" style="padding:0;">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="num" style="color:#E8B4A6;">07</span> &nbsp;State of the union at 250</span>
+        <h2>Where it stands right now.</h2>
+        <p class="lead">A snapshot as of July 2, 2026, pulled from live reporting. This is the fast-moving layer, especially the war. Treat every item as current and re-verify before public use.</p>
+      </div>
+      <div class="snap-grid reveal" id="snapGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= CHALLENGES ================= -->
+  <section id="challenges">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="num">08</span> &nbsp;The road ahead</span>
+      <h2>The biggest challenges.</h2>
+      <p class="lead">The problems that will define the next stretch. Where these are genuinely contested, the tag says so.</p>
+    </div>
+    <div class="cards reveal" id="challengeCards"></div>
+  </section>
+
+  <!-- ================= STEER ================= -->
+  <section id="steer">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="num">09</span> &nbsp;If I were steering</span>
+      <h2>How I'd steer the next decade.</h2>
+      <p class="lead">You asked for the bold version, so here it is. This is my argument, not a forecast and not neutral. Every move carries a confidence level and the strongest case against it, right next to it. Argue back.</p>
+    </div>
+    <p class="steer-intro reveal">Two piles. Some of these have more expert agreement than the daily fight suggests. Others depend on values that people hold differently in good faith, and no amount of cleverness settles them. I have marked which is which inside each.</p>
+    <div class="reveal" id="steerMoves"></div>
+  </section>
+
+  <!-- ================= CLOSE ================= -->
+  <section id="close" class="close">
+    <div class="reveal">
+      <span class="eyebrow" style="display:block;margin-bottom:16px;">The last word, for now</span>
+      <h2>At 250, the argument is not over. The argument <em style="font-style:italic;color:var(--brick);">is</em> the country.</h2>
+      <p class="thesis-2">The anniversary itself is being fought over in real time, by rival celebrations and rival stories. That is not a sign the experiment failed. It is the experiment. A nation founded on a promise it had not yet kept was always going to spend its life arguing about the distance left to travel.</p>
+
+      <div class="grade">
+        <div class="glabel">Your turn. What grade would you give America at 250?</div>
+        <div class="grade-btns" id="gradeBtns">
+          <button class="grade-btn" data-g="A" aria-pressed="false">A</button>
+          <button class="grade-btn" data-g="B" aria-pressed="false">B</button>
+          <button class="grade-btn" data-g="C" aria-pressed="false">C</button>
+          <button class="grade-btn" data-g="D" aria-pressed="false">D</button>
+          <button class="grade-btn" data-g="F" aria-pressed="false">F</button>
+        </div>
+        <div class="grade-read" id="gradeRead">Pick a letter. There is no right answer, only your reading of the ledger.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="mono"><b>On sourcing.</b> The 250-year history and the myth-busting draw on settled scholarship and are stable. The "State of the Union at 250" panel is a live snapshot dated July 2, 2026, and should be re-checked before any public showing. Tags mark each claim as settled, debated, or my read. The "my read" and "how I'd steer it" sections are interpretation, offered to be argued with, not accepted.</p>
+    <p style="margin-top:14px;">Built with Claude for a conversation about the country at 250. One lens among several. Bring your own.</p>
+  </footer>
+
+</div>
+
+<script>
+/* ---------------- LENS ---------------- */
+const lensText = {
+  creed:"<b>Creed vs practice.</b> The story is the gap between the words and the country, and the long fight to close it. Successes and failures live in the same sentence.",
+  triumph:"<b>Triumphalist.</b> A freedom-and-prosperity engine that beat monarchy, fascism, and communism, lifted living standards, and became the world's indispensable power. The failures are detours on an upward road.",
+  declension:"<b>Declension.</b> A great republic that has drifted from its founding virtues: civic trust, self-reliance, shared purpose. The task is recovery, not progress.",
+  cyclical:"<b>Cyclical.</b> History moves in generational turnings of crisis and renewal. 2026 reads as another crisis peak, the kind the country has survived and been remade by before.",
+  material:"<b>Materialist.</b> Follow the money and the machines. Land, cotton, rail, oil, silicon, and now compute explain more of the story than any speech. Ideals mostly follow the economy."
+};
+const lensBtns = document.getElementById('lensBtns');
+const lensRead = document.getElementById('lensRead');
+function setLens(l){
+  lensRead.innerHTML = lensText[l];
+  [...lensBtns.children].forEach(b=>b.setAttribute('aria-pressed', b.dataset.lens===l));
+}
+lensBtns.addEventListener('click',e=>{ if(e.target.dataset.lens) setLens(e.target.dataset.lens); });
+setLens('creed');
+
+/* ---------------- TRANSFORMATION ---------------- */
+const metricsData = [
+  {label:"Population", tag:"settled", n1:2.5, d1:"2.5M", n2:342, d2:"342M", fmt:v=>v.toFixed(v<10?1:0)+"M", note1:"est., about 1 in 5 enslaved", note2:"2025 est."},
+  {label:"States in the Union", tag:"settled", n1:13, d1:"13", n2:50, d2:"50", fmt:v=>Math.round(v).toString(), note1:"the original thirteen", note2:"coast to coast plus"},
+  {label:"Territory", tag:"settled", n1:0.87, d1:"0.87M mi²", n2:3.8, d2:"3.8M mi²", fmt:v=>v.toFixed(2)+"M mi²", note1:"Atlantic seaboard", note2:"a continent"},
+  {label:"Enslaved share of people", tag:"settled", n1:20, d1:"~20%", n2:0, d2:"0%", fmt:v=>"~"+Math.round(v)+"%", note1:"about 500,000 people", note2:"abolished 1865"},
+  {label:"Share of people who could vote", tag:"debated", n1:6, d1:"~6%", n2:66, d2:"~66%", fmt:v=>"~"+Math.round(v)+"%", note1:"est., propertied white men", note2:"nearly all adult citizens"},
+  {label:"Life expectancy at birth", tag:"debated", n1:35, d1:"~35", n2:78, d2:"~78", fmt:v=>"~"+Math.round(v), note1:"skewed by infant deaths", note2:"2023"},
+  {label:"The economy", tag:"settled", text:true, d1:"Agrarian", d2:"$29T · #1", note1:"no formal GDP", note2:"largest in the world, 2025"}
+];
+const metricsEl = document.getElementById('metrics');
+metricsEl.innerHTML = metricsData.map((m,i)=>`
+  <div class="metric">
+    <div class="mlabel">${m.label} <span class="tag ${m.tag}">${m.tag==='myread'?'My read':m.tag}</span></div>
+    <div class="mval ${m.text?'text':''}" id="mval-${i}">${m.d1}</div>
+    <div class="mnote" id="mnote-${i}">${m.note1}</div>
+  </div>`).join('');
+
+let curYear = "1776";
+function animateVal(el, from, to, fmt, dur=850){
+  const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce){ el.textContent = fmt(to); return; }
+  const start = performance.now();
+  function step(t){
+    let p = Math.min((t-start)/dur,1);
+    p = 1-Math.pow(1-p,3);
+    el.textContent = fmt(from+(to-from)*p);
+    if(p<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+function setYear(y){
+  curYear = y;
+  [...document.getElementById('yearToggle').children].forEach(b=>b.setAttribute('aria-pressed', b.dataset.year===y));
+  metricsData.forEach((m,i)=>{
+    const val = document.getElementById('mval-'+i);
+    const note = document.getElementById('mnote-'+i);
+    if(m.text){ val.textContent = y==="1776"?m.d1:m.d2; }
+    else{
+      const from = y==="1776"?m.n2:m.n1;
+      const to = y==="1776"?m.n1:m.n2;
+      animateVal(val, from, to, m.fmt);
+    }
+    note.textContent = y==="1776"?m.note1:m.note2;
+  });
+}
+document.getElementById('yearToggle').addEventListener('click',e=>{ if(e.target.dataset.year) setYear(e.target.dataset.year); });
+
+/* ---------------- LEDGER ---------------- */
+const promises = [
+  {name:"Equality", sub:"all men are created equal"},
+  {name:"Liberty", sub:"freedom from tyranny"},
+  {name:"Self-government", sub:"consent of the governed"},
+  {name:"Opportunity", sub:"the pursuit of happiness"},
+  {name:"Rule of law", sub:"no one above it"}
+];
+const eras = ["Founding","Civil War & Reconstruction","Progressive & New Deal","Civil Rights","The Present"];
+// status: advance | partial | regress ; each cell: {s, hint, text, tag}
+const ledger = {
+ "Equality":[
+   {s:"regress",hint:"Equality declared, slavery written in.",text:"The Declaration announced that all men are created equal while the Constitution protected slavery and counted the enslaved as three-fifths of a person for representation. The promise and its betrayal arrived in the same breath.",tag:"settled"},
+   {s:"advance",hint:"The largest single leap.",text:"The 13th, 14th, and 15th Amendments abolished slavery and wrote birthright citizenship and equal protection into the Constitution. On paper, the biggest step the creed ever took.",tag:"settled"},
+   {s:"partial",hint:"Women enfranchised, Jim Crow hardens.",text:"The 19th Amendment (1920) enfranchised women, but Jim Crow tightened its grip and many New Deal programs excluded Black and domestic workers by design. Progress and entrenchment at once.",tag:"settled"},
+   {s:"advance",hint:"The creed given teeth.",text:"The Civil Rights Act (1964) and Voting Rights Act (1965) dismantled legal segregation and re-enfranchised millions. The distance between word and law narrowed sharply.",tag:"settled"},
+   {s:"partial",hint:"Legal equality, unequal outcomes.",text:"Legal equality is broadly established and same-sex marriage became a right in 2015, yet large gaps in wealth, health, and outcomes persist, and 2026 rulings narrowed federal voting-rights enforcement.",tag:"debated"}
+ ],
+ "Liberty":[
+   {s:"partial",hint:"Bill of Rights, then Sedition Acts.",text:"The Bill of Rights (1791) was a genuine landmark, but liberty was reserved for a narrow class, and the Alien and Sedition Acts (1798) criminalized dissent almost immediately.",tag:"settled"},
+   {s:"advance",hint:"Freedom for four million.",text:"Emancipation extended basic personal liberty to roughly four million people, the deepest single expansion of freedom in the nation's history.",tag:"settled"},
+   {s:"partial",hint:"Speech expands, internment stains.",text:"Labor and speech freedoms grew, but the era also brought the Espionage Act, the Red Scares, and the mass internment of Japanese Americans in 1942.",tag:"settled"},
+   {s:"advance",hint:"Rights broadened by the Court.",text:"Free-speech, privacy, and due-process protections expanded sharply through landmark rulings, reaching into schools, police stations, and the press.",tag:"settled"},
+   {s:"partial",hint:"Broad liberties, live disputes.",text:"Americans hold broad civil liberties by world standards, amid unresolved fights over surveillance, online speech, reproductive liberty after Dobbs (2022), and the reach of executive power.",tag:"debated"}
+ ],
+ "Self-government":[
+   {s:"partial",hint:"Consent, but a tiny electorate.",text:"A real experiment in consent of the governed, yet the electorate was small and the Senate and Electoral College were built partly to blunt popular majorities.",tag:"settled"},
+   {s:"advance",hint:"Suffrage extended, then rolled back.",text:"Suffrage reached Black men and, briefly, Reconstruction governments were among the most democratic in the world, before violent overthrow ended them.",tag:"settled"},
+   {s:"advance",hint:"The vote widens.",text:"Direct election of senators (1913), women's suffrage (1920), and the spread of primaries handed more control to ordinary voters.",tag:"settled"},
+   {s:"advance",hint:"Universal suffrage made real.",text:"The Voting Rights Act (1965) finally turned the promise of universal suffrage into practice across the South.",tag:"settled"},
+   {s:"partial",hint:"Universal vote, strained trust.",text:"Nearly all adults can vote, but gerrymandering, money in politics (loosened again in 2026), and fights over election administration strain public trust in the machinery itself.",tag:"debated"}
+ ],
+ "Opportunity":[
+   {s:"partial",hint:"Mobility built on dispossession.",text:"Cheap land and no hereditary aristocracy made real mobility possible for white men, on a foundation of dispossessed Native land and enslaved labor.",tag:"settled"},
+   {s:"partial",hint:"Homesteads granted, 'forty acres' revoked.",text:"The Homestead Act (1862) and land-grant colleges opened opportunity widely, while the promise of 'forty acres and a mule' to the freed was made and then rescinded.",tag:"settled"},
+   {s:"advance",hint:"The middle-class scaffolding.",text:"Public schools, Social Security (1935), and labor protections built the frame of a mass middle class for the first time.",tag:"settled"},
+   {s:"advance",hint:"Broadest prosperity yet.",text:"The GI Bill, rising real wages, and expanding college access produced the widest middle-class prosperity in history, though it was shared unevenly by race.",tag:"settled"},
+   {s:"regress",hint:"Reputation up, mobility down.",text:"The country keeps its reputation as a land of opportunity, but measured economic mobility now trails much of the developed world, and 2026's two-track economy widened the gap.",tag:"debated"}
+ ],
+ "Rule of law":[
+   {s:"advance",hint:"Power placed under law.",text:"A written Constitution and judicial review, established in Marbury v. Madison (1803), subordinated power to law. A genuine innovation in self-restraint.",tag:"settled"},
+   {s:"partial",hint:"Law rewritten, then unenforced.",text:"The law was rewritten to guarantee equal protection, then largely left unenforced as terror, Black Codes, and eventually Jim Crow filled the vacuum.",tag:"settled"},
+   {s:"partial",hint:"Law reaches markets, bends to fear.",text:"Regulation finally brought law to industry and finance, while the Court warred with the New Deal and internment showed the law bending to wartime fear.",tag:"settled"},
+   {s:"advance",hint:"Federal law enforces rights.",text:"Federal power was used to enforce constitutional rights against state resistance, a high-water mark for the idea of equal justice.",tag:"settled"},
+   {s:"partial",hint:"Strong courts, hard tests.",text:"Courts and institutions remain strong and were tested through 2026 by clashes over executive power, the independence of agencies, and presidential accountability.",tag:"debated"}
+ ]
+};
+const statusWord = {advance:"Advanced", partial:"Partial", regress:"Breach"};
+const body = document.getElementById('ledgerBody');
+promises.forEach(p=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td class="row-label">${p.name}<small>${p.sub}</small></td>`;
+  ledger[p.name].forEach((cell,ei)=>{
+    const td = document.createElement('td');
+    td.className = "cell "+cell.s;
+    td.innerHTML = `<button aria-label="${p.name}, ${eras[ei]}"><span class="status">${statusWord[cell.s]}</span><span class="cellhint">${cell.hint}</span></button>`;
+    td.querySelector('button').addEventListener('click',()=>{
+      document.querySelectorAll('td.cell.active').forEach(c=>c.classList.remove('active'));
+      td.classList.add('active');
+      const d = document.getElementById('ledgerDetail');
+      d.innerHTML = `<div class="dhead">${p.name} &nbsp;·&nbsp; ${eras[ei]} &nbsp;·&nbsp; <span style="color:var(--${cell.s==='advance'?'forest':cell.s==='partial'?'ochre':'brick'})">${statusWord[cell.s]}</span></div>
+        <h3>${p.name} <span class="tag ${cell.tag}">${cell.tag}</span></h3>
+        <p>${cell.text}</p>`;
+      d.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
+    tr.appendChild(td);
+  });
+  body.appendChild(tr);
+});
+
+/* ---------------- CARD SECTIONS ---------------- */
+function renderCards(elId, arr){
+  document.getElementById(elId).innerHTML = arr.map((c,i)=>`
+    <div class="card">
+      <h3><span class="cardnum">${String(i+1).padStart(2,'0')}</span> ${c.t} <span class="tag ${c.tag}">${c.tag==='myread'?'My read':c.tag}</span></h3>
+      <p>${c.b}</p>
+    </div>`).join('');
+}
+renderCards('successCards',[
+  {t:"The Constitution and the peaceful handoff",tag:"settled",b:"The world's oldest written national constitution still in force, a framework that has absorbed civil war, depression, and vast social change while power kept changing hands by ballot, not blood. It was stress-tested again in 2026."},
+  {t:"Ending slavery and legal segregation",tag:"settled",b:"Abolishing chattel slavery and later dismantling the legal machinery of Jim Crow. Slow, bloody, and incomplete, but a genuine reversal of the country's original sin in law."},
+  {t:"The engine of innovation and wealth",tag:"settled",b:"From electrification and mass production to the transistor, the internet, and now AI, the US built the largest economy on earth and the research universities the world still copies."},
+  {t:"Turning newcomers into citizens",tag:"settled",b:"Absorbing wave after wave of immigrants and, over generations, making them fully American. Contentious in every era, and still a feat almost no country pulls off at this scale."},
+  {t:"Defeating fascism, anchoring the order",tag:"settled",b:"The decisive weight in the defeat of fascism, then the architect of the postwar institutions and alliances that underwrote decades of relative peace among great powers."},
+  {t:"Exporting the idea itself",tag:"myread",b:"The Declaration's language became a template. Independence and rights movements around the world borrowed the American creed to indict, among others, America. The promise outran the country and kept pulling it forward."}
+]);
+renderCards('failureCards',[
+  {t:"Slavery and its long afterlife",tag:"settled",b:"Two and a half centuries of bondage, then a century of legal apartheid, then persistent gaps in wealth, health, and justice. The through-line failure the whole page keeps returning to."},
+  {t:"Native dispossession and removal",tag:"settled",b:"The near-destruction of Indigenous nations through war, broken treaties, and forced removal. The continent that made American opportunity possible was taken, not found empty."},
+  {t:"A rich country with a hard median life",tag:"debated",b:"Among wealthy democracies, the US tolerates high inequality, thin safety nets, and worse results on health, longevity, and mobility. Wealth at the top has not bought a better ordinary life."},
+  {t:"Political violence and division",tag:"settled",b:"From the Civil War through waves of racial and political terror to today's polarization, the country has repeatedly turned its arguments into blood or the threat of it."},
+  {t:"Foreign misadventures",tag:"debated",b:"A long record of interventions whose costs, legality, and results remain contested, from the Philippines and Vietnam to Iraq and, by many analysts' reading, the 2026 war with Iran."},
+  {t:"Preaching the creed it broke",tag:"myread",b:"The recurring hypocrisy the founders' own critics named: demanding liberty abroad while denying it at home. The gap between sermon and conduct is the country's most durable failure."}
+]);
+renderCards('challengeCards',[
+  {t:"The two-economy split",tag:"debated",b:"Record asset wealth sitting on top of a squeezed median household. In 2026 the market hit highs while consumer sentiment hit an all-time low. Closing that gap, on housing, energy, and prices, is the central domestic problem."},
+  {t:"The balance of power",tag:"debated",b:"How much authority the presidency should hold, and who checks it. 2026 pushed executive power outward through the courts and the war. Supporters call it decisiveness, critics call it a constitutional stress test."},
+  {t:"The AI transition",tag:"myread",b:"The most powerful economic force of the decade, concentrating in a handful of firms now nearing trillion-dollar valuations. Whether it lifts wages or hollows them out is a policy choice, not a fact of nature."},
+  {t:"The fiscal math",tag:"settled",b:"Debt, aging, and rising interest costs are on a path that compounds. The arithmetic is not seriously disputed. The willingness to touch taxes or entitlements is."},
+  {t:"Shared reality",tag:"debated",b:"A media and information system that increasingly sorts people into separate factual worlds. Self-government is hard when citizens cannot agree on what happened."},
+  {t:"America's place after 2026",tag:"debated",b:"The war, the energy shock, and strained alliances have reopened the question of what role the country plays in the world, and whether others still see it as a stable anchor."}
+]);
+
+/* ---------------- MYTHS ---------------- */
+const myths = [
+  {k:"The founders",f:"They shared one clear vision.",b:"They fought bitterly in print and in person. The Constitution was a grudging bundle of compromises, and several signers expected it to fail.",tag:"settled"},
+  {k:"Self-made nation",f:"Rugged individualism built America.",b:"Government handed out the continent (Homestead Act), built the railroads and interstates, educated a generation (GI Bill), and seeded the internet. The state is all over the origin story.",tag:"settled"},
+  {k:"Immigration",f:"My ancestors all came the legal way.",b:"For Europeans before the 1920s there was almost no illegal way to come. Broad restriction, quotas, and the modern category of 'illegal' immigration came later.",tag:"settled"},
+  {k:"The Depression",f:"The New Deal ended it.",b:"The New Deal helped and reshaped the state, but full recovery arrived with the massive mobilization for World War II.",tag:"debated"},
+  {k:"Life in 1776",f:"People died around 35.",b:"That average is dragged down by high infant mortality. A colonist who reached 20 often lived into their 60s. Short lifespans were a statistic, not a daily reality.",tag:"settled"},
+  {k:"Native peoples",f:"They lived in frictionless harmony with nature.",b:"Indigenous societies were diverse, dynamic, and actively shaped their land with fire and agriculture. The 'ecological Indian' is its own flattening myth.",tag:"debated"},
+  {k:"The Civil War",f:"It was about states' rights, not slavery.",b:"The seceding states' own declarations named the protection of slavery as the cause. States' rights to do what is the question, and they answered it themselves.",tag:"debated"},
+  {k:"Democracy",f:"America was always a democracy.",b:"At the founding only a small, propertied, white, male slice could vote. Something close to universal adult suffrage is a 20th-century achievement.",tag:"settled"},
+  {k:"The self-made company",f:"Great companies are built by the free market alone.",b:"The state is repeatedly the anchor customer, the first risky investor, and the insurer of last resort. Defense giants run on federal backlogs, the internet and GPS grew out of public R&D, and the 2008 backstop raised the floor under the whole market. The risk was largely public. The reward got privatized.",tag:"debated"}
+];
+document.getElementById('mythCards').innerHTML = myths.map((m,i)=>`
+  <button class="flip" aria-label="Myth: ${m.f} Tap to reveal.">
+    <div class="flip-inner">
+      <div class="flip-face flip-front">
+        <div class="kicker">Myth · ${m.k}</div>
+        <h3>${m.f}</h3>
+        <div class="flto">Tap to turn over</div>
+      </div>
+      <div class="flip-face flip-back">
+        <div class="kicker">What actually happened <span class="tag ${m.tag}">${m.tag}</span></div>
+        <p>${m.b}</p>
+        <div class="flto">Tap to flip back</div>
+      </div>
+    </div>
+  </button>`).join('');
+document.querySelectorAll('.flip').forEach(f=>f.addEventListener('click',()=>f.classList.toggle('flipped')));
+
+/* ---------------- CURRENT SNAPSHOT ---------------- */
+const snap = [
+  {t:"A war and an energy shock",b:"The US and Israel struck Iran on February 28, killing its supreme leader. Iran's closure of the Strait of Hormuz set off what the World Bank called the largest oil market shock in history. As of late June the two sides reached a fragile stand-down and shipping resumed."},
+  {t:"An economy of two stories",b:"Markets sit near record highs on an AI capital-spending boom, while May inflation ran about 4.2 percent and consumer sentiment fell to 44.8, an all-time low in a survey dating to 1952. Wealth at the top, strain in the middle."},
+  {t:"A blockbuster Supreme Court term",b:"The Court expanded the president's power to fire independent-agency officials, yet preserved birthright citizenship and the Fed's independence against the administration, and narrowed federal voting-rights enforcement. A 6-3 court, but a mixed record."},
+  {t:"AI at full sprint",b:"New frontier models now match or beat human experts on many professional tasks, and both OpenAI and Anthropic filed to go public at valuations approaching a trillion dollars. The technology is reshaping the economy faster than policy can respond."},
+  {t:"A coin-flip midterm",b:"Control of Congress is genuinely up for grabs on November 3, with affordability the dominant issue and mid-cycle redistricting reshaping the House map. History favors the party out of the White House."},
+  {t:"A contested birthday",b:"The 250th itself is split between rival commemorations and rival stories. Polls find most Americans now believe the country has strayed from its founding principles, and belief in American exceptionalism has waned."}
+];
+document.getElementById('snapGrid').innerHTML = snap.map(s=>`
+  <div class="snap-item">
+    <h3>${s.t}</h3>
+    <p>${s.b}</p>
+    <span class="st">Current · as of Jul 2, 2026 · verify</span>
+  </div>`).join('');
+
+/* ---------------- STEER ---------------- */
+const moves = [
+  {t:"Build. Housing, energy, and the permits to allow both.",c:"high",lab:"High confidence",b:"The cost-of-living crisis is at its core a supply problem. Make it dramatically easier to build homes and generate energy. This is where expert agreement is broadest, across the usual divide.",x:"Federal leverage over local zoning is limited, and fast-tracking can steamroll real environmental and community concerns. Building more is easy to say and slow to do."},
+  {t:"Treat the AI transition as policy, not weather.",c:"med",lab:"Values-dependent",b:"Invest seriously in the people it displaces and keep its enormous gains from pooling in a few firms. The transition is coming either way. Whether it lifts most people or a few is a decision.",x:"Heavy intervention could kneecap the one frontier where the US clearly leads, and governments are bad at picking winners in a field moving this fast."},
+  {t:"Re-anchor the balance of power, whoever holds it.",c:"med",lab:"Higher consensus in principle",b:"Write clear statutory limits on emergency and removal powers that bind every future president, not just the current one. Guardrails should be neutral by design.",x:"Each side will read 'neutral guardrails' as aimed at them, and Congress has shown almost no appetite to bind any president of its own party."},
+  {t:"Do the fiscal grand bargain nobody wants.",c:"med",lab:"Math easy, politics brutal",b:"Modest, phased-in tax increases paired with slower-growing entitlement costs. The arithmetic is not hard. The coalition is. Waiting only makes the eventual fix harsher.",x:"Every prior attempt collapsed. It is politically radioactive, and each party punishes anyone who touches the third rail first."},
+  {t:"Pair real border control with a real legal door.",c:"med",lab:"Values-dependent",b:"Genuine enforcement at the border alongside a large, orderly, legal pipeline for workers and families, plus a path for the long-settled. Control and openness are not opposites.",x:"Versions of this 'grand bargain' have collapsed repeatedly. Trust between the sides is largely gone, and each fears the other will honor only half."},
+  {t:"Close the health and longevity gap.",c:"high",lab:"Diagnosis solid, fix contested",b:"It is indefensible to spend the most per person and die younger than peer nations. Aim policy at that gap directly. On the diagnosis I am confident. On any single cure, far less.",x:"The US system's scale, incentives, and politics make European-style fixes hard to transplant, and poorly designed reforms could raise costs without improving outcomes."},
+  {t:"Compete hard, but pick fewer wars.",c:"med",lab:"Values-dependent",b:"After 2026, treat allies as assets rather than costs and reserve force for genuine necessity. Sustained strength comes from restraint plus reliability, not from constant escalation.",x:"Restraint can be read as retreat and invite testing by rivals. Deterrence sometimes depends on the credible willingness to actually use force."},
+  {t:"And the one that is not a policy: choose the widening circle.",c:"low",lab:"A values statement, argue with it",b:"When the country is unsure who counts as fully American, decide, again, for the larger 'we.' That choice, made and remade, is the thread that runs through every honest reading of these 250 years.",x:"Who counts as included is exactly what Americans disagree about. My framing is itself contested, and calling it the 'right' direction is a value, not a finding."}
+];
+document.getElementById('steerMoves').innerHTML = moves.map((m,i)=>`
+  <div class="move">
+    <div class="mtop">
+      <h3><span class="mono" style="color:var(--brick);font-size:14px;">${String(i+1).padStart(2,'0')}</span> &nbsp;${m.t}</h3>
+      <span class="conf ${m.c}">${m.lab}</span>
+    </div>
+    <p class="body">${m.b}</p>
+    <div class="counter"><b>Strongest case against</b>${m.x}</div>
+  </div>`).join('');
+
+/* ---------------- GRADE ---------------- */
+const gradeText = {
+  A:"An A says the arc bends and the creed is mostly kept. Defensible, if you weight the long climb over the current strain.",
+  B:"A B: a remarkable run with serious, unfinished business. The most common read among people who take both the wins and the wounds seriously.",
+  C:"A C says the promise and the practice are still roughly even. Plenty of scholars would sign their name to that.",
+  D:"A D weights the unmet ideals heavily, and reads 2026 as evidence the gap is widening again. A hard grade, not an unreasonable one.",
+  F:"An F says the distance between the words and the country is the whole story. A minority view, but the founders' sharpest critics held it too."
+};
+const gBtns = document.getElementById('gradeBtns');
+gBtns.addEventListener('click',e=>{
+  if(!e.target.dataset.g) return;
+  [...gBtns.children].forEach(b=>b.setAttribute('aria-pressed', b===e.target));
+  document.getElementById('gradeRead').textContent = gradeText[e.target.dataset.g];
+});
+
+/* ---------------- SCROLL REVEAL ---------------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
