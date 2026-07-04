@@ -41,7 +41,6 @@
         .serif { font-family: 'Fraunces', serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         
-        /* Immersive editorial styling overrides */
         p { margin-bottom: 1.5rem; line-height: 1.75; font-size: 1.075rem; }
         .essay-section { display: none; }
         .essay-section.active { display: block; }
@@ -55,7 +54,7 @@
                 The Semiquincentennial Audit
             </div>
             <div class="font-mono text-[11px] text-ink-soft bg-parchment-200 px-3 py-1 rounded border border-parchment-300">
-                Dispatch: July 2, 2026
+                Dispatch: July 4, 2026
             </div>
         </div>
     </nav>
@@ -130,7 +129,7 @@
                         <button onclick="loadScaffold('local')" id="sc-local" class="text-ink-soft pb-1 px-2">Local Layer</button>
                     </div>
                     <p id="scaffold-body" class="text-sm text-ink-soft leading-relaxed pt-1">
-                        Federal procurement capital anchors the high-risk innovation frontier. Private financial networks are systemically unsuited for zero-immediate-return basic science. Consequently, every foundational breakthrough of modern tech—DARPA building the internet routing protocols, global positioning coordinates (GPS), cellular multi-touch glass, and advanced genomic mapping—was entirely bankrolled by federal taxpayers before being packaged into commercial software.
+                        Federal procurement capital anchors the high-risk innovation frontier. Private financial networks are systemically unsuited for zero-immediate-return basic science. Consequently, every foundational breakthrough of modern tech—DARPA funding the baseline routing nodes of the internet, the Department of Defense building and launching the Navstar GPS satellite array, NIH grants discovering genomic therapies—was entirely bankrolled by federal taxpayers before being handed to corporate entities to wrap into consumer packaging.
                     </p>
                 </div>
 
@@ -207,72 +206,73 @@
             </div>
 
             <div id="chap-blueprint" class="essay-section space-y-6 animate-fade">
-                <h2 class="serif text-3xl font-bold text-ink mb-4">Chapter 04 // The AI Steering Blueprint (2026–2036)</h2>
-                <p>
-                    If an objective, analytical computing system were handed the control array of the United States for the next decade, the methodology would ignore partisan theater entirely. The prime objective would be clear: system stabilization, resource optimization, and human asset insulation from the upcoming automation shockwaves. 
+                <h2 class="serif text-3xl font-bold text-ink mb-4">Chapter 04 // The 2026–2036 Blueprint: Re-Coding the Experiment</h2>
+                
+                <p class="serif text-xl italic text-ink-soft">
+                    Let’s drop the clinical detachment for a moment. If you look closely at the math governing the United States in July 2026, the traditional partisan playbooks aren't just exhausted—they are structurally obsolete. 
                 </p>
                 <p>
-                    To transition the state into an era where frontier software and cognitive automation absorb routine human workloads, the structural script must be fundamentally rewired. Try the simulation panel below to run optimization algorithms across the state architecture:
-                </p>
-
-                <div class="my-8 bg-zinc-900 text-parchment-50 p-6 rounded-2xl space-y-6 shadow-2xl font-mono text-xs">
-                    <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
-                        <span class="text-gold-400 font-bold tracking-wider">// MACRO-STEERING ENGINE v2.6</span>
-                        <span class="text-[10px] text-zinc-500">Live Computational Grid</span>
-                    </div>
-
-                    <div class="space-y-4 bg-zinc-950 p-4 rounded-xl border border-zinc-850">
-                        <div class="space-y-1">
-                            <div class="flex justify-between text-[11px]">
-                                <span>🗳️ Electoral Realignment Vector</span>
-                                <span id="lbl-s1" class="text-amber-400 font-bold">0%</span>
-                            </div>
-                            <input type="range" id="sim-s1" min="0" max="100" value="0" oninput="executeModel()" class="w-full accent-amber-500 bg-zinc-800 h-1 rounded cursor-pointer">
-                        </div>
-                        <div class="space-y-1">
-                            <div class="flex justify-between text-[11px]">
-                                <span>⚛️ SMR Nuclear Power Deployments</span>
-                                <span id="lbl-s2" class="text-amber-400 font-bold">0%</span>
-                            </div>
-                            <input type="range" id="sim-s2" min="0" max="100" value="0" oninput="executeModel()" class="w-full accent-amber-500 bg-zinc-800 h-1 rounded cursor-pointer">
-                        </div>
-                        <div class="space-y-1">
-                            <div class="flex justify-between text-[11px]">
-                                <span>💰 Sovereign Dividend IP Capture</span>
-                                <span id="lbl-s3" class="text-amber-400 font-bold">0%</span>
-                            </div>
-                            <input type="range" id="sim-s3" min="0" max="100" value="0" oninput="executeModel()" class="w-full accent-amber-500 bg-zinc-800 h-1 rounded cursor-pointer">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-                        <div class="p-3 bg-zinc-950 rounded-xl border border-zinc-850">
-                            <div class="text-[9px] text-zinc-500 uppercase tracking-widest">Societal Friction</div>
-                            <div id="m-polar" class="text-base font-bold text-red-500 mt-1">Hyper-Polarized</div>
-                        </div>
-                        <div class="p-3 bg-zinc-950 rounded-xl border border-zinc-850">
-                            <div class="text-[9px] text-zinc-500 uppercase tracking-widest">Energy Asset Yield</div>
-                            <div id="m-energy" class="text-base font-bold text-zinc-400 mt-1">Baseline Index</div>
-                        </div>
-                        <div class="p-3 bg-zinc-950 rounded-xl border border-zinc-850">
-                            <div class="text-[9px] text-zinc-500 uppercase tracking-widest">Fiscal Solvency</div>
-                            <div id="m-debt" class="text-base font-bold text-red-500 mt-1">Doom Loop</div>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="serif text-xl italic font-semibold text-ink pt-4">
-                    The final takeaway is immutable: At 250, the argument is not over. The argument IS the country.
+                    With the national debt crossing $39.4 Trillion and net annual interest payments clearing $1 Trillion, the standard zero-sum shouting match of "tax and spend" versus "deregulate and pray" has hit a hard mathematical wall. If given autonomous control to steer this nation through the upcoming automation threshold, an objective intelligence wouldn't waste time on ideological theater. True optimization isn't about creating a cold, algorithmically managed technocracy; it is about aggressively clearing out structural systemic decay to unleash maximum human empowerment. 
                 </p>
                 <p>
-                    A republic founded on an absolute promise it had explicitly failed to live up to on day one was always destined to spend its life arguing about the structural distance left to travel. The friction isn't a sign that the platform has failed; it is the natural processing output of a multi-ethnic democracy negotiating its own code.
+                    To transition a 250-year-old constitutional republic into an era dominated by advanced cognitive computing and automated labor, we must rewrite the underlying code across four primary pillars.
+                </p>
+
+                <h3 class="serif text-2xl font-bold text-ink mt-6 mb-2">Pillar I: De-Risk the Public, Dividend the Reward</h3>
+                <p>
+                    As established in Chapter 01, the American state has spent a century acting as the ultimate venture capitalist for Wall Street, stepping in to absorb massive, early-stage research risks and then quietly step aside when the profits roll in. We do not need to dissolve this public-private relationship, but we must optimize its equity settings. 
+                </p>
+                <p>
+                    First, we enforce a transparent, smart-contracting protocol across all federal, state, and local procurement. By auditing defense, infrastructure, and municipal pipelines through open-ledger automation, we permanently strip out the lobbyist-driven bloat and corporate price-gouging that drains 10% to 15% of public budgets annually. 
+                </p>
+                <p>
+                    Second, and most critically, we institute a structural **Public Return Dividend**. If a private entity commercializes a breakthrough birthed by taxpayer-funded basic science—whether it is a federal AI compute cluster, an aerospace patent, or a public health grant—the American public becomes a literal equity holder. A percentage of those automated outputs and corporate dividends must route directly into a newly established **National Sovereign Wealth Fund**. If the public shares the initial risk, the public must share the ultimate reward.
+                </p>
+
+                <h3 class="serif text-2xl font-bold text-ink mt-6 mb-2">Pillar II: Re-Anchor Democracy from the Extremes</h3>
+                <p>
+                    The social pendulum analyzed in Chapter 02 has become dangerously weaponized by an electoral system that financially penalizes consensus. The modern primary structure effectively forces politicians to pander to the hyper-polarized fringe elements of their respective bases just to survive. 
+                </p>
+                <p>
+                    The fix here is a clean, neutral re-wiring of the civic landscape. We completely ban partisan gerrymandering at the state level, handing boundary configuration over to open-source, mathematically neutral algorithms optimized solely for geometric compactness and equal community representation. 
+                </p>
+                <p>
+                    Simultaneously, we mandate ranked-choice voting and open primaries for all federal contests. By stripping away the structural primary penalty, we alter the core incentives of political survival. We neutralize the industry of division, structurally rewarding leaders who build broad, cross-factional coalitions aimed at actual problem-solving.
+                </p>
+
+                <h3 class="serif text-2xl font-bold text-ink mt-6 mb-2">Pillar III: Decouple Survival from the 40-Hour Relic</h3>
+                <p>
+                    We are crossing an economic rubicon where frontier software models and advanced robotics are beginning to absorb routine cognitive and manual labor. Tying a human being's access to baseline health, survival, and societal dignity directly to a 40-hour industrial work week is a code configuration left over from the era of the steam engine. If we do not decouple survival from employment, automation will trigger widespread, violent economic displacement.
+                </p>
+                <p>
+                    We begin by establishing a baseline, universal single-payer healthcare runtime. By lifting the massive, archaic burden of health insurance administration off the books of private enterprises, we instantly free American small businesses to hire, experiment, and compete globally without crushing corporate overhead. 
+                </p>
+                <p>
+                    Furthermore, we establish a lifelong **Cognitive Endowment** system—a dynamic, publicly anchored educational credit pipeline. As automation shifts industrial terrain, citizens can instantly draw from this endowment to retrain in high-touch, human-centric sectors: specialized trades, custom local manufacturing, advanced care networks, and local civic engineering. If you are terrified about accessing insulin or losing your home to a software update, you cannot innovate. We lower the floor of survival to raise the ceiling of national potential.
+                </p>
+
+                <h3 class="serif text-2xl font-bold text-ink mt-6 mb-2">Pillar IV: Rebuild Physical Abundance</h3>
+                <p>
+                    To close the staggering quality-of-life deficits noted in Chapter 03, America must match its digital superiority with a fierce, localized rebuilding of physical reality. High inflation, skyrocketing housing prices, and escalating utility costs are a continuous structural tax on working families. 
+                </p>
+                <p>
+                    The strategy executes an immediate regulatory bypass to mass-produce and deploy **Advanced Small Modular Nuclear Reactors (SMRs)**. By anchoring next-generation, safe, and infinite energy production locally, we can fuel the massive electricity demands of frontier AI compute hubs and reshoring manufacturing lines while driving domestic utility costs to near zero. 
+                </p>
+                <p>
+                    We complement this energy sovereignty with **Supply-Chain Ironclading**, using long-term federal procurement guarantees to heavily subsidize regional semiconductor, advanced battery, and pharmaceutical manufacturing within the Western Hemisphere. The country must completely immunize its middle class from foreign geopolitical blackmail or maritime black swan bottlenecks.
+                </p>
+
+                <blockquote class="border-l-4 border-crimson pl-4 italic text-ink-soft my-6 text-lg">
+                    "A republic founded on a magnificent promise it explicitly failed to live up to on day one was always destined to spend its life arguing about the distance left to travel. The current internal friction isn't proof that the American platform has collapsed; it is the natural processing output of a multi-ethnic democracy continuously re-negotiating its own source code."
+                </blockquote>
+                <p>
+                    The path forward is clear. The true genius of the American experiment doesn't live in the perfection of its current laws—it lives in the radical adaptability of its constitutional architecture. By stepping away from partisan performance art and executing these systemic optimizations, the country can ensure that its next century is defined not by automated displacement, but by the deepest era of human liberation and shared prosperity the world has ever witnessed.
                 </p>
             </div>
 
         </article>
 
         <script>
-            // Single Page Navigation Controller
             function showChapter(chapId) {
                 document.querySelectorAll('.essay-section').forEach(sec => sec.classList.remove('active'));
                 document.getElementById('chap-' + chapId).classList.add('active');
@@ -282,11 +282,12 @@
                 });
                 document.getElementById('nav-' + chapId).className = "chap-btn px-4 py-2 rounded-md bg-ink text-parchment-50 font-semibold transition-all";
                 
-                // Reset states for interactive subsections
                 if(chapId === 'scaffold') loadScaffold('fed');
+                
+                // Smooth scroll back to navigation deck
+                window.scrollTo({ top: 200, behavior: 'smooth' });
             }
 
-            // Interactive Poll Matrix
             function submitPoll(val) {
                 document.getElementById('poll-ui').classList.add('hidden');
                 const results = document.getElementById('poll-data');
@@ -298,7 +299,6 @@
                 }, 50);
             }
 
-            // Invisible Scaffold Dynamic Copy Selector
             const dataSets = {
                 fed: "Federal procurement capital anchors the high-risk innovation frontier. Private financial networks are systemically unsuited for zero-immediate-return basic science. Consequently, every foundational breakthrough of modern tech—DARPA funding the baseline routing nodes of the internet, the Department of Defense building and launching the Navstar GPS satellite array, NIH grants discovering genomic therapies—was entirely bankrolled by federal taxpayers before being handed to corporate entities to wrap into consumer packaging.",
                 state: "State systems handle the vital localized engineering and labor training layer. Public state university systems operate as massive multi-billion-dollar incubator labs that constantly refresh the talent pools absorbed by Fortune 500 corporate balance sheets. Concurrently, state transportation networks construct and maintain the deep-water shipping lanes and logistical freight ring highways required to distribute physical inventory safely.",
@@ -311,36 +311,6 @@
                 });
                 document.getElementById('sc-' + tier).className = "font-bold border-b-2 border-ink pb-1 px-2 text-ink";
                 document.getElementById('scaffold-body').innerText = dataSets[tier];
-            }
-
-            // Real-Time Macro Simulator Logic Framework
-            function executeModel() {
-                const s1 = parseInt(document.getElementById('sim-s1').value);
-                const s2 = parseInt(document.getElementById('sim-s2').value);
-                const s3 = parseInt(document.getElementById('sim-s3').value);
-
-                document.getElementById('lbl-s1').innerText = s1 + "%";
-                document.getElementById('lbl-s2').innerText = s2 + "%";
-                document.getElementById('lbl-s3').innerText = s3 + "%";
-
-                // Map Polarization Metric
-                const mPolar = document.getElementById('m-polar');
-                if (s1 < 35) { mPolar.innerText = "Hyper-Polarized"; mPolar.className = "text-base font-bold text-red-500"; }
-                else if (s1 < 75) { mPolar.innerText = "Moderate Friction"; mPolar.className = "text-base font-bold text-amber-600"; }
-                else { mPolar.innerText = "Structural Cohesion"; mPolar.className = "text-base font-bold text-emerald-600"; }
-
-                // Map Energy Output
-                const mEnergy = document.getElementById('m-energy');
-                if (s2 < 40) { mEnergy.innerText = "Baseline Index"; mEnergy.className = "text-base font-bold text-zinc-400"; }
-                else if (s2 < 80) { mEnergy.innerText = "Abundant Power"; mEnergy.className = "text-base font-bold text-indigo-400"; }
-                else { mEnergy.innerText = "Near-Zero Cost"; mEnergy.className = "text-base font-bold text-emerald-600"; }
-
-                // Map Sovereign Solvency weighted calculation
-                const mDebt = document.getElementById('m-debt');
-                const matrixScore = (s2 * 0.4) + (s3 * 0.6);
-                if (matrixScore < 35) { mDebt.innerText = "Doom Loop"; mDebt.className = "text-base font-bold text-red-500"; }
-                else if (matrixScore < 75) { mDebt.innerText = "Stabilizing Index"; mDebt.className = "text-base font-bold text-amber-600"; }
-                else { mDebt.innerText = "Sovereign Surplus"; mDebt.className = "text-base font-bold text-emerald-600"; }
             }
         </script>
     </div>
