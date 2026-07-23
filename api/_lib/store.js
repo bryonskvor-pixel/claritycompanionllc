@@ -6,8 +6,10 @@
 // services page — shaped so a pipeline UI can sit on them later:
 //   brief:{id} = { id, timestamp, via, json, status: new|contacted|booked|won|lost }
 
-const URL_ = process.env.KV_REST_API_URL;
-const TOKEN = process.env.KV_REST_API_TOKEN;
+// Vercel's KV/Upstash integration injects either KV_* or UPSTASH_REDIS_*
+// names depending on integration vintage — accept both.
+const URL_ = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 
 function kvEnabled() {
   return Boolean(URL_ && TOKEN);
