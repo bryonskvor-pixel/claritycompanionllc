@@ -16,7 +16,8 @@
 1. Owner: push + deploy; set env vars per README table (Resend key, KV, ANTHROPIC_API_KEY, CRON_SECRET).
 2. Owner decisions resolved 2026-07-22: mailbox `bryon@claritycompanionllc.com` CONFIRMED; IAS proof card swapped to anonymized version (no link); Companion monthly pricing stays as-is. Still open: booking URL — owner will add Calendly later (`BOOKING_URL` const in `services/discovery/index.html`, currently falls back to `/services#contact`).
 3. Post-deploy: verify a real brief email end-to-end, Lighthouse pass on `/services`, test cron fires.
-4. Future tasks per specs: full ScopeWalk showcase at `/services/scopewalk`; pipeline UI on the `brief:*` KV records (CRM v0).
+4. Future tasks per specs: pipeline UI on the `brief:*` KV records (CRM v0). ScopeWalk page now has a scripted interactive demo (2026-07-22); the "full showcase" (real voice → real pricing) remains future work.
+5. Polish added 2026-07-22: OG image (`services/og.png`, rendered headless-Edge from blueprint-styled HTML), plotter-style typing animation on hero sheet annotations, scroll-triggered Field-to-Bid mock sequence, interactive ScopeWalk demo with replay.
 
 ### Context
 - Repo is plain static HTML on Vercel; nested routes = `dir/index.html`; root pages use rewrites in `vercel.json`.
