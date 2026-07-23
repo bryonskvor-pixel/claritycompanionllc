@@ -23,6 +23,10 @@
 - Pushed to origin/main; Vercel auto-deploy READY. Live-verified: all routes, nav, OG image, /work-with-us redirect, and a real C.C. exchange (Anthropic key + Redis both working; env vars accepted under dashboard names Anthropic_Api_Key/Resend_Api_Key/REDIS_URL).
 - ONE REMAINING ISSUE: Resend is in test mode — account registered under bryon@remodelry.guide, so it only delivers to that address until claritycompanionllc.com is verified at resend.com/domains. Quick unblock: set CONTACT_TO_EMAIL=bryon@remodelry.guide in Vercel and redeploy. Proper fix: verify the domain, then set CONTACT_FROM_EMAIL to a claritycompanionllc.com address and CONTACT_TO_EMAIL back to bryon@claritycompanionllc.com (also required before "Email me my brief" can reach visitors).
 
+### Email + caching verified 2026-07-22 (late evening)
+- Resend domain verified; default sender switched to hello@claritycompanionllc.com; live contact-form email delivered OK.
+- Prompt caching verified live: cache breakpoints on system prompt + last message. Haiku 4.5's minimum cacheable prefix is 4,096 tokens, so caching engages mid-conversation (test: turn 7 wrote 4,305 tokens to cache, turn 8 read them all back at 0.1x price with only 3 uncached tokens). Short conversations below 4,096 tokens can't cache — API floor, working as intended.
+
 ### Context
 - Repo is plain static HTML on Vercel; nested routes = `dir/index.html`; root pages use rewrites in `vercel.json`.
 - Specs live in repo as `implementationspec.md` / `intakespec.md`; prototypes as `clarityservicespage/index.html` / `clarityintakesystem/index.html` (keep — they're the design source of truth).
