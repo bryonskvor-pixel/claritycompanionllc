@@ -679,6 +679,42 @@
     .card-oberlin     .card-cta { color: var(--steel); }
     .card-nails       .card-cta { color: var(--rose); }
 
+    /* ── FOR BUSINESSES ── */
+    .business-strip {
+      padding: 80px 40px;
+      background: var(--navy);
+      text-align: center;
+      position: relative;
+    }
+
+    .business-strip::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,185,174,0.12), transparent);
+    }
+
+    .business-inner { max-width: 620px; margin: 0 auto; }
+
+    .business-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(24px, 3.5vw, 36px);
+      line-height: 1.35;
+      color: var(--sw);
+      margin-bottom: 20px;
+    }
+
+    .business-body {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--pt);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
     /* ── ABOUT STRIP ── */
     .about-strip {
       padding: 80px 40px;
@@ -873,7 +909,7 @@
 
     @media (max-width: 600px) {
       .hero { padding: 60px 24px 48px; }
-      .mission, .platforms, .about-strip { padding: 72px 24px; }
+      .mission, .platforms, .about-strip, .business-strip { padding: 72px 24px; }
       .platforms { padding-bottom: 80px; }
       footer { padding: 40px 24px 32px; }
       .footer-links { gap: 16px; }
@@ -906,6 +942,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#platforms">Platforms</a></li>
+    <li><a href="/services">Services</a></li>
     <li><a href="/stack">Stack</a></li>
     <li><a href="/prompts">Prompts</a></li>
     <li><a href="/about" class="nav-about">Our Story</a></li>
@@ -917,6 +954,7 @@
 
 <div class="nav-mobile-menu" id="mobileMenu">
   <a href="#platforms" onclick="closeMobileMenu()">Platforms</a>
+  <a href="/services">Services</a>
   <a href="/stack">Stack</a>
   <a href="/prompts">Prompts</a>
   <a href="/about" class="nav-about">Our Story</a>
@@ -1202,6 +1240,19 @@
   </div>
 </section>
 
+<!-- ── FOR BUSINESSES ── -->
+<section class="business-strip">
+  <div class="business-inner">
+    <span class="section-eyebrow fade-up">For businesses</span>
+    <h2 class="business-headline fade-up">We build these for businesses, too.</h2>
+    <p class="business-body fade-up">
+      Websites, Google presence, AI intake agents, catalog experts, and built-in CRMs —
+      for contractors and home service businesses that want to show up the way their work deserves.
+    </p>
+    <a href="/services" class="mission-link fade-up">Work with us →</a>
+  </div>
+</section>
+
 <!-- ── ABOUT STRIP ── -->
 <section class="about-strip">
   <div class="about-inner">
@@ -1228,8 +1279,10 @@
       <a href="https://mycannagraphy.site" target="_blank">Cannagraphy</a>
       <a href="https://oberlinweather.site" target="_blank">Oberlin Weather</a>
       <a href="https://nailsbymarissa.site" target="_blank">Nails by Marissa</a>
+      <a href="/services">Work With Us</a>
       <a href="/stack">Stack</a>
       <a href="/about">Our Story</a>
+      <a href="mailto:bryon@claritycompanionllc.com">bryon@claritycompanionllc.com</a>
     </div>
     <div class="footer-copy">© 2026 Clarity Companion LLC. All rights reserved.</div>
   </div>
