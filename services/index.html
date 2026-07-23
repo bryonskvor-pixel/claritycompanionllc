@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@1,300&family=Quicksand:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#0B1220;
@@ -76,8 +76,10 @@ nav{
   border-bottom:1px solid var(--line);
 }
 .nav-inner{max-width:1120px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--text);text-decoration:none}
-.logo span{color:var(--cyan)}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-wordmark{display:flex;flex-direction:column;gap:3px}
+.logo-clarity{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:#C4B9AE;line-height:1}
+.logo-companion{font-family:'Quicksand',sans-serif;font-weight:500;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:#ECE7E0;line-height:1}
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .25s}
 .nav-links a:hover,.nav-links a:focus-visible{color:var(--cyan)}
@@ -309,7 +311,27 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--muted);font-s
 
 <nav>
   <div class="nav-inner">
-    <a class="logo" href="/">Clarity <span>Companion</span></a>
+    <a class="logo" href="/">
+      <svg width="28" height="28" viewBox="0 0 66 66" fill="none" aria-hidden="true">
+        <defs>
+          <radialGradient id="hn" cx="38%" cy="56%" r="58%">
+            <stop offset="0%"  stop-color="#C4B9AE" stop-opacity="0.32"/>
+            <stop offset="100%" stop-color="#C4B9AE" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="27" cy="38" rx="21" ry="20" fill="url(#hn)"/>
+        <line x1="44" y1="17" x2="33" y2="30" stroke="#BEB4AA" stroke-width="0.65" opacity="0.42"/>
+        <polygon points="27,22 30.2,32.2 41,32.2 32.5,38.4 35.6,48.6 27,42.4 18.4,48.6 21.5,38.4 13,32.2 23.8,32.2" fill="#ECE7E0" opacity="0.97"/>
+        <polygon points="46,9 47.4,13.8 52.4,13.8 48.4,16.7 49.8,21.5 46,18.6 42.2,21.5 43.6,16.7 39.6,13.8 44.6,13.8" fill="#BEB4AA" opacity="0.94"/>
+        <line x1="46" y1="9"  x2="46" y2="3"   stroke="#BEB4AA" stroke-width="0.6"  opacity="0.42"/>
+        <line x1="52" y1="11" x2="57.5" y2="6.5" stroke="#BEB4AA" stroke-width="0.55" opacity="0.34"/>
+        <line x1="44" y1="19" x2="38" y2="26"  stroke="#BEB4AA" stroke-width="0.5"  opacity="0.28" stroke-dasharray="1.5 2"/>
+      </svg>
+      <div class="logo-wordmark">
+        <span class="logo-clarity">Clarity</span>
+        <span class="logo-companion">Companion</span>
+      </div>
+    </a>
     <div class="nav-links">
       <a href="#packages">Packages</a>
       <a href="#systems">Systems</a>
