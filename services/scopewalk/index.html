@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScopeWalk — Clarity Companion</title>
+<meta name="description" content="ScopeWalk turns a site walkthrough into a priced proposal. A full showcase is coming soon.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B1220;--surface:#101A2C;--surface-2:#15213A;
+  --line:rgba(111,211,232,.14);--line-strong:rgba(111,211,232,.35);
+  --cyan:#6FD3E8;--cyan-dim:#3E93A8;--amber:#E8B15C;
+  --text:#E9EEF5;--muted:#93A1B8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.65;min-height:100vh}
+.grid-bg{position:fixed;inset:0;pointer-events:none;opacity:.55;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,black 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,black 0%,transparent 75%);}
+.wrap{max-width:760px;margin:0 auto;padding:110px 24px 80px;position:relative}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.eyebrow::before{content:'';width:34px;height:1px;background:var(--cyan-dim)}
+h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.12}
+em{font-style:italic}
+.lede{color:var(--muted);margin-top:24px;max-width:52ch;font-size:1.05rem}
+.soon{display:inline-block;margin-top:34px;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;color:var(--amber);border:1px dashed rgba(232,177,92,.35);border-radius:999px;padding:8px 20px}
+.back{display:inline-flex;align-items:center;gap:10px;margin-top:44px;padding:13px 28px;border-radius:999px;border:1px solid var(--line-strong);color:var(--text);text-decoration:none;font-weight:500;font-size:.95rem;transition:background .25s}
+.back:hover{background:rgba(111,211,232,.07)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+<main class="wrap">
+  <p class="eyebrow">System / Field-to-Bid</p>
+  <h1>Walk the job. Talk the scope. <em>Get the bid.</em></h1>
+  <p class="lede">ScopeWalk turns a site walkthrough into a priced proposal. Speak your notes room by room — it transcribes, structures the scope, applies your pricing, and drafts the bid before you're back in the truck.</p>
+  <span class="soon">FULL SHOWCASE · COMING SOON</span>
+  <div><a class="back" href="/services">← Back to Work With Us</a></div>
+</main>
+</body>
+</html>
