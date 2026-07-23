@@ -9,6 +9,11 @@
 <meta property="og:description" content="Websites, Google Business Profiles, AI intake agents, catalog experts, and built-in CRMs for contractors and home service businesses. Fixed scopes, fixed prices, built by Clarity Companion.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://claritycompanionllc.com/services">
+<meta property="og:image" content="https://claritycompanionllc.com/services/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://claritycompanionllc.com/services/og.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,6 +111,9 @@ nav{
   letter-spacing:.12em;text-align:right;line-height:2.1;
 }
 @media(min-width:1000px){.dim{display:block}}
+.dim-line{display:block;min-height:2.1em}
+.dim .caret{display:inline-block;width:.6em;background:var(--cyan-dim);animation:caret-blink .7s steps(1) infinite;margin-left:2px}
+@keyframes caret-blink{50%{opacity:0}}
 
 /* section scaffolding */
 section{padding:96px 0;position:relative}
@@ -314,7 +322,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--muted);font-s
 
 <main>
 <header class="hero wrap">
-  <div class="dim" aria-hidden="true">SHEET A-101<br>SCOPE: DIGITAL PRESENCE<br>CLIENT: YOUR BUSINESS<br>REV. 2026.07</div>
+  <div class="dim" id="dim-plot" aria-hidden="true"><span class="dim-line">SHEET A-101</span><span class="dim-line">SCOPE: DIGITAL PRESENCE</span><span class="dim-line">CLIENT: YOUR BUSINESS</span><span class="dim-line">REV. 2026.07</span></div>
   <p class="eyebrow reveal">For contractors &amp; home service businesses</p>
   <h1 class="reveal">Your customers are searching. <span class="accent">Show up right.</span></h1>
   <p class="lede reveal">Websites, Google presence, and AI tools built by someone who's spent 20+ years on your side of the industry — from first conversation to final walkthrough. No agency fluff. No retainers you don't understand. Just the digital presence your work deserves.</p>
@@ -462,10 +470,10 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--muted);font-s
       <p>ScopeWalk turns a site walkthrough into a priced proposal. Speak your notes room by room — it transcribes, structures the scope, applies your pricing, and drafts the bid before you're back in the truck. Fewer missed line items. More accurate numbers. Faster follow-up than anyone you're bidding against.</p>
       <a class="tag" href="/services/scopewalk">BUILT ON SCOPEWALK · WORKS OFFLINE</a>
     </div>
-    <div class="mock">
+    <div class="mock" id="mock-scopewalk">
       <div class="mock-bar"><i></i><i></i><i></i><span>SCOPEWALK · MASTER BATH</span></div>
       <div class="mock-body">
-        <div class="voice-line"><span class="wave"><b></b><b></b><b></b><b></b><b></b></span>"...tear-out on the tub surround, maybe eighty square feet of tile, new valve while we're in the wall..."</div>
+        <div class="voice-line"><span class="wave"><b></b><b></b><b></b><b></b><b></b></span><span class="voice-text">"...tear-out on the tub surround, maybe eighty square feet of tile, new valve while we're in the wall..."</span></div>
         <div class="bid-line"><span>Tub surround demo &amp; disposal</span><span>$680</span></div>
         <div class="bid-line"><span>Tile install — 80 sq ft, wet area</span><span>$1,920</span></div>
         <div class="bid-line"><span>Shower valve replacement</span><span>$425</span></div>
@@ -573,6 +581,67 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--muted);font-s
 // scroll reveals
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// sheet annotations plot themselves in, like a plotter drawing the title block
+(()=>{
+  const dim=document.getElementById('dim-plot');
+  if(!dim)return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const visible=window.matchMedia('(min-width: 1000px)').matches;
+  if(reduced||!visible)return;
+  const lines=[...dim.querySelectorAll('.dim-line')];
+  const texts=lines.map(l=>l.textContent);
+  lines.forEach(l=>l.textContent='');
+  const caret=document.createElement('span');caret.className='caret';caret.textContent=' ';
+  let li=0,ci=0;
+  lines[0].appendChild(caret);
+  function tick(){
+    if(li>=lines.length){caret.remove();return}
+    const line=lines[li],text=texts[li];
+    if(ci<text.length){
+      line.insertBefore(document.createTextNode(text[ci]),caret);
+      ci++;
+      setTimeout(tick,26);
+    }else{
+      li++;ci=0;
+      if(li<lines.length){lines[li].appendChild(caret);setTimeout(tick,240)}
+      else{setTimeout(()=>caret.remove(),900)}
+    }
+  }
+  setTimeout(tick,600);
+})();
+
+// Field-to-Bid mock plays its capture sequence when it scrolls into view:
+// the spoken note types out, line items land one by one, the total tallies.
+(()=>{
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const mock=document.getElementById('mock-scopewalk');
+  if(!mock)return;
+  const voice=mock.querySelector('.voice-text');
+  const lines=[...mock.querySelectorAll('.bid-line')];
+  const totalEl=mock.querySelector('.bid-total span:last-child');
+  const quote=voice.textContent, totalText=totalEl.textContent;
+  const totalTarget=parseInt(totalText.replace(/[^0-9]/g,''),10);
+  voice.textContent='';
+  lines.forEach(l=>{l.style.opacity='0';l.style.transform='translateY(6px)';l.style.transition='opacity .4s,transform .4s'});
+  totalEl.textContent='$0';
+  const mio=new IntersectionObserver(es=>{
+    if(!es.some(e=>e.isIntersecting))return;
+    mio.disconnect();
+    let ci=0;
+    (function typeQuote(){
+      if(ci<quote.length){voice.textContent+=quote[ci++];setTimeout(typeQuote,18);return}
+      lines.forEach((l,i)=>setTimeout(()=>{l.style.opacity='1';l.style.transform='none'},350*i+300));
+      const start=performance.now(),dur=800,delay=350*lines.length+400;
+      setTimeout(function count(){
+        const t=Math.min(1,(performance.now()-start-delay)/dur);
+        totalEl.textContent='$'+Math.round(totalTarget*Math.max(0,t)).toLocaleString('en-US');
+        if(t<1)requestAnimationFrame(count);else totalEl.textContent=totalText;
+      },delay);
+    })();
+  },{threshold:.5});
+  mio.observe(mock);
+})();
 
 // scope selector — kept isolated (data object + wiring) so it can grow into the
 // consultative intake flow without touching the rest of the page
