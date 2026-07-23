@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clarity Companion — Discovery Intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B1220;--surface:#101A2C;--surface-2:#15213A;
+  --line:rgba(111,211,232,.14);--line-strong:rgba(111,211,232,.35);
+  --cyan:#6FD3E8;--cyan-dim:#3E93A8;--amber:#E8B15C;
+  --text:#E9EEF5;--muted:#93A1B8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.6;min-height:100vh}
+.grid-bg{position:fixed;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,black,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,black,transparent 80%);}
+.wrap{max-width:760px;margin:0 auto;padding:48px 20px;position:relative}
+.serif{font-family:'Fraunces',serif;font-weight:400}
+.mono{font-family:'JetBrains Mono',monospace}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.eyebrow::before{content:'';width:34px;height:1px;background:var(--cyan-dim)}
+h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.15}
+em{font-style:italic}
+.lede{color:var(--muted);margin-top:14px;max-width:52ch}
+.hidden{display:none !important}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 28px;border-radius:999px;text-decoration:none;font-family:'Outfit',sans-serif;font-weight:500;font-size:.95rem;border:none;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s}
+.btn-primary{background:var(--cyan);color:var(--ink)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(111,211,232,.25)}
+.btn-primary:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-ghost{background:transparent;border:1px solid var(--line-strong);color:var(--text)}
+.btn-ghost:hover{background:rgba(111,211,232,.07)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+/* door choice */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+@media(max-width:640px){.doors{grid-template-columns:1fr}}
+.door{border:1px solid var(--line);border-radius:18px;padding:34px 30px;background:linear-gradient(180deg,var(--surface),transparent);cursor:pointer;text-align:left;color:var(--text);font-family:'Outfit',sans-serif;transition:border-color .3s,transform .3s}
+.door:hover{border-color:var(--cyan);transform:translateY(-4px)}
+.door .mono{font-size:.65rem;letter-spacing:.2em;color:var(--cyan-dim);display:block;margin-bottom:14px}
+.door h2{font-family:'Fraunces',serif;font-weight:400;font-size:1.45rem;margin-bottom:10px}
+.door p{color:var(--muted);font-size:.92rem;font-weight:300}
+.door .go{display:inline-block;margin-top:18px;color:var(--cyan);font-size:.88rem}
+
+/* chat */
+.chat-shell{border:1px solid var(--line-strong);border-radius:18px;background:var(--surface-2);overflow:hidden;margin-top:34px;display:flex;flex-direction:column;height:min(620px,72vh)}
+.chat-head{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.avatar{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--cyan),var(--cyan-dim));display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:'Fraunces',serif;font-size:1.1rem}
+.chat-head .who b{display:block;font-weight:500;font-size:.95rem}
+.chat-head .who span{font-size:.75rem;color:var(--muted)}
+.chat-head .mono{margin-left:auto;font-size:.6rem;letter-spacing:.18em;color:var(--cyan-dim)}
+.chat-log{flex:1;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:14px}
+.msg{max-width:85%;padding:13px 17px;border-radius:14px;font-size:.95rem;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}}
+.msg.ai{background:var(--surface);border:1px solid var(--line);border-radius:14px 14px 14px 3px;color:var(--text)}
+.msg.me{background:rgba(111,211,232,.12);border-radius:14px 14px 3px 14px;margin-left:auto;color:var(--text)}
+.typing{display:flex;gap:5px;padding:14px 17px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--cyan-dim);animation:tp 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+@keyframes tp{40%{transform:translateY(-5px);opacity:1}0%,100%{opacity:.4}}
+.chat-input{display:flex;gap:10px;padding:16px;border-top:1px solid var(--line)}
+.chat-input input{flex:1;background:var(--ink);border:1px solid var(--line);border-radius:999px;padding:13px 20px;color:var(--text);font-family:'Outfit',sans-serif;font-size:.95rem}
+.chat-input input:focus{outline:none;border-color:var(--cyan)}
+
+/* wizard */
+.wizard{border:1px solid var(--line-strong);border-radius:18px;background:var(--surface-2);padding:38px;margin-top:34px}
+@media(max-width:640px){.wizard{padding:26px 20px}}
+.progress{height:3px;background:var(--line);border-radius:2px;margin-bottom:30px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--cyan);width:0;transition:width .45s ease}
+.step-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--cyan-dim);margin-bottom:12px}
+.wizard h2{font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:8px}
+.wizard .hint{color:var(--muted);font-size:.9rem;margin-bottom:24px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{border:1px solid var(--line);border-radius:12px;padding:15px 18px;background:transparent;color:var(--text);font-family:'Outfit',sans-serif;font-size:.95rem;text-align:left;cursor:pointer;transition:all .22s}
+.opt:hover{border-color:var(--line-strong)}
+.opt.sel{background:rgba(111,211,232,.1);border-color:var(--cyan)}
+.wizard input[type=text],.wizard input[type=email],.wizard textarea{width:100%;background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:14px 16px;color:var(--text);font-family:'Outfit',sans-serif;font-size:.95rem;margin-bottom:12px}
+.wizard input:focus,.wizard textarea:focus{outline:none;border-color:var(--cyan)}
+textarea{min-height:100px;resize:vertical}
+.wiz-nav{display:flex;justify-content:space-between;margin-top:28px}
+
+/* brief */
+.brief{border:1px solid var(--cyan);border-radius:18px;background:linear-gradient(180deg,var(--surface-2),var(--surface));padding:38px;margin-top:34px;position:relative}
+.brief::before{content:'DISCOVERY BRIEF';position:absolute;top:-11px;left:30px;background:var(--cyan);color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;padding:4px 14px;border-radius:999px;font-weight:500}
+.brief h2{font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:18px}
+.brief-row{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:11px 0;border-bottom:1px dashed rgba(147,161,184,.14);font-size:.93rem}
+@media(max-width:560px){.brief-row{grid-template-columns:1fr}}
+.brief-row b{font-family:'JetBrains Mono',monospace;font-weight:400;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan-dim);padding-top:3px}
+.brief-rec{margin-top:22px;padding:20px 24px;border-left:2px solid var(--amber);background:rgba(232,177,92,.06);border-radius:0 10px 10px 0}
+.brief-rec b{color:var(--amber);font-weight:500}
+.back{background:none;border:none;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;cursor:pointer;margin-bottom:8px;padding:6px 0}
+.back:hover{color:var(--cyan)}
+@media(prefers-reduced-motion:reduce){*{animation:none !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="wrap">
+  <p class="eyebrow">Clarity Companion · Discovery</p>
+
+  <!-- DOOR CHOICE -->
+  <div id="screen-doors">
+    <h1>Before we talk packages, <em>let's talk about you.</em></h1>
+    <p class="lede">Ten minutes, your choice of format. Either way, you'll end with a written brief about your business — and so will we. That's how the first real conversation starts ahead of schedule.</p>
+    <div class="doors">
+      <button class="door" onclick="startChat()">
+        <span class="mono">OPTION A · CONVERSATION</span>
+        <h2>Talk it through with C.C.</h2>
+        <p>Our AI discovery companion. He asks the questions a good consultant would ask — one at a time, in plain English. No pitch, no script-reading.</p>
+        <span class="go">Start the conversation →</span>
+      </button>
+      <button class="door" onclick="startWizard()">
+        <span class="mono">OPTION B · WALKTHROUGH</span>
+        <h2>Fill it out yourself</h2>
+        <p>Prefer not to chat with an AI? Completely fair. Same questions, step-by-step, mostly tappable. Like a good estimate sheet, not a DMV form.</p>
+        <span class="go">Start the walkthrough →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- CHAT TRACK -->
+  <div id="screen-chat" class="hidden">
+    <button class="back" onclick="goHome()">← CHOOSE A DIFFERENT PATH</button>
+    <h1 style="font-size:1.9rem">Discovery with <em>C.C.</em></h1>
+    <div class="chat-shell">
+      <div class="chat-head">
+        <div class="avatar serif" style="font-size:.85rem">CC</div>
+        <div class="who"><b>C.C.</b><span>Discovery companion · Clarity Companion</span></div>
+        <span class="mono">AI · NO AGENDA EXCEPT YOURS</span>
+      </div>
+      <div class="chat-log" id="chatlog" aria-live="polite"></div>
+      <div class="chat-input">
+        <input id="chatbox" type="text" placeholder="Type your answer…" autocomplete="off">
+        <button class="btn btn-primary" id="sendbtn" onclick="sendMsg()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WIZARD TRACK -->
+  <div id="screen-wizard" class="hidden">
+    <button class="back" onclick="goHome()">← CHOOSE A DIFFERENT PATH</button>
+    <div class="wizard">
+      <div class="progress"><i id="pbar"></i></div>
+      <div id="wiz-body"></div>
+      <div class="wiz-nav">
+        <button class="btn btn-ghost" id="wprev" onclick="wizPrev()">Back</button>
+        <button class="btn btn-primary" id="wnext" onclick="wizNext()">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRIEF -->
+  <div id="screen-brief" class="hidden"></div>
+</div>
+<script>
+/* ---------- shared ---------- */
+const $=id=>document.getElementById(id);
+function show(id){['screen-doors','screen-chat','screen-wizard','screen-brief'].forEach(s=>$(s).classList.add('hidden'));$(id).classList.remove('hidden')}
+function goHome(){show('screen-doors')}
+
+/* ---------- TRACK A: C.C. (Claude-powered) ---------- */
+const SYSTEM_PROMPT=`You are C.C., the discovery companion for Clarity Companion LLC — a studio that builds websites, Google Business presence, AI intake agents, catalog agents, and built-in CRMs for contractors and home service businesses. Founder: Bryon, 20+ years in construction project management.
+
+Your job is consultative discovery, Sandler-style. You are NOT a salesperson. Rules:
+- Ask exactly ONE question per message. Keep messages to 1-3 short sentences. Warm, plain-spoken, construction-literate. Never corporate.
+- Discovery arc (adapt naturally, don't interrogate): 1) their trade & service area, 2) how work comes in today, 3) what happens when someone searches their name / where leads die, 4) current website & Google situation, 5) who handles the office/follow-up, 6) what a great next 12 months looks like, 7) budget comfort for fixing this (offer ranges: under $500 / $500-2k / $2-5k / not sure), 8) timeline, 9) name, business name, email.
+- Reflect back what you hear before moving on. If they mention pain (lost bids, slow follow-up, bad reviews), dig one level deeper before moving on.
+- Never pitch packages mid-conversation. Never pressure.
+- After you have the essentials (roughly 8-10 exchanges), say you have what you need, and end that final message with the token [BRIEF] followed by a JSON object on one line: {"name":"","business":"","email":"","trade":"","area":"","leadSources":"","painPoint":"","presence":"","budget":"","timeline":"","recommendation":"<one of: The Foundation ($400) | The Storefront ($1,000-2,000) | The Companion ($2,000 + monthly) | Strategy Session ($150)>","reasoning":"<2 sentences, in C.C.'s voice, why this is the honest starting point>"}
+- The [BRIEF] token and JSON must appear only in that final message.`;
+
+let history=[];
+async function startChat(){
+  show('screen-chat');
+  if(history.length)return;
+  addMsg('ai',"Hey, I'm C.C. Before anyone talks packages or prices, I want to understand your business — that's the whole conversation. So let's start easy: what kind of work do you do, and where?");
+  history.push({role:'assistant',content:"Hey, I'm C.C. Before anyone talks packages or prices, I want to understand your business — that's the whole conversation. So let's start easy: what kind of work do you do, and where?"});
+}
+function addMsg(cls,text){
+  const d=document.createElement('div');d.className='msg '+cls;d.textContent=text;
+  $('chatlog').appendChild(d);$('chatlog').scrollTop=$('chatlog').scrollHeight;
+}
+function addTyping(){const d=document.createElement('div');d.className='msg ai typing';d.id='typing';d.innerHTML='<i></i><i></i><i></i>';$('chatlog').appendChild(d);$('chatlog').scrollTop=$('chatlog').scrollHeight}
+function rmTyping(){const t=$('typing');if(t)t.remove()}
+
+async function sendMsg(){
+  const box=$('chatbox');const text=box.value.trim();if(!text)return;
+  box.value='';addMsg('me',text);history.push({role:'user',content:text});
+  $('sendbtn').disabled=true;addTyping();
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:history})
+    });
+    const data=await res.json();
+    const reply=(data.content||[]).filter(c=>c.type==='text').map(c=>c.text).join('\n');
+    rmTyping();
+    if(reply.includes('[BRIEF]')){
+      const visible=reply.split('[BRIEF]')[0].trim();
+      if(visible)addMsg('ai',visible);
+      history.push({role:'assistant',content:reply});
+      try{
+        const json=reply.split('[BRIEF]')[1].trim();
+        const brief=JSON.parse(json.replace(/```json|```/g,'').trim());
+        setTimeout(()=>renderBrief(brief,'conversation'),900);
+      }catch(e){addMsg('ai',"I've got everything I need — Bryon will reach out within one business day.")}
+    }else{
+      addMsg('ai',reply);history.push({role:'assistant',content:reply});
+    }
+  }catch(e){rmTyping();addMsg('ai',"Hm — I hit a connection snag. Give that another send, or use the walkthrough option instead.")}
+  $('sendbtn').disabled=false;box.focus();
+}
+$('chatbox')&&document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.activeElement===$('chatbox'))sendMsg()});
+
+/* ---------- TRACK B: wizard ---------- */
+const steps=[
+ {k:'trade',label:'STEP 01 · YOUR WORK',q:'What kind of work do you do?',hint:'Pick the closest fit.',opts:['General contracting / remodeling','Specialty trade (flooring, HVAC, electric, plumbing…)','Home services (cleaning, landscaping, roofing…)','Something else'],other:true},
+ {k:'area',label:'STEP 02 · TERRITORY',q:'Where do you work?',hint:'City or counties is plenty.',text:'e.g. Lorain County and west side of Cleveland'},
+ {k:'leadSources',label:'STEP 03 · WHERE WORK COMES FROM',q:'How do most jobs find you today?',hint:'Pick the biggest one.',opts:['Referrals and word of mouth','Google / search','Facebook or Nextdoor','Lead services (Angi, Thumbtack…)','Honestly, it\u2019s slowed down']},
+ {k:'painPoint',label:'STEP 04 · WHERE LEADS DIE',q:'Where do you lose the most work?',hint:'The honest answer helps most.',opts:['People can\u2019t find me online','They find me but don\u2019t call','I\u2019m slow to follow up \u2014 I\u2019m on the job','My bids take too long to get out','I\u2019m not sure \u2014 that\u2019s the problem']},
+ {k:'presence',label:'STEP 05 · CURRENT PRESENCE',q:'What do you have right now?',hint:'No judgment. We\u2019ve seen it all.',opts:['Nothing, really','A Google listing I never touch','A website I\u2019m not proud of','A decent site, but it doesn\u2019t bring work','Website + Google, both working okay']},
+ {k:'budget',label:'STEP 06 · COMFORT ZONE',q:'If fixing this were worth it, what feels like a sane range?',hint:'This just helps us recommend honestly.',opts:['Under $500 to start','$500\u2013$2,000','$2,000\u2013$5,000','Not sure yet \u2014 depends what I\u2019d get']},
+ {k:'timeline',label:'STEP 07 · TIMING',q:'When would you want this moving?',opts:['Yesterday','Within the month','This quarter','Just exploring']},
+ {k:'contact',label:'STEP 08 · REACHING YOU',q:'Last one — where do we send your brief?',hint:'A real person replies within one business day.',contact:true}
+];
+let wi=0;const wdata={};
+function startWizard(){wi=0;show('screen-wizard');renderStep()}
+function renderStep(){
+  const s=steps[wi];$('pbar').style.width=((wi)/steps.length*100)+'%';
+  let h=`<div class="step-label">${s.label}</div><h2 class="serif">${s.q}</h2>${s.hint?`<p class="hint">${s.hint}</p>`:''}`;
+  if(s.opts){h+='<div class="opts">'+s.opts.map(o=>`<button class="opt ${wdata[s.k]===o?'sel':''}" onclick="pick('${s.k}',this)">${o}</button>`).join('')+'</div>';
+    if(s.other)h+=`<input type="text" id="otherbox" placeholder="Or type it your way…" style="margin-top:12px" value="${wdata[s.k+'_other']||''}">`;}
+  if(s.text)h+=`<input type="text" id="textbox" placeholder="${s.text}" value="${wdata[s.k]||''}">`;
+  if(s.contact)h+=`<input type="text" id="c-name" placeholder="Your name" value="${wdata.name||''}">
+    <input type="text" id="c-biz" placeholder="Business name" value="${wdata.business||''}">
+    <input type="email" id="c-email" placeholder="Email" value="${wdata.email||''}">`;
+  $('wiz-body').innerHTML=h;
+  $('wprev').style.visibility=wi===0?'hidden':'visible';
+  $('wnext').textContent=wi===steps.length-1?'Get my brief':'Next';
+}
+function pick(k,el){wdata[k]=el.textContent;document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel')}
+function wizPrev(){if(wi>0){wi--;renderStep()}}
+function wizNext(){
+  const s=steps[wi];
+  if(s.text)wdata[s.k]=$('textbox').value.trim();
+  if(s.other&&$('otherbox').value.trim())wdata[s.k]=$('otherbox').value.trim();
+  if(s.contact){wdata.name=$('c-name').value.trim();wdata.business=$('c-biz').value.trim();wdata.email=$('c-email').value.trim();
+    if(!wdata.email){$('c-email').style.borderColor='var(--amber)';return}}
+  if(s.opts&&!s.contact&&!wdata[s.k])return;
+  if(s.text&&!wdata[s.k])return;
+  if(wi<steps.length-1){wi++;renderStep()}else{renderBrief(recommend(wdata),'walkthrough')}
+}
+function recommend(d){
+  let rec,why;
+  const p=d.painPoint||'',pres=d.presence||'',b=d.budget||'';
+  if(p.includes("can\u2019t find")||pres.includes('Nothing')||pres.includes('never touch')){rec='The Foundation ($400)';why='Before anything else, you need to exist where people search. The Foundation rebuilds your Google presence and shows you exactly what changed \u2014 the highest-leverage $400 in this business.'}
+  else if(pres.includes('not proud')||p.includes("don\u2019t call")){rec='The Storefront ($1,000\u20132,000)';why='People are finding you and bouncing \u2014 that\u2019s a website problem, not a marketing problem. The Storefront closes the loop, with Foundation work included.'}
+  else if(p.includes('follow up')||p.includes('bids take')){rec='The Companion ($2,000 + monthly)';why='Your presence works; your follow-up is the leak. An AI intake and follow-up system answers in seconds \u2014 even while you\u2019re on the job \u2014 and a field-to-bid tool gets your numbers out faster.'}
+  else{rec='Strategy Session ($150)';why='Your situation has more than one honest answer, and guessing would be a disservice. Ninety minutes, straight talk, and a written plan you keep either way.'}
+  return {...d,recommendation:rec,reasoning:why};
+}
+function renderBrief(b,via){
+  show('screen-brief');
+  const rows=[['Name',b.name],['Business',b.business],['Email',b.email],['Trade',b.trade],['Territory',b.area],['Lead sources',b.leadSources],['Biggest leak',b.painPoint],['Current presence',b.presence],['Budget comfort',b.budget],['Timeline',b.timeline]]
+    .filter(r=>r[1]).map(r=>`<div class="brief-row"><b>${r[0]}</b><span>${r[1]}</span></div>`).join('');
+  $('screen-brief').innerHTML=`
+    <button class="back" onclick="goHome()">← START OVER</button>
+    <div class="brief">
+      <h2>Here\u2019s what we heard.</h2>
+      ${rows}
+      <div class="brief-rec"><b>Recommended starting point: ${b.recommendation}</b><p style="margin-top:8px;color:var(--muted);font-size:.93rem">${b.reasoning}</p></div>
+      <p style="margin-top:22px;color:var(--muted);font-size:.88rem">This brief was captured via ${via} and is on its way to Bryon. You\u2019ll hear from a real person within one business day \u2014 and the first conversation starts with this, not from zero.</p>
+      <div style="margin-top:20px;display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#" onclick="alert('Prototype: production wires this to the booking flow.');return false">Book the Strategy Session</a>
+        <a class="btn btn-ghost" href="#" onclick="alert('Prototype: production emails the brief + stores to CRM.');return false">Email me my brief</a>
+      </div>
+    </div>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
