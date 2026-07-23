@@ -56,6 +56,12 @@
       --mauve-mid: #2E1E2A;
       --rose:      #C4708A;
       --rose-light:#E4A0B8;
+
+      --espresso:  #26180F;
+      --caramel:   #C08552;
+
+      --deepteal:  #0F3138;
+      --aqua:      #5CC8BD;
     }
 
     html { scroll-behavior: smooth; }
@@ -544,6 +550,32 @@
       pointer-events: none;
     }
 
+    /* HUMBLE GROUNDS CARD */
+    .card-humble { background: var(--espresso); }
+    .card-humble::before { background: var(--caramel); }
+    .card-humble::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(192,133,82,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* CURRENTLY CARD */
+    .card-currently { background: var(--deepteal); }
+    .card-currently::before { background: var(--aqua); }
+    .card-currently::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(92,200,189,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
     /* CARD INNER ELEMENTS */
     .card-platform-tag {
       font-size: 8px;
@@ -562,6 +594,8 @@
     .card-cannagraphy .card-platform-tag { color: var(--amethyst); }
     .card-oberlin     .card-platform-tag { color: var(--steel); }
     .card-nails       .card-platform-tag { color: var(--rose); }
+    .card-humble      .card-platform-tag { color: var(--caramel); }
+    .card-currently   .card-platform-tag { color: var(--aqua); }
 
     .card-mark {
       margin-bottom: 28px;
@@ -586,6 +620,8 @@
     .card-cannagraphy .card-name { color: #EDE8F5; }
     .card-oberlin     .card-name { color: #E8EEF5; }
     .card-nails       .card-name { color: #F5EEF2; }
+    .card-humble      .card-name { color: #F2E9DC; }
+    .card-currently   .card-name { color: #E6F4F2; }
 
     .card-domain {
       font-size: 10px;
@@ -603,6 +639,8 @@
     .card-cannagraphy .card-domain { color: rgba(155,126,200,0.65); }
     .card-oberlin     .card-domain { color: rgba(106,143,175,0.65); }
     .card-nails       .card-domain { color: rgba(196,112,138,0.65); }
+    .card-humble      .card-domain { color: rgba(192,133,82,0.7); }
+    .card-currently   .card-domain { color: rgba(92,200,189,0.65); }
 
     .card-rule {
       height: 0.5px;
@@ -618,6 +656,8 @@
     .card-cannagraphy .card-rule { background: rgba(155,126,200,0.2); }
     .card-oberlin     .card-rule { background: rgba(106,143,175,0.2); }
     .card-nails       .card-rule { background: rgba(196,112,138,0.2); }
+    .card-humble      .card-rule { background: rgba(192,133,82,0.25); }
+    .card-currently   .card-rule { background: rgba(92,200,189,0.2); }
 
     .card-description {
       font-family: 'Cormorant Garamond', serif;
@@ -638,6 +678,8 @@
     .card-cannagraphy .card-description { color: rgba(237,232,245,0.65); }
     .card-oberlin     .card-description { color: rgba(232,238,245,0.65); }
     .card-nails       .card-description { color: rgba(245,238,242,0.65); }
+    .card-humble      .card-description { color: rgba(242,233,220,0.68); }
+    .card-currently   .card-description { color: rgba(230,244,242,0.65); }
 
     .card-companion {
       font-size: 11px;
@@ -655,6 +697,8 @@
     .card-cannagraphy .card-companion { color: rgba(155,126,200,0.75); }
     .card-oberlin     .card-companion { color: rgba(106,143,175,0.75); }
     .card-nails       .card-companion { color: rgba(196,112,138,0.75); }
+    .card-humble      .card-companion { color: rgba(192,133,82,0.8); }
+    .card-currently   .card-companion { color: rgba(92,200,189,0.75); }
 
     .card-cta {
       display: inline-flex;
@@ -678,6 +722,8 @@
     .card-cannagraphy .card-cta { color: var(--amethyst); }
     .card-oberlin     .card-cta { color: var(--steel); }
     .card-nails       .card-cta { color: var(--rose); }
+    .card-humble      .card-cta { color: var(--caramel); }
+    .card-currently   .card-cta { color: var(--aqua); }
 
     /* ── FOR BUSINESSES ── */
     .business-strip {
@@ -878,6 +924,8 @@
     .card-cannagraphy:hover { box-shadow: 0 12px 44px rgba(155,126,200,0.22); }
     .card-oberlin:hover     { box-shadow: 0 12px 44px rgba(106,143,175,0.2); }
     .card-nails:hover       { box-shadow: 0 12px 44px rgba(196,112,138,0.2); }
+    .card-humble:hover      { box-shadow: 0 12px 44px rgba(192,133,82,0.2); }
+    .card-currently:hover   { box-shadow: 0 12px 44px rgba(92,200,189,0.18); }
 
     /* Corner glow expansion on hover */
     .platform-card::after { transition: transform 0.4s ease; }
@@ -1237,6 +1285,63 @@
       </div>
     </a>
 
+    <!-- HUMBLE GROUNDS -->
+    <a href="https://humblegrounds.coffee" target="_blank" class="platform-card card-humble fade-up fade-up-delay-1">
+      <div class="card-platform-tag">Small-Batch Coffee · Oberlin, Ohio</div>
+
+      <div class="card-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M10 16 h14 v8 a6 6 0 0 1 -6 6 h-2 a6 6 0 0 1 -6 -6 z" fill="rgba(192,133,82,0.15)" stroke="#C08552" stroke-width="1.1" opacity="0.8"/>
+          <path d="M24 18 h2.5 a3 3 0 0 1 0 6 H24" fill="none" stroke="#C08552" stroke-width="1" opacity="0.6"/>
+          <path d="M14 12 q-1.5 -2 0 -4 q1.5 -2 0 -4" fill="none" stroke="#C08552" stroke-width="0.9" opacity="0.5"/>
+          <path d="M19 12 q-1.5 -2 0 -4 q1.5 -2 0 -4" fill="none" stroke="#C08552" stroke-width="0.9" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <div class="card-name">Humble Grounds</div>
+      <div class="card-domain">humblegrounds.coffee</div>
+      <div class="card-rule"></div>
+      <p class="card-description">
+        A small-batch roastery with a rotating monthly selection of single-origin coffees — each one a harvest from a particular hillside in a particular year. Travel to the origin, taste along, and when it's gone, it's gone.
+      </p>
+      <div class="card-companion">Go There · Taste Along · Twenty Years Roasting</div>
+      <div class="card-cta">
+        Visit roastery
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- CURRENTLY -->
+    <a href="https://currently.site" target="_blank" class="platform-card card-currently fade-up fade-up-delay-2">
+      <div class="card-platform-tag">Kid-Safe Personal Pages · SaaS</div>
+
+      <div class="card-mark">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect x="7" y="8" width="22" height="20" rx="2.5" fill="rgba(92,200,189,0.12)" stroke="#5CC8BD" stroke-width="1.1" opacity="0.8"/>
+          <line x1="7" y1="13" x2="29" y2="13" stroke="#5CC8BD" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="10.5" cy="10.5" r="0.9" fill="#5CC8BD" opacity="0.7"/>
+          <circle cx="13.5" cy="10.5" r="0.9" fill="#5CC8BD" opacity="0.45"/>
+          <polygon points="18,16.5 19.1,19.4 22.2,19.4 19.7,21.2 20.6,24.1 18,22.3 15.4,24.1 16.3,21.2 13.8,19.4 16.9,19.4" fill="#5CC8BD" opacity="0.75"/>
+        </svg>
+      </div>
+
+      <div class="card-name">Currently</div>
+      <div class="card-domain">currently.site</div>
+      <div class="card-rule"></div>
+      <p class="card-description">
+        The bedroom wall of the internet — a safe first website for your kid. Private by default, reviewed before it publishes, shared only with the people they choose. No feed. No comments. No ads. No tracking. Ever.
+      </p>
+      <div class="card-companion">No Feed · No Ads · No Tracking</div>
+      <div class="card-cta">
+        Visit platform
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+
   </div>
 </section>
 
@@ -1279,6 +1384,8 @@
       <a href="https://mycannagraphy.site" target="_blank">Cannagraphy</a>
       <a href="https://oberlinweather.site" target="_blank">Oberlin Weather</a>
       <a href="https://nailsbymarissa.site" target="_blank">Nails by Marissa</a>
+      <a href="https://humblegrounds.coffee" target="_blank">Humble Grounds</a>
+      <a href="https://currently.site" target="_blank">Currently</a>
       <a href="/services">Work With Us</a>
       <a href="/stack">Stack</a>
       <a href="/about">Our Story</a>
