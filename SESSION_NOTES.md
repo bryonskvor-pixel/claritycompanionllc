@@ -14,7 +14,7 @@
 
 ### Next steps
 1. Owner: push + deploy; set env vars per README table (Resend key, KV, ANTHROPIC_API_KEY, CRON_SECRET).
-2. Owner decisions (blocking bits flagged in specs): confirm `bryon@claritycompanionllc.com` mailbox exists; provide booking URL (`BOOKING_URL` const in `services/discovery/index.html` — currently falls back to `/services#contact`); approve or anonymize the Integrated Architectural proof card; decide Companion monthly pricing (page says "scoped to what you actually use" per spec).
+2. Owner decisions resolved 2026-07-22: mailbox `bryon@claritycompanionllc.com` CONFIRMED; IAS proof card swapped to anonymized version (no link); Companion monthly pricing stays as-is. Still open: booking URL — owner will add Calendly later (`BOOKING_URL` const in `services/discovery/index.html`, currently falls back to `/services#contact`).
 3. Post-deploy: verify a real brief email end-to-end, Lighthouse pass on `/services`, test cron fires.
 4. Future tasks per specs: full ScopeWalk showcase at `/services/scopewalk`; pipeline UI on the `brief:*` KV records (CRM v0).
 
