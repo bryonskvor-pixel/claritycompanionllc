@@ -20,7 +20,7 @@ See `.env.example` for the full list. Summary:
 | `CONTACT_TO_EMAIL` | delivery address | Defaults to `bryon@claritycompanionllc.com` — confirm this mailbox exists |
 | `CONTACT_FROM_EMAIL` | branded sending | Needs the domain verified in Resend; leave unset to use `onboarding@resend.dev` (delivers only to the Resend account owner) |
 | `ANTHROPIC_API_KEY` | C.C. chat (Track A) | Server-side only, never in client code. Missing → Track A gracefully points visitors to Track B |
-| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | brief/session storage | Vercel KV or Upstash Redis REST. Optional: without it briefs still email but aren't persisted, and durable rate limits are skipped |
+| `KV_REST_API_URL` / `KV_REST_API_TOKEN` — or `REDIS_URL` | brief/session storage | Injected by the Vercel Storage integration (Upstash REST names or a Redis Cloud `REDIS_URL` — both supported). Optional: without it briefs still email but aren't persisted, and durable rate limits are skipped |
 | `DAILY_SPEND_CEILING_USD` | spend guard | Default `5`; Track A auto-disables past it and emails the owner once |
 | `CRON_SECRET` | daily-summary cron auth | Vercel sends it automatically as a Bearer token when set |
 

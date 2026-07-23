@@ -9,7 +9,8 @@ const OWNER_EMAIL = process.env.CONTACT_TO_EMAIL || 'bryon@claritycompanionllc.c
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Clarity Companion <onboarding@resend.dev>';
 
 async function sendEmail({ to, subject, text, replyTo }) {
-  const key = process.env.RESEND_API_KEY;
+  // Accept the dashboard's variable name as typed, too.
+  const key = process.env.RESEND_API_KEY || process.env.Resend_Api_Key;
   if (!key) {
     console.warn('[email] RESEND_API_KEY not set — email NOT sent. Subject:', subject);
     return { sent: false, reason: 'missing-key' };

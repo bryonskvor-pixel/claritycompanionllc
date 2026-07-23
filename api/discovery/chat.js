@@ -8,6 +8,9 @@ const { sendEmail, OWNER_EMAIL } = require('../_lib/email');
 const { allow, clientIp } = require('../_lib/ratelimit');
 const store = require('../_lib/store');
 
+// Accept the dashboard's variable name as typed, too.
+const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || process.env.Anthropic_Api_Key;
+
 const MODEL = 'claude-haiku-4-5';
 const MAX_TOKENS = 1000;
 const MAX_REQUESTS_PER_SESSION = 30;
@@ -47,7 +50,7 @@ async function callClaude(messages) {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
-      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'x-api-key': ANTHROPIC_KEY,
       'anthropic-version': '2023-06-01',
       'content-type': 'application/json',
     },
@@ -133,7 +136,7 @@ module.exports = async (req, res) => {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!ANTHROPIC_KEY) {
     console.warn('[discovery/chat] ANTHROPIC_API_KEY not set');
     return res.status(200).json({ reply: DISABLED_MESSAGE, disabled: true });
   }

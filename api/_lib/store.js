@@ -6,35 +6,62 @@
 // services page — shaped so a pipeline UI can sit on them later:
 //   brief:{id} = { id, timestamp, via, json, status: new|contacted|booked|won|lost }
 
-// Vercel's KV/Upstash integration injects either KV_* or UPSTASH_REDIS_*
-// names depending on integration vintage — accept both.
+// Credentials come in two flavors depending on which Vercel Storage
+// integration was used:
+//  - REST (Upstash/KV):     KV_REST_API_URL + KV_REST_API_TOKEN (or UPSTASH_*)
+//  - Direct (Redis Cloud):  REDIS_URL connection string
+// Both are supported; REST wins if both exist.
 const URL_ = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
 const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+const REDIS_URL = process.env.REDIS_URL;
 
 function kvEnabled() {
-  return Boolean(URL_ && TOKEN);
+  return Boolean((URL_ && TOKEN) || REDIS_URL);
+}
+
+let redisClient = null;
+async function getRedisClient() {
+  if (redisClient) return redisClient;
+  const { createClient } = require('redis');
+  const client = createClient({ url: REDIS_URL, socket: { connectTimeout: 5000 } });
+  client.on('error', (e) => console.error('[store] redis client error', e.message));
+  await client.connect();
+  redisClient = client; // cached across invocations of a warm function instance
+  return client;
 }
 
 // Run a single Redis command, e.g. cmd('SET', 'foo', 'bar'). Returns the
-// command result, or null when KV is unconfigured or errors.
+// command result, or null when storage is unconfigured or errors.
 async function cmd(...args) {
-  if (!kvEnabled()) return null;
-  try {
-    const res = await fetch(URL_, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(args.map(String)),
-    });
-    if (!res.ok) {
-      console.error('[store] KV error', res.status, await res.text().catch(() => ''));
+  if (URL_ && TOKEN) {
+    try {
+      const res = await fetch(URL_, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(args.map(String)),
+      });
+      if (!res.ok) {
+        console.error('[store] KV error', res.status, await res.text().catch(() => ''));
+        return null;
+      }
+      const data = await res.json();
+      return data.result;
+    } catch (err) {
+      console.error('[store] KV request failed', err.message);
       return null;
     }
-    const data = await res.json();
-    return data.result;
-  } catch (err) {
-    console.error('[store] KV request failed', err.message);
-    return null;
   }
+  if (REDIS_URL) {
+    try {
+      const client = await getRedisClient();
+      return await client.sendCommand(args.map(String));
+    } catch (err) {
+      console.error('[store] redis command failed', err.message);
+      redisClient = null; // force a reconnect on the next call
+      return null;
+    }
+  }
+  return null;
 }
 
 async function getJson(key) {

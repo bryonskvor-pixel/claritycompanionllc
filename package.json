@@ -1,0 +1,8 @@
+{
+  "name": "claritycompanionllc",
+  "private": true,
+  "description": "Static site + Vercel serverless functions. No build step.",
+  "dependencies": {
+    "redis": "^4.7.0"
+  }
+}
