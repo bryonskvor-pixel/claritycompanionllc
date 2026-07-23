@@ -320,7 +320,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;color:var(--muted);font-s
   <p class="lede reveal">Websites, Google presence, and AI tools built by someone who's spent 20+ years on your side of the industry — from first conversation to final walkthrough. No agency fluff. No retainers you don't understand. Just the digital presence your work deserves.</p>
   <div class="hero-ctas reveal">
     <a class="btn btn-primary" href="#packages">See the packages</a>
-    <a class="btn btn-ghost" href="#selector">Where should you start?</a>
+    <a class="btn btn-ghost" href="/services/discovery">Where should you start?</a>
   </div>
 </header>
 
@@ -588,7 +588,7 @@ document.querySelectorAll('.choice').forEach(btn=>{
     document.querySelectorAll('.choice').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     const v=verdicts[btn.dataset.v];
-    verdictEl.innerHTML=v.t+' <a href="#'+v.pkg+'" style="color:var(--cyan)">Jump to it ↓</a>';
+    verdictEl.innerHTML=v.t+' <a href="#'+v.pkg+'" style="color:var(--cyan)">Jump to it ↓</a> <a href="/services/discovery" style="color:var(--cyan)">Start discovery →</a>';
     verdictEl.classList.add('show');
     document.querySelectorAll('.pkg,.strategy').forEach(p=>p.classList.remove('highlight'));
     document.getElementById(v.pkg).classList.add('highlight');
