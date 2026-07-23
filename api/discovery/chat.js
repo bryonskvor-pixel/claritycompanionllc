@@ -46,6 +46,17 @@ function logAnomalies(messages, sessionId) {
   }
 }
 
+// Prompt caching: breakpoints on the system prompt AND the last message, so
+// the cached prefix covers the whole conversation so far. (The system prompt
+// alone is under Haiku's ~2048-token cacheable minimum; including the
+// conversation lets the cache engage as the discovery grows — exactly when
+// resending gets expensive.)
+function withCacheBreakpoint(messages) {
+  return messages.map((m, i) => i === messages.length - 1
+    ? { role: m.role, content: [{ type: 'text', text: m.content, cache_control: { type: 'ephemeral' } }] }
+    : m);
+}
+
 async function callClaude(messages) {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -57,9 +68,8 @@ async function callClaude(messages) {
     body: JSON.stringify({
       model: MODEL,
       max_tokens: MAX_TOKENS,
-      // Prompt caching: the system prompt is resent every turn, so cache it.
       system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
-      messages,
+      messages: withCacheBreakpoint(messages),
     }),
   });
   if (!res.ok) {

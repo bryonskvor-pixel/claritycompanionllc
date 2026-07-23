@@ -3,10 +3,9 @@
 // that log a warning, so the site never hard-fails on a config gap.
 
 const OWNER_EMAIL = process.env.CONTACT_TO_EMAIL || 'bryon@claritycompanionllc.com';
-// Resend requires a verified sending domain for arbitrary recipients.
-// Until claritycompanionllc.com is verified in Resend, onboarding@resend.dev
-// works for delivery to the Resend account owner's address only.
-const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Clarity Companion <onboarding@resend.dev>';
+// claritycompanionllc.com is verified in Resend (2026-07-22), so the default
+// sender lives on that domain. Override with CONTACT_FROM_EMAIL if desired.
+const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || 'Clarity Companion <hello@claritycompanionllc.com>';
 
 async function sendEmail({ to, subject, text, replyTo }) {
   // Accept the dashboard's variable name as typed, too.
