@@ -80,9 +80,28 @@ function extractText(data) {
   return (data.content || []).filter(c => c.type === 'text').map(c => c.text).join('\n');
 }
 
+// Extract the first balanced JSON object after the [BRIEF] token. Models
+// occasionally append trailer text after the JSON despite instructions, so
+// parsing "everything after the token" is too brittle.
+function extractJsonObject(s) {
+  const start = s.indexOf('{');
+  if (start === -1) return null;
+  let depth = 0, inStr = false, escaped = false;
+  for (let i = start; i < s.length; i++) {
+    const c = s[i];
+    if (escaped) { escaped = false; continue; }
+    if (c === '\\') { escaped = true; continue; }
+    if (c === '"') { inStr = !inStr; continue; }
+    if (inStr) continue;
+    if (c === '{') depth++;
+    else if (c === '}') { depth--; if (depth === 0) return s.slice(start, i + 1); }
+  }
+  return null;
+}
+
 function tryParseBrief(reply) {
   if (!reply.includes('[BRIEF]')) return { hasToken: false };
-  const jsonPart = reply.split('[BRIEF]')[1].trim().replace(/```json|```/g, '').trim();
+  const jsonPart = extractJsonObject(reply.split('[BRIEF]')[1].replace(/```json|```/g, ''));
   try {
     const brief = JSON.parse(jsonPart);
     if (!brief || typeof brief !== 'object' || Array.isArray(brief)) throw new Error('not an object');
