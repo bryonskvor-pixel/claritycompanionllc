@@ -19,6 +19,10 @@
 4. Future tasks per specs: pipeline UI on the `brief:*` KV records (CRM v0). ScopeWalk page now has a scripted interactive demo (2026-07-22); the "full showcase" (real voice → real pricing) remains future work.
 5. Polish added 2026-07-22: OG image (`services/og.png`, rendered headless-Edge from blueprint-styled HTML), plotter-style typing animation on hero sheet annotations, scroll-triggered Field-to-Bid mock sequence, interactive ScopeWalk demo with replay.
 
+### Deployed 2026-07-22 (evening)
+- Pushed to origin/main; Vercel auto-deploy READY. Live-verified: all routes, nav, OG image, /work-with-us redirect, and a real C.C. exchange (Anthropic key + Redis both working; env vars accepted under dashboard names Anthropic_Api_Key/Resend_Api_Key/REDIS_URL).
+- ONE REMAINING ISSUE: Resend is in test mode — account registered under bryon@remodelry.guide, so it only delivers to that address until claritycompanionllc.com is verified at resend.com/domains. Quick unblock: set CONTACT_TO_EMAIL=bryon@remodelry.guide in Vercel and redeploy. Proper fix: verify the domain, then set CONTACT_FROM_EMAIL to a claritycompanionllc.com address and CONTACT_TO_EMAIL back to bryon@claritycompanionllc.com (also required before "Email me my brief" can reach visitors).
+
 ### Context
 - Repo is plain static HTML on Vercel; nested routes = `dir/index.html`; root pages use rewrites in `vercel.json`.
 - Specs live in repo as `implementationspec.md` / `intakespec.md`; prototypes as `clarityservicespage/index.html` / `clarityintakesystem/index.html` (keep — they're the design source of truth).
